@@ -9,7 +9,7 @@ In 2019, I found myself intrigued with infrastructure engineering. I’m so luck
 
 I’m currently working in a team who’s responsible for maintaining scripts written in bash, shell script, python and golang and tools like gitlab, and ansible for microservices deployments. And not limited to that, I also get involved on non technical parts like writing documentations, helping folks from product engineering teams, and joining discussions related infrastructure and software engineering topics.
 
-Previously I was a front end dude. I have 3 years of web development experiences where I built front end apps with widely popular web development stacks such as React, Vue, D3Js, Threejs, and RxJs. I also love working on gathering insights from data. Tools and libraries like Jupyter notebook, pandas, numpy are my favorite weapons when it comes to deal with data. And I still love front end and data, I still use some of my spare time to work, design and write web apps and data projects. 
+Previously I was a front end dude. I have 3 years of web development experiences where I built front end apps with widely popular web development stacks such as React, Vue, D3Js, Threejs, and RxJs. I also love working on gathering insights from data. Tools and libraries like Jupyter notebook, pandas, numpy are my favorite weapons when it comes to deal with data. And I still love front end and data, I still use some of my spare time to work, design and write web apps and data projects.
 
 If you're intersted with the projects I've worked on, please head to the [projects](/projects) page, you may find something interesting there.
 

@@ -121,8 +121,8 @@ const Item = ({ id, links, isPortrait, media, name, description }) => {
   const ref = useRef(null)
 
   const hover = useCallback(() => {
-    setIsHovered(!isHovered);
-  }, [setIsHovered, isHovered]);
+    setIsHovered(!isHovered)
+  }, [setIsHovered, isHovered])
 
   const style = useSpring({
     height: isHovered ? height : HEIGHT * 0.2,
@@ -142,11 +142,7 @@ const Item = ({ id, links, isPortrait, media, name, description }) => {
   }, [id])
 
   return (
-    <Content
-      isPortrait={isPortrait}
-      onMouseEnter={hover}
-      onMouseLeave={hover}
-    >
+    <Content isPortrait={isPortrait} onMouseEnter={hover} onMouseLeave={hover}>
       <Background color={!media ? random.pick(colors) : "transparent"}>
         {!media && <Name>{name}</Name>}
         <animated.div
