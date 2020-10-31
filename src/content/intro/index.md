@@ -3,7 +3,7 @@ path: /intro
 kind: intro
 ---
 
-I’m a guy currently settling in Jakarta. I love working on creative things, and I find that software engineering is the creative field that I like to spend my time the most. I’ve been writing code since 2016.
+I’m a guy currently living in Jakarta. I love working on creative things, and I find that software engineering is the creative field that I like to spend my time the most. I’ve been writing code since 2016.
 
 In 2019, I found myself intrigued with infrastructure engineering. I’m so lucky that I have an opportunity to work and explore my fascinations on the infrastructure engineering along side with tools like kubernetes, docker, gitlab, ci/cd, google infrastucture stacks, ansible, and terraform.
 
