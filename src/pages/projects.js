@@ -7,7 +7,7 @@ import { device } from "../utils/device"
 import { colors } from "../utils/colors"
 
 import Layout from "../components/layout"
-import SEO from "../components/SEO"
+import SEO from "../components/seo"
 import random from "canvas-sketch-util/random"
 
 const WIDTH = 1440

@@ -5,7 +5,7 @@ import styled from "styled-components"
 
 import Layout from "../components/layout"
 import Container from "../components/container"
-import SEO from "../components/SEO"
+import SEO from "../components/seo"
 
 const Post = styled.div`
   margin-bottom: 1rem;
