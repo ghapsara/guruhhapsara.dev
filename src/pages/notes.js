@@ -122,7 +122,7 @@ function NotesPage() {
           )
         })}
         {posts.length === 0 &&
-          <h5>notes come soon, stay tuned 👌</h5>
+          <h5>notes come soon, stay tuned <span role="img">👌</span></h5>
         }
       </Container>
     </Layout>

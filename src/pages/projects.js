@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react"
+import React, { useState, useRef, useEffect, useCallback } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import { animated, useSpring } from "react-spring"
@@ -120,6 +120,11 @@ const Item = ({ id, links, isPortrait, media, name, description }) => {
   const [height, setHeight] = useState(0)
   const ref = useRef(null)
 
+  const hover = useCallback(() => {
+    console.log("hover", isHovered);
+    setIsHovered(!isHovered);
+  }, [setIsHovered, isHovered]);
+
   const style = useSpring({
     height: isHovered ? height : HEIGHT * 0.2,
   })
@@ -140,12 +145,8 @@ const Item = ({ id, links, isPortrait, media, name, description }) => {
   return (
     <Content
       isPortrait={isPortrait}
-      onMouseEnter={() => {
-        setIsHovered(true)
-      }}
-      onMouseLeave={() => {
-        setIsHovered(false)
-      }}
+      onMouseEnter={hover}
+      onMouseLeave={hover}
     >
       <Background color={!media ? random.pick(colors) : "transparent"}>
         {!media && <Name>{name}</Name>}
