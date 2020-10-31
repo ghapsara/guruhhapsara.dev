@@ -1,0 +1,191 @@
+/* stolen from https://github.com/poteto/no.lol/blob/879b7ad8afa071e32b468764b9432ddad0099d62/static/prism-custom.css */
+
+.gatsby-highlight{
+  --code-background: #333333;
+  --code-title: white;
+  --code-main: #ff847c;
+}
+
+.gatsby-highlight-code-line {
+  background-color: var(--code-background);
+  display: block;
+  margin-right: -1em;
+  margin-left: -1em;
+  padding: 0 0.75em;
+}
+
+.gatsby-code-title {
+  /* font-size: 0.8rem; */
+  margin-bottom: -0.6rem;
+  padding: 0.5em 1em;
+  font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
+    monospace;
+  background-color: black;
+  color: var(--code-title);
+  z-index: 0;
+  border-top-left-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+}
+
+code[class*='language-text'],
+code[class*='language-'],
+pre[class*='language-'] {
+  color: var(--code-main);
+  background: var(--code-background);
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  tab-size: 2;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*='language-'] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border-radius: 0.3em;
+}
+
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  background: #333333;
+  color: #e8caa4;
+}
+
+/* Inline code */
+:not(pre) > code[class*='language-'] {
+  padding: 0.2em;
+  border-radius: 0.3em;
+  white-space: normal;
+  padding-left: 0.7em;
+  margin-right: 0.4em;
+  font-size: 1em;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #f8b195;
+}
+
+.token.punctuation {
+  color: #e8caa4;
+}
+
+.namespace {
+  opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #82D8D5;
+}
+
+.token.boolean,
+.token.number {
+  color: #ffd400;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.inserted {
+  color: #7984d1;
+}
+
+.token.builtin {
+  color: #df85ff;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: #FFB511;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function {
+  color: #f67280;
+}
+
+.token.class-name {
+  color: #c06c84;
+}
+
+.token.keyword {
+  color: #3fb8af;
+}
+
+.token.regex,
+.token.important {
+  color: #ffb86c;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+pre[class*="language-"].line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+	position: relative;
+	white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+.line-numbers-rows > span {
+	display: block;
+	counter-increment: linenumber;
+}
+
+.line-numbers-rows > span:before {
+	content: counter(linenumber);
+	color: #999;
+	display: block;
+	padding-right: 0.8em;
+	text-align: right;
+}
