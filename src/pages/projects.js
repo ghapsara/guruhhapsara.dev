@@ -121,7 +121,6 @@ const Item = ({ id, links, isPortrait, media, name, description }) => {
   const ref = useRef(null)
 
   const hover = useCallback(() => {
-    console.log("hover", isHovered);
     setIsHovered(!isHovered);
   }, [setIsHovered, isHovered]);
 
