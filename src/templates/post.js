@@ -31,7 +31,7 @@ export default function Template({ data }) {
     html,
   } = data.markdownRemark
 
-  const postUrl = `https://ghapsara.github.io${path}`
+  const postUrl = `https://guruhhapsara.dev${path}`
 
   return (
     <>
