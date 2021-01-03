@@ -1,15 +1,15 @@
 ---
 kind: post
 published: true
-title: Python Cheatsheet
+title: Python Cheat Sheet
 date: 2021-01-03T22:00:00.00Z
-path: /python-cheatsheet
+path: /python-cheat-sheet
 tags:
   - python
   - pandas
   - numpy
 description: >-
-  supercool python snippets that supercharge my python productivity.
+  supercool python snippets that supercharge my productivity.
 background: "#f8ead0"
 ---
 
