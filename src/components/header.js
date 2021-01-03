@@ -11,9 +11,10 @@ const Container = styled.header`
   grid-template-columns: 1fr 120px 120px;
   background: rgba(245, 245, 247, 0.6);
   z-index: 99999;
+  font-size: 16px;
 `
 
-const Title = styled.h4`
+const Title = styled.div`
   margin: 0;
   line-height: unset;
 `
@@ -28,7 +29,7 @@ const Nav = styled(({ primary, ...props }) => <Link {...props} />)`
 const Header = () => (
   <Container>
     <Nav to="/" primary>
-      <Title>guruh</Title>
+      <Title>Guruh</Title>
     </Nav>
     <Nav to="/notes">notes</Nav>
     <Nav to="/projects">projects</Nav>

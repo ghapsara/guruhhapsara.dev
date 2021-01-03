@@ -1,9 +1,16 @@
 /* stolen from https://github.com/poteto/no.lol/blob/879b7ad8afa071e32b468764b9432ddad0099d62/static/prism-custom.css */
 
-.gatsby-highlight{
-  --code-background: #333333;
+:root {
+  --code-background: #131521;
   --code-title: white;
-  --code-main: #ff847c;
+  --code-main: #a5b2bb;
+}
+
+.gatsby-highlight{
+  /* --code-background: #333333; */
+
+  /* --code-background: #1F2332; */
+  margin-bottom: 1.45rem;
 }
 
 .gatsby-highlight-code-line {
@@ -18,8 +25,7 @@
   /* font-size: 0.8rem; */
   margin-bottom: -0.6rem;
   padding: 0.5em 1em;
-  font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
-    monospace;
+  font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   background-color: black;
   color: var(--code-title);
   z-index: 0;
@@ -33,7 +39,7 @@ pre[class*='language-'] {
   color: var(--code-main);
   background: var(--code-background);
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-  font-family: monospace;
+  font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -54,7 +60,7 @@ pre[class*='language-'] {
 
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
-  background: #333333;
+  background: var(--code-background);
   color: #e8caa4;
 }
 
@@ -65,14 +71,15 @@ pre[class*='language-'] {
   white-space: normal;
   padding-left: 0.7em;
   margin-right: 0.4em;
-  font-size: 1em;
+  /* font-size: 1em; */
 }
 
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #f8b195;
+  /* color: #f8b195; */
+  color: rgb(168, 168, 168);
 }
 
 .token.punctuation {
@@ -124,7 +131,8 @@ pre[class*='language-'] {
 }
 
 .token.class-name {
-  color: #c06c84;
+  /* color: #c06c84; */
+  color: #ff847c;
 }
 
 .token.keyword {
