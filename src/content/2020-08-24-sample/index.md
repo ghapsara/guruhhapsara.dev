@@ -1,16 +1,15 @@
 ---
 kind: post
 published: false
-title: Dev ops with pandas
+title: title
 date: 2020-09-23T15:53:56.574Z
-path: /my-third-post
+path: /sample
 tags:
   - rxjs
   - animation
-cover: ./cover-1.jpg
+cover: ./cover.png
 description: >-
-  We’re in the middle of a digital renaissance that has software eating the
-  world. Like the industrial revolution, the digital revolution…
+  the description goes here
 background: "#7fc7af"
 ---
 
