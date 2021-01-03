@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { grey } from "../utils/colors"
 
 const Container = styled.div`
-  margin: 80px 0 50px 0;
+  margin: 60px 0 50px 0;
   display: flex;
   align-items: center;
 `

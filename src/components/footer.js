@@ -3,8 +3,10 @@ import styled from "styled-components"
 
 import Container from "./container"
 
-const Text = styled.h6`
+const Text = styled.p`
   margin: 0;
+  font-size: 15px;
+  font-weight: bold;
 `
 
 function Footer() {
