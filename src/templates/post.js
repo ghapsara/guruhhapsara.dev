@@ -44,7 +44,6 @@ export default function Template({ data }) {
             date={date}
             description={description}
             cover={cover}
-            background={!!background && "white"}
           />
           <Content>
             <div dangerouslySetInnerHTML={{ __html: html }} />
