@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import { device, size } from "../utils/device"
 
 const Container = styled.div`
   background-color: white;
@@ -22,7 +21,6 @@ const Title = styled.h1``
 const Description = styled.p`
   margin: 0;
 `
-
 
 function ArticleHeader({ title, description, date }) {
   return (

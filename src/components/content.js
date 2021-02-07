@@ -7,7 +7,7 @@ const Content = styled.div`
   @media ${device.desktop} {
     max-width: 680px;
   }
-  
+
   /* markdown content */
   div {
     display: grid;
