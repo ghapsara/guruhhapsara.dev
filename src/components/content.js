@@ -1,13 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { device, size } from "../utils/device"
-
 const Content = styled.div`
-  @media ${device.desktop} {
-    max-width: 680px;
-  }
-
   /* markdown content */
   div {
     display: grid;

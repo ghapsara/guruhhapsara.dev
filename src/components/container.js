@@ -1,13 +1,10 @@
 import styled from "styled-components"
-import { device, size } from "../utils/device"
 
 const Container = styled.div`
-  margin: 0 auto;
-  padding: 0 1.0875rem 1.45rem;
-
-  @media ${device.laptop} {
-    max-width: 680px;
-  }
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 40rem;
+  padding: 0rem 1.2rem;
 `
 
 export default Container
