@@ -1,11 +1,16 @@
 import React from "react"
 import styled from "styled-components"
+import { device, size } from "../utils/device"
 
 const Container = styled.div`
   background-color: white;
   border-radius: 28px;
   position: relative;
   margin: 3em 0em;
+`
+
+const Wrapper = styled.div`
+  padding: 3em;
 `
 
 const Date = styled.p`
@@ -18,9 +23,6 @@ const Description = styled.p`
   margin: 0;
 `
 
-const Wrapper = styled.div`
-  padding: 3em 5em;
-`
 
 function ArticleHeader({ title, description, date }) {
   return (
