@@ -191,10 +191,7 @@ function ProjectsPage() {
     }
   `)
 
-  const projects = data.allProjectsJson.edges.map(({ node }, i) => ({
-    ...node,
-    id: i,
-  }))
+  const projects = data.allProjectsJson.edges.map(({ node }) => ({ ...node }))
 
   return (
     <Layout>
@@ -202,7 +199,7 @@ function ProjectsPage() {
       <Wrapper>
         <Container>
           {projects.map(d => {
-            return <Item key={d.id} {...d} />
+            return <Item key={d.name} {...d} />
           })}
         </Container>
       </Wrapper>
