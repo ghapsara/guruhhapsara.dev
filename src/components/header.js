@@ -5,7 +5,7 @@ import styled from "styled-components"
 const Container = styled.header`
   position: sticky;
   top: 0;
-  margin-bottom: 1.45rem;
+  /* margin-bottom: 1.45rem; */
   padding: 1.45rem 2rem;
   display: grid;
   grid-template-columns: 1fr 120px 120px;

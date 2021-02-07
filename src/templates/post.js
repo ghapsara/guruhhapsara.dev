@@ -50,7 +50,6 @@ export default function Template({ data }) {
           </Content>
           <Share postUrl={postUrl} />
         </Container>
-        {/* gooogle analytics */}
       </Layout>
     </>
   )

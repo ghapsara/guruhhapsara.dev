@@ -102,7 +102,7 @@ func User(b *botData) error {
 }
 ```
 
-Ok so here's the problem with this implementation. The hardest thing about writing a bot application is that we don't have something like http routes. We don't have a kind of kubernetes ingress controller that will gently direct incoming host path urls to a particular service. No body tells you an incoming bot message is belong to which function.
+Ok so here's the problem with this implementation. The hardest part about writing a bot application is that we don't have something like http routes. We don't have a kind of kubernetes ingress controller that will gently direct incoming host path urls to a particular service. No body tells you an incoming bot message is belong to which function.
 
 So, we ended up writing switch case statements as this was pretty straight forward and fairly easy to implement.
 
@@ -150,7 +150,7 @@ Ok, so what is middleware?
 
 The idea is how to run certain things on top of a function.
 
-It's like working with photoshop layers where you don't directly putting your effects on a single canvas, but you'll have multiple canvas stacked on top of one another instead. All layers are focused on doing their one particular job.
+It's like working with photoshop layers where you're not directly putting your effects on a single canvas, but you'll have multiple canvas stacked on top of one another instead. All layers are focused on doing their one particular job.
 
 But just be aware that sometimes your middleware can behave like distortion pedals. You can put dozens of effects on your guitar, you can have them as many as you want, you can have so much fun with composing different types of effects, but then your music would taste like a curry with a matcha latte whipped cream on top of it.
 
@@ -178,7 +178,7 @@ func Apply(bh BotHandler, md ...Middleware) BotHandler {
 }
 ```
 
-At first this code seemed baffling to me. My confusion was how the handler function is going to be executed and also how could this function be valid. It's supposed to return a BotHandler type function, but it seemed like we would have an array of functions. But that's not true, the Apply function would return a chain of BotHandler type functions.
+At first this code seemed baffling to me. My confusion was how the handler function is going to be executed and also how could this function be valid. It's supposed to return a `BotHandler` type function, but it seemed like we would have an array of functions. But that's not true, the Apply function would return a chain of `BotHandler` type functions.
 
 Here's how it works. Let's say we want to wrap handle with 4 middleware.
 
@@ -221,7 +221,7 @@ mdw1
 └── error
 ```
 
-If mdw2 returns an error the next middleware and the handle function won't be executed. but mdw1 will track all next middleware and handle function error values. mdw2 doesn't track mdw1 error return but tracks its next middleware and handle error returns, and so on.
+If `mdw2` returns an error the next middleware and the handle function won't be executed. but `mdw1` will track all next middleware and handle function error values. `mdw2` doesn't track `mdw1` error return but it will track its next middleware and handle error returns, and so on.
 
 Explicitly writing down a function execution helps a lot in figuring out how it works. If it takes you for more than 10 minutes to know how a certain logic works, write it down. I promise you, it's really helpful. That's a mantra I say to myself when I'm writing code.
 
@@ -316,11 +316,11 @@ handlerFunc := middleware.Apply(handler.MergeMR, Log, ValidateMR, OnlyAllowMaint
 err := handlerFunc()
 ```
 
-One of the benefits of having the approach above is we can reuse data obtained by previous middleware. This reduces the amount of http call to get data from a server. Though, this approach looks a bit fragile because the OnlyAllowMaintainer middleware acutely depends on the ValidateMR middleware. We have to be very cautious with our test.
+One of the benefits of having the approach above is we can reuse data obtained by previous middleware. This reduces the amount of http call to get data from a server. Though, this approach looks a bit fragile because the `OnlyAllowMaintainer` middleware acutely depends on the `ValidateMR` middleware. We have to be very cautious with our test.
 
 ## Test
 
-Ok, let's talk about test. I know tests are hard and tedious. But testing are really the best way to get our thought closer to a reliable judgement. You know when we're writing code, we are basically articulating our assumptions to address a specific problem with a solution. And sometimes our solution only embraces a few number of cases. When we play a devil advocate to it or when it's questioned with a such jarring test case scenario, our predisposed sort of chesty assumption often breaks which goes to say that our code is now vulnerable and prone to bugs.
+Ok, let's talk about test. I know tests are hard and tedious. But testing is really the best way to get our thought closer to a reliable judgement. You know when we're writing code, we are basically articulating our assumptions to address a specific problem with a solution. And sometimes our solution only embraces a few number of cases. When we play a devil advocate to it or when it's questioned with a such jarring test case scenario, our predisposed sort of chesty assumption often breaks which goes to say that our code is now vulnerable and prone to bugs.
 
 But in practice, you will likely to bargain with the velocity of delivery. With this concern in mind, a certain trade off has to make in how far are you going to tolerate to emerging runtime errors or bugs by those untested circumstances.
 
@@ -472,7 +472,7 @@ func Log(logger *zap.Logger) Middleware {
 
 We use [Uber zap](https://github.com/uber-go/zap) as our logger anyway. And this is the error stack in action.
 
-```go
+```json
 // Log
 {
   "level": "error",
@@ -498,14 +498,12 @@ This is like a birthday cake thrown to a face at a debugging party. We now know 
 
 # Epilogue
 
-Rewriting is a truly dissenting topic. It's resource consuming, you'll likely to delay new feature developments, and the business values offered by this approach are obscure sometimes.
+Rewriting is a truly dissenting topic. It's resource consuming, you're likely to delay new feature developments, and the business values offered by this approach are obscure sometimes.
 
 I think rewriting applications, services, or scripts is more about improving development experience and maintainability. If rewriting or refactoring could speed up tasks execution time or gain efficient resource usages, that'd be a bonus. I know, there are cases out there that aim refactoring or rewriting for these concerns but in our case, maintenance was the UFC championship weight class we put our bet on.
 
 I'm not bullshiting you but this is true. At the time I wrote this, our bot ran into an issue. We used to take hours for scouring a tremendous amount of logs in order to know what's happening within the app and finding out the issue and then we reproduced the case. But yesterday we only needed less than 10 minutes from discovering the root cause of the issue to writing the details of what it needs to do in our backlog.
 
-We're ready for the upcoming bugs and errors. It seems like we're setting up a crash for our app, but I think we would never be able to eradicate errors. I would finish my writing here. I don't want this pod get injected with another sidecar container. I mean we've talked about a lot of things.
-
-I hope you find them insightful and joyful.
+We're ready for the upcoming bugs and errors. It seems like we're setting up a crash for our app, but I think we would never be able to eradicate errors. I would finish my writing here. I don't want this pod get injected with another sidecar container. I mean we've talked about a lot of things. I hope you find them insightful and joyful.
 
 Thanks for reading.
