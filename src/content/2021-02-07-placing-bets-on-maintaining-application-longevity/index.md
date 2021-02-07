@@ -472,7 +472,7 @@ func Log(logger *zap.Logger) Middleware {
 
 We use [Uber zap](https://github.com/uber-go/zap) as our logger anyway. And this is the error stack in action.
 
-```go
+```json
 // Log
 {
   "level": "error",
