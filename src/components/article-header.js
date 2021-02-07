@@ -5,7 +5,7 @@ const Container = styled.div`
   background-color: white;
   border-radius: 28px;
   position: relative;
-  margin: 3em 0em;
+  margin: 3rem 0em;
 `
 
 const Wrapper = styled.div`

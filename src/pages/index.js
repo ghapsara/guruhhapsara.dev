@@ -52,7 +52,7 @@ const Sticky = styled.div`
 `
 
 const TitleWrapper = styled.div`
-  margin-bottom: 85px;
+  margin: 3rem 0;
 `
 
 const Content = ({ setHeight }) => {
