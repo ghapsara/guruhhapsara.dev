@@ -14,11 +14,9 @@ const WIDTH = 1440
 const HEIGHT = 0.75 * 798
 
 const Wrapper = styled.div`
-  margin: 0 auto;
-  padding: 0 1.0875rem 1.45rem;
-  @media ${device.mobileS} {
-    max-width: ${device.mobileS};
-  }
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0rem 1.2rem;
   @media ${device.mobileS} {
     max-width: ${0.8 * WIDTH}px;
   }
