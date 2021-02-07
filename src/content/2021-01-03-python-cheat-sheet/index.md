@@ -26,6 +26,7 @@ So, here are my top heavily used python tricks.
 ## Files
 
 ### Read a file
+
 ```python
 with open("file.txt") as f:
    data=f.read()
@@ -34,6 +35,7 @@ print(data)
 ```
 
 ### Write to a file
+
 ```python
 foo="bar"
 with open("foo.txt", "w", encoding="utf-8") as f:
@@ -41,9 +43,10 @@ with open("foo.txt", "w", encoding="utf-8") as f:
 ```
 
 ### Read a json file
+
 ```python
 import json
-### 
+###
 # file.json sample
 # [{foo: "bar"}, {foo: "bar"}]
 ###
@@ -54,11 +57,13 @@ with open("file.json", "r") as f:
 for d in file_json:
   print(d["foo"])
 ```
+
 <br/>
 
 ## Datetime
 
 ### Substract two dates
+
 ```python
 # initializing a datime
 to_date = datetime(2020, 12, 17, 23, 59)
@@ -69,7 +74,8 @@ from_date = (to_date - timedelta(days=10))
 ```
 
 ### Convert to Javascript Date (JSON Date)
-When we want to convert a python datetime to a javascript date, we have to times the total seconds by 1000. 
+
+When we want to convert a python datetime to a javascript date, we have to times the total seconds by 1000.
 As `strftime` method formats a date into a string object,
 one of the ways to have a correct json date is to append it with tripple zeros.
 Or you can cast it into an integer then you multiply it by 1000.
@@ -79,9 +85,11 @@ json_date = to_date.strftime("%s") + "000"
 
 json_date = int(to_date.strftime("%s")) * 1000
 ```
+
 <br/>
 
 ## Pandas
+
 If you're currently working with spreadsheet or excel, I highly recommend you to start taking a look at pandas. Pandas is like a spreadsheet with powerful python data analysis tools upon it.
 
 Pandas adoption is so fast. The veil between your ideas and the working code is so friggin' thin. This is the main reason why it is so convenient to use pandas whenever I need to do something with data.
@@ -91,6 +99,7 @@ These are magical pandas tricks that I use quite a lot and I love them so much.
 ### Functions
 
 Apply a function to a column
+
 ```python
 def func(param):
   return param
@@ -100,6 +109,7 @@ df.col.apply(func)
 ```
 
 Apply a function to multiple columns
+
 ```python
 def func(df):
   return df["a"] + df["b"]
@@ -108,26 +118,35 @@ df.apply(func, axis=1)
 ```
 
 ### Sort values
+
 It's surprising that we can sort a dataframe by multiple columns.
+
 ```python
 df = df.sort_values('name')
 
 df.sort_values(by=["col1", "col2"], ascending=False)
 ```
+
 docs:
+
 - https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sort_values.html
 
 ### Count values
+
 If you need a way to group a list with their total occurrences, this is one way to do it.
+
 ```python
 df.col.value_counts()
 
 df.col.value_counts(dropna=True)
 ```
+
 docs:
+
 - https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.value_counts.html
 
 ### Join or Merge dataframes
+
 Pandas is like a plot twist character who incites me to ditch SQL queries 😂. SQL queries can become quite intrusive when you keep adding more filters and calculations into them. Sometimes, I think to myself SQL queries are only fitted for applications needs.
 
 ```python
@@ -137,15 +156,19 @@ df_right = pd.DataFrame()
 how = "left" | "right" | "inner" | "outer"
 merged_df = pd.merge(df_left, df_right, left_on=["key"], right_on=["Key"], how=how)
 ```
+
 docs:
+
 - https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html
 
 ### Drop columns
+
 ```python
 df.drop(["col", "col-1"], axis=1, inplace=True)
 ```
 
 ### Dealing with na / null values
+
 ```python
 import pandas as pd
 
@@ -156,7 +179,9 @@ df.dropna(inplace=True)
 df.isna()
 df.col.isna()
 ```
+
 docs :
+
 - https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.isna.html#pandas.DataFrame.isna
 - https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.dropna.html
 - https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.isna.html#pandas.DataFrame.isna
@@ -166,6 +191,7 @@ docs :
 ## Numpy
 
 ### Split an array to multiple arrays (Chunks)
+
 ```python
 data=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 chunks = np.array_split(data, 3)
@@ -175,9 +201,8 @@ print(chunks)
 
 <br/>
 
-That's all folks, I hope you find them useful. 
+That's all folks, I hope you find them useful.
 More snippets might be added to the list in the future.
 
 Thanks for reading. <br/>
 See you in the next post.
-

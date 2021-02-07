@@ -160,7 +160,7 @@ const Item = ({ id, links, isPortrait, media, name, description }) => {
           <Description>{description}</Description>
           <Links>
             {links.map((d, i) => (
-              <Link key={`${id}-${i}`} href={d.url}>
+              <Link key={`${id}-${i}`} href={d.url} target="_blank">
                 {d.text}
               </Link>
             ))}

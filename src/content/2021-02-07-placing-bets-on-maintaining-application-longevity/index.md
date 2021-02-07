@@ -21,9 +21,9 @@ You might ask, why do you say we? The reason for that is because I didn't do thi
 
 So, I'm working on a deployment tooling team. Our job is mainly helping engineers in our company to get their applications or services or whatever the fuck they want shipped to production.
 
-My team is handling a bot that is responsible for deploying a huge monolithic code base that has been living for more than 11 years. There are almost like 500 engineers across different teams contributing to the code base. Nevertheless, we're (not my team) currently working on migrating this large code base to microservices. 
+My team is handling a bot that is responsible for deploying a huge monolithic code base that has been living for more than 11 years. There are almost like 500 engineers across different teams contributing to the code base. Nevertheless, we're (not my team) currently working on migrating this large code base to microservices.
 
-So, This bot plays a certain role to the running business. 
+So, This bot plays a certain role to the running business.
 
 It's a handy crafted bot application assembled by a collaboration between SREs and Software Engineers, and bunch of people from across engineering teams also put their hands into the code base. Everybody can contribute anytime they want, everybody can implement any requirements for the bot. Everybody is like can I do this, can i have that, can we have this, what if we do this with this bot. That's the kind of discussions happening in the bot development.
 
@@ -49,9 +49,9 @@ It's true, I'm not kidding.
 
 We were screwed up with those conditions and yet we only had 3 months to work on. With this super short development time in mind, we realized that a safe and cautious implementation won't fit to our timeline. We crushed the battleship with this approach instead.
 
-> Rewriting code structure with minimum necessary code changes and  increasing test coverages progressively.
+> Rewriting code structure with minimum necessary code changes and increasing test coverages progressively.
 
-This was like a quote we had on our t-shirt when we were working. 
+This was like a quote we had on our t-shirt when we were working.
 
 # The work
 
@@ -102,9 +102,9 @@ func User(b *botData) error {
 }
 ```
 
-Ok so here's the problem with this implementation. The hardest thing about writing a bot application is that we don't have something like http routes. We don't have a kind of kubernetes ingress controller that will gently direct incoming host path urls to a particular service. No body tells you an incoming bot message is belong to which function. 
+Ok so here's the problem with this implementation. The hardest thing about writing a bot application is that we don't have something like http routes. We don't have a kind of kubernetes ingress controller that will gently direct incoming host path urls to a particular service. No body tells you an incoming bot message is belong to which function.
 
-So, we ended up writing switch case statements as this was pretty straight forward and fairly easy to implement. 
+So, we ended up writing switch case statements as this was pretty straight forward and fairly easy to implement.
 
 But then we needed to add new commands, we had to write another crazy switch case function. This is an example of what happens if there's somebody text a message "user" to the bot and how it should be responded.
 
@@ -117,10 +117,10 @@ command
  -> user list -> give a list of avaialable users
 ```
 
-We found a workaround that allows us to ditch the nested handler. We wrote list of regex patterns associated with handler functions. If an incoming message is match with a regex pattern, the associated function will be executed. 
+We found a workaround that allows us to ditch the nested handler. We wrote list of regex patterns associated with handler functions. If an incoming message is match with a regex pattern, the associated function will be executed.
 
 ```go
-commands := map[string]*Command{	
+commands := map[string]*Command{
 	`user`: handler.UserHelp,
 	`user add `:  handler.UserAdd,
 	`user remove `:  handler.UserRemove,
@@ -130,11 +130,11 @@ commands := map[string]*Command{
 
 This is huge. Now handler functions are absent from the routing business.
 
-But we're not done yet. This code became difficult to read when we added a sort of role based authentication route. So, there were only specific users that can access particular commands. 
+But we're not done yet. This code became difficult to read when we added a sort of role based authentication route. So, there were only specific users that can access particular commands.
 
 ```go
 func User(b *botData) error {
-	if isAuthenticated(b.Username) { 
+	if isAuthenticated(b.Username) {
 		switch b.payload {
 			// handles cases
 		}
@@ -146,15 +146,15 @@ We knew this was problematic. Having another switch case or if-else statements f
 
 ## Middleware
 
-Ok, so what is middleware? 
+Ok, so what is middleware?
 
-The idea is how to run certain things on top of a function. 
+The idea is how to run certain things on top of a function.
 
 It's like working with photoshop layers where you don't directly putting your effects on a single canvas, but you'll have multiple canvas stacked on top of one another instead. All layers are focused on doing their one particular job.
 
 But just be aware that sometimes your middleware can behave like distortion pedals. You can put dozens of effects on your guitar, you can have them as many as you want, you can have so much fun with composing different types of effects, but then your music would taste like a curry with a matcha latte whipped cream on top of it.
 
-That's middleware in a nutshell. We want to encapsulate and compose few couples of functionalities such as user based authentication commands, logging, sending metrics to a monitoring dashboard, and etc on top of a handler function. We want them to act together but we don't want mixed them together in one place. 
+That's middleware in a nutshell. We want to encapsulate and compose few couples of functionalities such as user based authentication commands, logging, sending metrics to a monitoring dashboard, and etc on top of a handler function. We want them to act together but we don't want mixed them together in one place.
 
 You might ask, why do you want them to work that way?
 
@@ -193,7 +193,7 @@ i=2 handle = mdw2(mdw3(mdw4(handle)))
 i=3 handle = mdw1(mdw2(mdw3(mdw4(handle))))
 ```
 
-Try to think of it as if you're having a nested folder structure. But all folders should have one folder (except the last folder) and all folders have to have an image. 
+Try to think of it as if you're having a nested folder structure. But all folders should have one folder (except the last folder) and all folders have to have an image.
 
 ```go
 a
@@ -237,7 +237,7 @@ func Auth() Middleware {
 			// check if userid is exis in the user list
 			// return error if there's an error
 			// if it's exist, return nil
-	
+
 			// everyting seems ok, pass it the next function
 			return handle(d)
 		}
@@ -263,7 +263,7 @@ func Monitor() Middleware {
 }
 
 // Here's how to use it.
-handlerFunc := middleware.Apply(handler.UserAdd, Log, Auth, Monitor) 
+handlerFunc := middleware.Apply(handler.UserAdd, Log, Auth, Monitor)
 err := handlerFunc()
 ```
 
@@ -290,7 +290,7 @@ func ValidateMR() Middleware {
 
 			// save to context
 			d.Ctx = context.WithValue(d.Ctx, MERGE_DETAIL_CTX, md)
-		
+
 			// validate MR
 
 			// everyting seems ok, pass it the next function
@@ -304,15 +304,15 @@ func OnlyAllowMaintainer() Middleware {
 		return func(d *BotData) error {
 			// Reuse Merge Detail data from ValidateMR middleware
 			md := d.Ctx.Value(MERGE_DETAIL_CTX).(MergeDetail)
-			
-			// Validate 
-			
+
+			// Validate
+
 			return nil
 		}
 	}
 }
 
-handlerFunc := middleware.Apply(handler.MergeMR, Log, ValidateMR, OnlyAllowMaintainer) 
+handlerFunc := middleware.Apply(handler.MergeMR, Log, ValidateMR, OnlyAllowMaintainer)
 err := handlerFunc()
 ```
 
@@ -320,7 +320,7 @@ One of the benefits of having the approach above is we can reuse data obtained b
 
 ## Test
 
-Ok, let's talk about test. I know tests are hard and tedious. But testing are really the best way to get our thought closer to a reliable judgement. You know when we're writing code, we are basically articulating our assumptions to address a specific problem with a solution. And sometimes our solution only embraces a few number of cases. When we play a devil advocate to it or when it's questioned with a such jarring test case scenario, our predisposed sort of chesty assumption often breaks which goes to say that our code is now vulnerable and prone to bugs. 
+Ok, let's talk about test. I know tests are hard and tedious. But testing are really the best way to get our thought closer to a reliable judgement. You know when we're writing code, we are basically articulating our assumptions to address a specific problem with a solution. And sometimes our solution only embraces a few number of cases. When we play a devil advocate to it or when it's questioned with a such jarring test case scenario, our predisposed sort of chesty assumption often breaks which goes to say that our code is now vulnerable and prone to bugs.
 
 But in practice, you will likely to bargain with the velocity of delivery. With this concern in mind, a certain trade off has to make in how far are you going to tolerate to emerging runtime errors or bugs by those untested circumstances.
 
@@ -330,8 +330,8 @@ So, previously our test looked like this.
 type Database interface {}
 
 // test file
-type MockDB struct { 
-	// state 
+type MockDB struct {
+	// state
 }
 
 func NewMockDB() Database {
@@ -345,14 +345,14 @@ func (mr *MockDB) GetUser ([]User, error){
 func TestGetUser(t *testing.T) {
 	db := NewMockDB()
 	user, error := db.GetUser()
-	
+
 	// test cases...
 }
 ```
 
-When the first time I saw this, I was perplexed. I talked to myself, how our functions are going to be tested if the implementation is rewritten in the test file. What if we add more functions? we have to write more implementations in our test file. And our test file was so big. 
+When the first time I saw this, I was perplexed. I talked to myself, how our functions are going to be tested if the implementation is rewritten in the test file. What if we add more functions? we have to write more implementations in our test file. And our test file was so big.
 
-Our mock functions were completely "disconnected" from the functions. That says, our test didn't directly call the legitimate interface instances. We reimplemented interfaces functions in our test files and sometimes we bended them in order to make them fit to our test scenarios. This is dangerous because tests didn't comprehensively assert the concrete implementation. 
+Our mock functions were completely "disconnected" from the functions. That says, our test didn't directly call the legitimate interface instances. We reimplemented interfaces functions in our test files and sometimes we bended them in order to make them fit to our test scenarios. This is dangerous because tests didn't comprehensively assert the concrete implementation.
 
 We wrapped our head around this issue. We decided to reorganize our interfaces. We introduced hierarchical structures to our packages which organizes interfaces and functions in several sub-packages. We split packages to nested packages. We extracted functions that address domains of logics to many mini files, so there are like 5 to 7 files with 50 to 300 lines of code in one package and sub-packages.
 
@@ -360,7 +360,7 @@ This makes our tests tidily disseminated near their functions. The amount of tes
 
 However, we were still a bit worried with our integration test. This code structure change imposed a challenge to us on how to test the main functions which integrate functionalities from lots of different packages.
 
-We were so lucky at that moment. We found an amazing testing tool, [Mockery](https://github.com/vektra/mockery). Mockery is a badass testing kit that takes care of the testing boring stuff, writing mock functions. 
+We were so lucky at that moment. We found an amazing testing tool, [Mockery](https://github.com/vektra/mockery). Mockery is a badass testing kit that takes care of the testing boring stuff, writing mock functions.
 
 This is mockery in action.
 
@@ -401,11 +401,11 @@ Now we have our interfaces implementations handled by Mockery. You can impersona
 mockProvider := &databasetest.Provider{}
 mockProvider.On("GetUser").Return([]User{}, errors.new("can't fetch user"))
 
-// call functions 
+// call functions
 // assert results
 ```
 
-Our integration tests heavily utilize mockery at the top level. Mockery gives us an ultimate freedom to loosely mock interface implementations. And the good thing is this allows us to write interface implementation independently. We also can write tests from any directions with the given interfaces. We can write tests for interface implementation functions and we can test functions that employ interfaces separately. It's hugely beneficial if you're working on a team. 
+Our integration tests heavily utilize mockery at the top level. Mockery gives us an ultimate freedom to loosely mock interface implementations. And the good thing is this allows us to write interface implementation independently. We also can write tests from any directions with the given interfaces. We can write tests for interface implementation functions and we can test functions that employ interfaces separately. It's hugely beneficial if you're working on a team.
 
 Mockery mocks interfaces' inputs and outputs without manipulating the implementation. This is rejuvenating my motivation in writing more tests. Mockery dramatically improves our testing experience.
 
@@ -417,11 +417,11 @@ One of the issues we had was that our app logged lots of things down in the cons
 
 This is fine actually and we didn't have any problems of having super verbose logs in our app. But we found that we didn't actually look at them. We only paid our attention to what's coming in and out, and errors when there's an issue raised in our application.
 
-We found [pkg errors](https://github.com/pkg/errors) solves our need in tracing application issues. Pkg error elegantly wraps errors produced by nested function calls in a stack pile. 
+We found [pkg errors](https://github.com/pkg/errors) solves our need in tracing application issues. Pkg error elegantly wraps errors produced by nested function calls in a stack pile.
 
-And this influenced a really good practice in rewriting our application. We have a mental model that stipulates our functions to include an error return in any scenarios whenever it's possible. 
+And this influenced a really good practice in rewriting our application. We have a mental model that stipulates our functions to include an error return in any scenarios whenever it's possible.
 
-But in the real world, you'll find use cases where a function doesn't incorporate a return. One example we found in our case was having a go routine function to let the bot to reactively listen to incoming messages. 
+But in the real world, you'll find use cases where a function doesn't incorporate a return. One example we found in our case was having a go routine function to let the bot to reactively listen to incoming messages.
 
 We made a decision to ditch our previous verbose log and use pkg as the replacement. This how we integrated pkg into our log middleware.
 
@@ -498,11 +498,11 @@ This is like a birthday cake thrown to a face at a debugging party. We now know 
 
 # Epilogue
 
-Rewriting is a truly dissenting topic. It's resource consuming, you'll likely to delay new feature developments, and the business values offered by this approach are obscure sometimes. 
+Rewriting is a truly dissenting topic. It's resource consuming, you'll likely to delay new feature developments, and the business values offered by this approach are obscure sometimes.
 
 I think rewriting applications, services, or scripts is more about improving development experience and maintainability. If rewriting or refactoring could speed up tasks execution time or gain efficient resource usages, that'd be a bonus. I know, there are cases out there that aim refactoring or rewriting for these concerns but in our case, maintenance was the UFC championship weight class we put our bet on.
 
-I'm not bullshiting you but this is true. At the time I wrote this, our bot ran into an issue. We used to take hours for scouring a tremendous amount of logs in order to know what's happening within the app and finding out the issue and then we reproduced the case. But yesterday we only needed less than 10 minutes from discovering the root cause of the issue to writing the details of what it needs to do in our backlog. 
+I'm not bullshiting you but this is true. At the time I wrote this, our bot ran into an issue. We used to take hours for scouring a tremendous amount of logs in order to know what's happening within the app and finding out the issue and then we reproduced the case. But yesterday we only needed less than 10 minutes from discovering the root cause of the issue to writing the details of what it needs to do in our backlog.
 
 We're ready for the upcoming bugs and errors. It seems like we're setting up a crash for our app, but I think we would never be able to eradicate errors. I would finish my writing here. I don't want this pod get injected with another sidecar container. I mean we've talked about a lot of things.
 
