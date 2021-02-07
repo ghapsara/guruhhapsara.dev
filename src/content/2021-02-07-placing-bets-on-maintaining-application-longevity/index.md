@@ -19,7 +19,7 @@ So, first of all, let me give you a little context of what we did.
 
 You might ask, why do you say we? The reason for that is because I didn't do this alone, it was not a self narcissistic work.
 
-So, I'm working on a deployment tooling team. Our job is mainly helping engineers in our company to get their applications or services or whatever the fuck they want shipped to production.
+So, I'm working for a deployment tooling team. Our job is mainly helping engineers in our company to get their applications or services or whatever the fuck they want shipped to production.
 
 My team is handling a bot that is responsible for deploying a huge monolithic code base that has been living for more than 11 years. There are almost like 500 engineers across different teams contributing to the code base. Nevertheless, we're (not my team) currently working on migrating this large code base to microservices.
 
