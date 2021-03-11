@@ -9,7 +9,7 @@ tags:
   - pandas
   - numpy
 description: >-
-  supercool python snippets that supercharge my productivity.
+  Supercool python snippets that supercharge my productivity.
 background: "#f8ead0"
 ---
 

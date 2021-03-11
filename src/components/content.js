@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 const Content = styled.div`
   /* markdown content */
+  color: ${props => props.color};
   div {
     display: grid;
     grid-template-columns: 1fr;

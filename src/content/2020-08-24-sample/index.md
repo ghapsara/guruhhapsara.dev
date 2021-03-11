@@ -7,10 +7,13 @@ path: /sample
 tags:
   - rxjs
   - animation
-cover: ./cover.png
 description: >-
   the description goes here
 background: "#7fc7af"
+color: white
+cover: "./cover.png"
+coverAuthor: ""
+coverUrl: ""
 ---
 
 This is my first Gatsby post written in Markdown!
