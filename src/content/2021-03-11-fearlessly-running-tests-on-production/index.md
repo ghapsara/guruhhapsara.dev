@@ -2,7 +2,7 @@
 kind: post
 published: true
 title: Fearlessly Running Tests on Production
-date: 2021-03-11T15:50:12.00Z
+date: 2021-03-11T21:33:58.00Z
 path: /fearlessly-running-tests-on-production
 tags:
   - kubernetes
