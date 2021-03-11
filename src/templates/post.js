@@ -27,7 +27,17 @@ const Background = ({ color }) => {
 
 export default function Template({ data }) {
   const {
-    frontmatter: { date, title, background, description, cover, path },
+    frontmatter: {
+      date,
+      title,
+      background,
+      color,
+      description,
+      path,
+      cover,
+      coverAuthor,
+      coverUrl,
+    },
     html,
   } = data.markdownRemark
 
@@ -44,8 +54,10 @@ export default function Template({ data }) {
             date={date}
             description={description}
             cover={cover}
+            coverAuthor={coverAuthor}
+            coverUrl={coverUrl}
           />
-          <Content>
+          <Content color={color}>
             <div dangerouslySetInnerHTML={{ __html: html }} />
           </Content>
           <Share postUrl={postUrl} />
@@ -66,6 +78,9 @@ export const pageQuery = graphql`
         tags
         background
         description
+        color
+        coverAuthor
+        coverUrl
         cover {
           childImageSharp {
             fluid(maxWidth: 1200) {
