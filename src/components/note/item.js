@@ -59,7 +59,7 @@ const Credit = styled.div`
   }
 `
 
-function ArticleHeader({
+function Item({
   title,
   description,
   date,
@@ -96,4 +96,4 @@ function ArticleHeader({
   )
 }
 
-export default ArticleHeader
+export default Item

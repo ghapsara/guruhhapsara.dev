@@ -6,7 +6,7 @@ import { useBackgroundDispatch } from "../context/background"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Container from "../components/container"
-import Header from "../components/article-header"
+import Header from "../components/post/header"
 import Content from "../components/content"
 import Share from "../components/share"
 
