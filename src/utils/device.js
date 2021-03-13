@@ -11,7 +11,7 @@ export const size = {
   desktop: "2560px",
 }
 
-export const isMobile = (size) => size < 1024;
+export const isMobile = size => size < 1024
 
 export const device = {
   mobileS: `(min-width: ${size.mobileS})`,

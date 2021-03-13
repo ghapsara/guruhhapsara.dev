@@ -27,7 +27,7 @@ const Link = styled(GatsbyLink)`
 
 const Title = styled(Link)`
   align-self: center;
-  font-family: 'Luckiest Guy';
+  font-family: "Luckiest Guy";
   font-size: 18px;
   margin-top: 7px;
 `

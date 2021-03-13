@@ -49,13 +49,13 @@ export default function Template({ data }) {
       <Layout>
         <Background color={background} />
         <Header
-            title={title}
-            date={date}
-            description={description}
-            cover={cover}
-            coverAuthor={coverAuthor}
-            coverUrl={coverUrl}
-          />
+          title={title}
+          date={date}
+          description={description}
+          cover={cover}
+          coverAuthor={coverAuthor}
+          coverUrl={coverUrl}
+        />
         <Container>
           <Content color={color}>
             <div dangerouslySetInnerHTML={{ __html: html }} />
