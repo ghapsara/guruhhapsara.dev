@@ -9,7 +9,7 @@ import { device } from "../utils/device"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Container from "../components/container"
-import Hero from "../components/hero-1/index"
+import Hero from "../components/hero"
 import ContentWrapper from "../components/content"
 
 const Title = styled.h1`
