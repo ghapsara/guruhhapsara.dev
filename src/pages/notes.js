@@ -1,6 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
+import { graphql } from "gatsby"
 import styled from "styled-components"
 
 import Layout from "../components/layout"
@@ -64,11 +63,6 @@ function NotesPage({ data }) {
             </Link>
           )
         })}
-        {posts.length === 0 && (
-          <h5>
-            notes come soon, stay tuned <span role="img">👌</span>
-          </h5>
-        )}
       </Container>
     </Layout>
   )

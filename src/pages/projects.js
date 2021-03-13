@@ -149,7 +149,12 @@ const Item = ({ id, links, isPortrait, media, name, description }) => {
   }, [id])
 
   return (
-    <Content isPortrait={isPortrait} onMouseEnter={hover} onMouseLeave={hover} onClick={click}>
+    <Content
+      isPortrait={isPortrait}
+      onMouseEnter={hover}
+      onMouseLeave={hover}
+      onClick={click}
+    >
       <Background color={!media ? random.pick(colors) : "transparent"}>
         {!media && <Name>{name}</Name>}
         <animated.div

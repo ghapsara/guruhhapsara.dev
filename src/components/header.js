@@ -1,8 +1,6 @@
 import React from "react"
 import { Link as GatsbyLink } from "gatsby"
 import styled from "styled-components"
-import { colors } from "../utils/colors"
-import icon from "../../static/favicon.ico"
 
 const Container = styled.header`
   position: sticky;
