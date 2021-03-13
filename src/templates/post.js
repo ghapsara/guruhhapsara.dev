@@ -48,8 +48,7 @@ export default function Template({ data }) {
       <SEO title={title} description={description} />
       <Layout>
         <Background color={background} />
-        <Container>
-          <Header
+        <Header
             title={title}
             date={date}
             description={description}
@@ -57,6 +56,7 @@ export default function Template({ data }) {
             coverAuthor={coverAuthor}
             coverUrl={coverUrl}
           />
+        <Container>
           <Content color={color}>
             <div dangerouslySetInnerHTML={{ __html: html }} />
           </Content>
