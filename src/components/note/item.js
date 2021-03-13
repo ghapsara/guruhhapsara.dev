@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 
 const Container = styled.div`
@@ -19,12 +20,15 @@ const Date = styled.p`
   margin-bottom: 0.4em;
 `
 
-function Item({ title, description, date, compact = true }) {
+function Item({ title, description="", date, compact = true }) {
   const totalChar = 180
-  const shouldTrim = (description.length > totalChar) & compact
-  const desc = shouldTrim
-    ? `${description.substr(0, totalChar)}...`
-    : description
+  let desc = ""
+  if (!!description) {
+    const shouldTrim = (description.length > totalChar) & compact
+    desc = shouldTrim
+      ? `${description.substr(0, totalChar)}...`
+      : description
+  }
   return (
     <Container compact={compact}>
       <Date>{date}</Date>
