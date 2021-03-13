@@ -20,14 +20,12 @@ const Date = styled.p`
   margin-bottom: 0.4em;
 `
 
-function Item({ title, description="", date, compact = true }) {
+function Item({ title, description = "", date, compact = true }) {
   const totalChar = 180
   let desc = ""
   if (!!description) {
     const shouldTrim = (description.length > totalChar) & compact
-    desc = shouldTrim
-      ? `${description.substr(0, totalChar)}...`
-      : description
+    desc = shouldTrim ? `${description.substr(0, totalChar)}...` : description
   }
   return (
     <Container compact={compact}>

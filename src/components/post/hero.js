@@ -47,17 +47,17 @@ const Credit = styled.div`
 `
 
 function Hero({ title, description, date, cover, coverAuthor, coverUrl }) {
-  const [coverHeight, setCoverHeight] = useState(500);
+  const [coverHeight, setCoverHeight] = useState(500)
   useEffect(() => {
-    setCoverHeight(window.innerHeight * 0.91);
-  }, [setCoverHeight]);
+    setCoverHeight(window.innerHeight * 0.91)
+  }, [setCoverHeight])
 
   return (
     <Container>
       <Image
         fluid={cover.childImageSharp.fluid}
         style={{
-          height: coverHeight
+          height: coverHeight,
         }}
       />
       <Background />

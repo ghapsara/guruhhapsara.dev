@@ -11,7 +11,7 @@ const Container = styled.header`
   background: rgba(245, 245, 247, 0.6);
   z-index: 99999;
   font-size: 16px;
-  height: ${props => props.height ? props.height: 70}px;
+  height: ${props => (props.height ? props.height : 70)}px;
 `
 
 const Link = styled(GatsbyLink)`
@@ -36,10 +36,10 @@ const Nav = styled(Link)`
 `
 
 function Header() {
-  const [height, setHeight] = useState(70);
+  const [height, setHeight] = useState(70)
   useEffect(() => {
     setHeight(window.innerHeight * 0.09)
-  }, [setHeight]);
+  }, [setHeight])
 
   return (
     <Container height={height}>

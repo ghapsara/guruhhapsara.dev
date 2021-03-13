@@ -10,10 +10,10 @@ const Wrapper = styled(Container)`
 `
 
 function Header(props) {
-  const [isHero, setIsHero] = useState(false);
+  const [isHero, setIsHero] = useState(false)
   useEffect(() => {
     setIsHero(!isMobile(window.innerWidth) & !!props.cover)
-  }, [setIsHero]);
+  }, [setIsHero])
 
   return (
     <>
