@@ -59,14 +59,7 @@ const Credit = styled.div`
   }
 `
 
-function Item({
-  title,
-  description,
-  date,
-  cover,
-  coverAuthor,
-  coverUrl,
-}) {
+function Item({ title, description, date, cover, coverAuthor, coverUrl }) {
   return (
     <Container>
       <Header>
