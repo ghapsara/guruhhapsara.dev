@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 import { animated, useSpring } from "react-spring"
 
-import { device } from "../utils/device"
+import { device, isMobile } from "../utils/device"
 import { colors } from "../utils/colors"
 
 import Layout from "../components/layout"
@@ -117,9 +117,18 @@ const Item = ({ id, links, isPortrait, media, name, description }) => {
   const [isHovered, setIsHovered] = useState(false)
   const [height, setHeight] = useState(0)
   const ref = useRef(null)
+  const isClick = useRef(isMobile(window.innerWidth))
 
   const hover = useCallback(() => {
-    setIsHovered(!isHovered)
+    if (!isClick.current) {
+      setIsHovered(!isHovered)
+    }
+  }, [setIsHovered, isHovered])
+
+  const click = useCallback(() => {
+    if (isClick.current) {
+      setIsHovered(!isHovered)
+    }
   }, [setIsHovered, isHovered])
 
   const style = useSpring({
@@ -140,7 +149,12 @@ const Item = ({ id, links, isPortrait, media, name, description }) => {
   }, [id])
 
   return (
-    <Content isPortrait={isPortrait} onMouseEnter={hover} onMouseLeave={hover}>
+    <Content
+      isPortrait={isPortrait}
+      onMouseEnter={hover}
+      onMouseLeave={hover}
+      onClick={click}
+    >
       <Background color={!media ? random.pick(colors) : "transparent"}>
         {!media && <Name>{name}</Name>}
         <animated.div
