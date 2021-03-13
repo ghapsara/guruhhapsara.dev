@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import Image from "gatsby-image"
 
@@ -13,10 +13,6 @@ const Wrapper = styled.div`
   padding: 1.2rem;
   color: white;
   padding: 0.4rem 5.8rem;
-`
-
-const Cover = styled(Image)`
-  height: ${window.innerHeight * 0.91}px;
 `
 
 const Background = styled.div`
@@ -51,9 +47,19 @@ const Credit = styled.div`
 `
 
 function Hero({ title, description, date, cover, coverAuthor, coverUrl }) {
+  const [coverHeight, setCoverHeight] = useState(500)
+  useEffect(() => {
+    setCoverHeight(window.innerHeight * 0.91)
+  }, [setCoverHeight])
+
   return (
     <Container>
-      <Cover fluid={cover.childImageSharp.fluid} />
+      <Image
+        fluid={cover.childImageSharp.fluid}
+        style={{
+          height: coverHeight,
+        }}
+      />
       <Background />
       <Wrapper>
         <Date>{date}</Date>

@@ -116,17 +116,17 @@ const Item = ({ id, links, isPortrait, media, name, description }) => {
   const mediaUrl = `../../${media}`
   const [isHovered, setIsHovered] = useState(false)
   const [height, setHeight] = useState(0)
+
   const ref = useRef(null)
-  const isClick = useRef(isMobile(window.innerWidth))
 
   const hover = useCallback(() => {
-    if (!isClick.current) {
+    if (!isMobile(window.innerWidth)) {
       setIsHovered(!isHovered)
     }
   }, [setIsHovered, isHovered])
 
   const click = useCallback(() => {
-    if (isClick.current) {
+    if (isMobile(window.innerWidth)) {
       setIsHovered(!isHovered)
     }
   }, [setIsHovered, isHovered])
