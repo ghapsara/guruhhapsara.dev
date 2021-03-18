@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { Link as GatsbyLink } from "gatsby"
 import styled from "styled-components"
 
@@ -11,7 +11,7 @@ const Container = styled.header`
   background: rgba(245, 245, 247, 0.6);
   z-index: 99999;
   font-size: 16px;
-  height: ${props => (props.height ? props.height : 70)}px;
+  height: 70px;
 `
 
 const Link = styled(GatsbyLink)`
@@ -36,13 +36,8 @@ const Nav = styled(Link)`
 `
 
 function Header() {
-  const [height, setHeight] = useState(70)
-  useEffect(() => {
-    setHeight(window.innerHeight * 0.09)
-  }, [setHeight])
-
   return (
-    <Container height={height}>
+    <Container>
       <Title to="/">Guruh</Title>
       <Nav to="/notes">notes</Nav>
       <Nav to="/projects">projects</Nav>

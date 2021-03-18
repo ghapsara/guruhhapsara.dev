@@ -49,7 +49,7 @@ const Credit = styled.div`
 function Hero({ title, description, date, cover, coverAuthor, coverUrl }) {
   const [coverHeight, setCoverHeight] = useState(500)
   useEffect(() => {
-    setCoverHeight(window.innerHeight * 0.91)
+    setCoverHeight(window.innerHeight - 70)
   }, [setCoverHeight])
 
   return (
