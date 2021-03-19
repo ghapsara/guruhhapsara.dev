@@ -102,7 +102,7 @@ gcloud container node-pools create pool-2 \
   --node-taints dedicated=experimental:NoSchedule
 ```
 
-And then this is how to define `tolertations` for pods
+And then this is how to define `tolerations` for pods
 
 ```yaml
 apiVersion: apps/v1
