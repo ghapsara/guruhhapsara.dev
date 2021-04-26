@@ -25,7 +25,7 @@ Our first move was decreasing the specs of all our runners. We didn't bluntly co
 
 ## Gauging on Value Distribution
 
-We begin our investigation with the notion of finding underutilized runners. We embarked on an assumption that the 10% pods population was the outlier, they only happened for specific reasons. They didn't represent the minimum resource of runners needed to perform their tasks.
+We begin our investigation with the notion of finding underutilized runners. We embarked on an assumption that the top 10% pods population was the outlier, they only happened for specific reasons. They didn't represent the minimum resource of runners needed to perform their tasks.
 
 In order to have a deeper sense of what was going on, we started our evaluation by looking at resource usage distribution. We needed to know how cpu and memory usages quivered from time to time.
 
@@ -51,7 +51,7 @@ Some containers were configured with very tiny values. There were several contai
 
 At first, everything seemed ok. All jobs were successfully executed and we started preparing for cost evaluation.
 
-Then we received reports from our end users. They told us that recently their pipeline jobs could spend 20 minutes to finish and some jobs were timed out to 1 hour. More users came to us and said the same. And then everybody was like screaming in our support channel. We then decided to revert the configuration to the previous one.
+All the sudden we received complaints from our end users. They told us that recently their pipeline jobs spent 20 minutes to finish and some jobs were timed out in 1 hour. More users came to us and said the same. And everybody was like screaming in our support channel. We decided to revert the configuration to the previous one.
 
 We didn't anticipate that kubernetes throttled our containers cpus. It seemed like this incurred slow tasks executions to our runners. Although this still doesn't make any sense to me until this day because we didn't drop our container configuration limits to less than 500 milicores cpu.
 
@@ -114,9 +114,9 @@ This won't make any difference with the non tiering runners as most pods are cla
 
 ## Recalibrate
 
-We wrapped our head around on this issue and started asking what can be done next. We started looking at our pipeline jobs architecture. We realized that when a pipeline runs, it aims for making a deployment.
+We wrapped our head around on this issue and started asking what can be done next. We started looking at our pipeline jobs architecture. We realized that when a pipeline was triggered, it aimed for making a deployment.
 
-When we looked at our deployment pipeline scripts, we noticed that these scripts didn't demand a considerable amount of resources as their main job was preparing and running deployments such as configuring manifests and sending curl requests.
+When we looked at our deployment scripts, we noticed that these scripts didn't demand a considerable amount of resources as their main job was preparing and running deployments such as configuring manifests and sending curl requests.
 
 To validate our assumption, we ran a deployment job and looked at the cpu profile.
 
@@ -134,7 +134,7 @@ Remember we didn't have job name label in our pods. We didn't know which jobs we
 
 When we looked at to our pipeline jobs design, we noticed that production jobs duty was only to run deployments scripts. And when we zoomed in, our pipeline streamed like a waterfall, they flowed in serial and productions jobs which ran on productions runners were the end of the river line.
 
-What does that mean? It means that all pipelines which involved productions runners have to run preproduction dan shared runners first. This what brought us to confidently use samples.
+What does that mean? It means that all pipelines which involved productions runners have to run preproduction dan shared runners first. This brought us to confidently use samples.
 
 We estimated our runner cost by using random samples with the amount of production jobs to jobs that were run on preproduction and shared runners. Our tiering proportion table became like this.
 
@@ -160,7 +160,7 @@ We began to evaluate the tiering runner cost. It was not bad. We made a very sub
 
 ## Desserts
 
-We were over-reacted to the data we had. We inclined to pull several statistical approaches with the provided vast amount of metrics too early. We didn't consider enough our environment. When we took a closer look at our runner architecture, our problem became narrowed by itself and practical solutions began to emerge as if they were falling from the sky.
+We laid too much emphasis to the vast amount of metrics data we had. We were inclined to pull several statistical approaches too early. When we shifted our attention to our pipeline architecture, our problem became narrowed by itself and practical solutions began to emerge as if they were falling from the sky.
 
 Labels play an essential role. One of the things that made finding the under utilized runner complicated was that pods weren't labeled with the job name.
 
