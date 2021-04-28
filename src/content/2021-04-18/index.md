@@ -9,7 +9,7 @@ tags:
   - kubernetes
   - analytics
   - gitlab-runner
-description: Hi everybody, this time i'm going to talk about several lessons learned from optimizing kubernetes workloads.
+description: Hi everybody, this time I'm going to talk about several lessons learned from optimizing kubernetes workloads.
 background: "#bcffde7a"
 ---
 
@@ -17,7 +17,7 @@ First of all, let's begin with talking about the kind of workloads we have. We h
 
 Initially we treated our runner specs like microservices specs. There would be like 500m cpu request with 1 core cpu limit and 500Mi memory request with 1Gi memory limit for all containers. Though some runners were configured with big numbers, but in general they were weighing on slightly identical specifications.
 
-We knew this specs had been around for a while, optimizing runner job pods configurations was on our radar.
+We knew this specs had been around for a while, optimizing runner configurations was on our radar.
 
 At first, we came up with a very radical kind of move and we were very confident with our plan. We were very cautious with the ramifications of what we wanted to do. Frankly, we didn't know that our plan would turn into a catastrophic disaster 😂. I'll tell you what happened later.
 
@@ -27,9 +27,9 @@ Our first move was decreasing the specs of all our runners. We didn't bluntly co
 
 We begin our investigation with the notion of finding underutilized runners. We embarked on an assumption that the top 10% pods population was the outlier, they only happened for specific reasons. They didn't represent the minimum resource of runners needed to perform their tasks.
 
-In order to have a deeper sense of what was going on, we started our evaluation by looking at resource usage distribution. We needed to know how cpu and memory usages quivered from time to time.
+In order to have a deeper sense of what was going on, we started our evaluation by looking at resource usage distribution. We needed to know how cpu and memory usages shared in several ranges.
 
-We classified our runner pods cpu profiles into 5 groups and we calculated the total pods proportion of each groups. We had our data shaped like in this table.
+We tried to classify our runner pods cpu profiles into 5 groups and calculate the total pods proportion of each groups. We had our data shaped like in this table.
 
 ![distribution-table](./distribution-table.png)
 
@@ -59,7 +59,7 @@ We marked this approach as failed and moved to another workaround. We didn't giv
 
 ## Tiering
 
-This was like bringing new variants of runners like introducing new iphone models with bigger screens, bigger batteries and low end modes with smaller sizes and less pixels which come with a cheaper price in order to bring the sort of accessibility to all levels of markets.
+This was like bringing new variants of runners like introducing new iphone models with bigger screens, bigger batteries and low end modes with smaller sizes and less pixels which come with a cheaper price to bring the sort of accessibility to all different levels of markets.
 
 The initial idea was to address intensive resource consuming jobs which deserved runners with high resource specifications and also have economic environmental friendly runners for low resource jobs.
 
@@ -124,9 +124,9 @@ To validate our assumption, we ran a deployment job and looked at the cpu profil
 
 This was like the holy shit moment we had. This was exactly what we were looking for. `0.25` core cpu spike job is the type of jobs that should be handled by low specs runners.
 
-And the benefit of this was that we didn't have to address specifically which repositories needed to use which runner tiers because this type of jobs were defined in our global gitlab ci template. All deployments inherited this template. Introducing changes to this template will automatically disseminate changes to all microservices deployments.
+And the benefit of this was that we didn't have to address specifically which repositories needed to use which runner tiers because this type of jobs were defined in our global gitlab ci template. All deployments inherited this template. Introducing changes to this template would automatically disseminate the output to all microservices deployments.
 
-We agreed on this approach that we would only tier runners which were tasked to prepare and run deployment jobs. Even though this seemed quite coherent, we had to measure the impact first before executing our proposal.
+We agreed on this approach that we would only tier runners which were tasked to prepare and run deployment jobs. Even though this seemed quite coherent, we had to measure the impact in the first place before executing our proposal.
 
 ## Cost estimation
 
@@ -142,7 +142,7 @@ We estimated our runner cost by using random samples with the amount of producti
 
 Then we gathered our GKE bills. We wanted to know how much cost pods spend down to its containers and embarked with an assumption that pods costs were calculated by the amount of requests.
 
-When we divided the costs by the amount of cpu and memory used, every row produced a different cost fraction. We could not use this number, this would into an inconsistent estimation. Luckily, there was a SKU ID column in our GKE bills data. It means that we could find the actual price on public google sku data.
+When we divided the costs by the amount of cpu and memory used, every row produced a different cost fraction. We could not use this number, this would lead to an inconsistent estimation. Luckily, there was a SKU ID column in our GKE bills data. It means that we could find the actual price on public google sku data.
 
 It was a little weird approach but this allowed us to map cost fractions for the non tiered and the tiered resources requests with reliable numbers.
 
@@ -160,7 +160,7 @@ We began to evaluate the tiering runner cost. It was not bad. We made a very sub
 
 ## Desserts
 
-We laid too much emphasis to the vast amount of metrics data we had. We were inclined to pull several statistical approaches too early. When we shifted our attention to our pipeline architecture, our problem became narrowed by itself and practical solutions began to emerge as if they were falling from the sky.
+We laid too much emphasis on the vast amount of metrics data we had. We were inclined to pull several statistical approaches too early. When we shifted our attention to our pipeline architecture, our problem became narrowed by itself and practical solutions began to emerge as if they were falling from the sky.
 
 Labels play an essential role. One of the things that made finding the under utilized runner complicated was that pods weren't labeled with the job name.
 
