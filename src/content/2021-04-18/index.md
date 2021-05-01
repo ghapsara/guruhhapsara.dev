@@ -21,11 +21,11 @@ We knew this specs had been around for a while, optimizing runner configurations
 
 At first, we came up with a very radical kind of move and we were very confident with our plan. We were very cautious with the ramifications of what we wanted to do. Frankly, we didn't know that our plan would turn into a catastrophic disaster 😂. I'll tell you what happened later.
 
-Our first move was decreasing the specs of all our runners. We didn't bluntly come up with certain numbers. We made use of our runner monitoring data. We collected a plenty amount of 2 weeks containers cpu and memory profiles of our runner pods.
+Our first move was decreasing the specs of all our runners. We didn't bluntly come up with some magical numbers. We made use of our runner monitoring data. We collected a plenty amount of 2 weeks containers cpu and memory profiles of our runner pods.
 
-## Gauging on Value Distribution
+## Gauging Value Distributions
 
-We begin our investigation with the notion of finding underutilized runners. We embarked on an assumption that the top 10% pods population was the outlier, they only happened for specific reasons. They didn't represent the minimum resource of runners needed to perform their tasks.
+We begin our investigation with the notion of finding under utilized runners. We embarked on an assumption that the top 10% pods population was an outlier, they existed for specific reasons. They didn't represent the minimum resource of runners needed to perform their tasks.
 
 In order to have a deeper sense of what was going on, we started our evaluation by looking at resource usage distribution. We needed to know how cpu and memory usages shared in several ranges.
 
@@ -43,11 +43,11 @@ With the insight we brought from resource usage distribution, we took a more sim
 
 The table above shows containers resource specification and their maximum resource usage. The value column is the amount resource configured for the containers, the max_usage column tells us the maximum resource utilization, and the rest columns are the maximum usage value represented in other units.
 
-With this table, we specified the containers resource request by basing on the maximum utilization shown in the max_usage column. If containers resource maximum utilization values surpass the configuration value, we leave the configuration as it is. If the resource maximum values are below the configured value, we change the resource request configuration value to the resource maximum utilization value.
+With this table, we specified the containers resource request by leaning on the maximum utilization shown in the max_usage column. If containers resource maximum utilization values surpass the configuration value, we leave the configuration as it is. If the resource maximum values are below the configured value, we change the resource request configuration value to the resource maximum utilization value.
 
 We applied this rule to all containers of all our gitlab runners configurations. We considered the formula was safe enough because containers cpu and memory specifications won't be configured below their maximum actual usages.
 
-Some containers were configured with very tiny values. There were several containers configured down to 50 milicores cpu requests. The configuration numbers were so ridiculous. Imagine how much money we could save with these super infinitesimal configuration values. We then deployed these configurations to production.
+Some containers were configured with very tiny values. There were several containers configured down to 50 milicores cpu requests. The configuration numbers were so ridiculous. Imagine how much money we could save with these super infinitesimal configuration values. With zero doubt, we deployed these configurations to production.
 
 At first, everything seemed ok. All jobs were successfully executed and we started preparing for cost evaluation.
 
@@ -136,13 +136,13 @@ When we looked at to our pipeline jobs design, we noticed that production jobs d
 
 What does that mean? It means that all pipelines which involved productions runners have to run preproduction dan shared runners first. This brought us to confidently use samples.
 
-We estimated our runner cost by using random samples with the amount of production jobs to jobs that were run on preproduction and shared runners. Our tiering proportion table became like this.
+We estimated our runner cost by using random samples using the amount of production jobs as the total jobs that were run on preproduction and shared runners. Our tiering proportion table became like this.
 
 ![tier-6](./tier-6.png)
 
 Then we gathered our GKE bills. We wanted to know how much cost pods spend down to its containers and embarked with an assumption that pods costs were calculated by the amount of requests.
 
-When we divided the costs by the amount of cpu and memory used, every row produced a different cost fraction. We could not use this number, this would lead to an inconsistent estimation. Luckily, there was a SKU ID column in our GKE bills data. It means that we could find the actual price on public google sku data.
+When we divided the costs by the amount of cpu and memory used, every row produced a different cost fraction. We could not use these numbers, it would lead to an inconsistent estimation. Luckily, there was a SKU ID column in our GKE bills data. It means that we could find the actual price on public google sku data.
 
 It was a little weird approach but this allowed us to map cost fractions for the non tiered and the tiered resources requests with reliable numbers.
 
@@ -154,9 +154,9 @@ We arrived to the most ridiculous part of working on this project. This data tol
 
 We tested out our configuration by running end to end pipeline deployments and we didn't experience any concerning execution durations compared to the non tiered runners pipelines.
 
-After a week of tiering runners deployment, we found no report of slow runner performances.
+After a week of tiered runners deployment, we found no report of slow runner performances.
 
-We began to evaluate the tiering runner cost. It was not bad. We made a very substantial amount of cost reduction. We achieved `21.55%` cost reduction on daily basis.
+We began to evaluate the tiered runner cost. It was not bad. We made a very substantial amount of cost reduction. We achieved `21.55%` cost reduction on daily basis.
 
 ## Desserts
 
@@ -164,6 +164,6 @@ We laid too much emphasis on the vast amount of metrics data we had. We were inc
 
 Labels play an essential role. One of the things that made finding the under utilized runner complicated was that pods weren't labeled with the job name.
 
-Estimating pods price with request value turned out to be a bad idea because google bills kubernetes workloads by the amount resources used. This made our cost estimation invalid. But it was not really a bad move. We made a quick and simple resource calculation by using resource requests configuration and public SKU data.
+Estimating pods price with request values made our cost estimation invalid. Google bills kubernetes workloads by the amount of used resources. But it wasn't really a bad move. It brought us to a quick and simple resource estimation.
 
 Overall it was good. We made a significant cost reduction to our workloads without sacrificing their objectives nor even degrading their performance.
