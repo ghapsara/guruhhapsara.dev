@@ -25,7 +25,7 @@ Our first move was decreasing the specs of all our runners. We didn't bluntly co
 
 ## Gauging Value Distributions
 
-We begin our investigation with the notion of finding under utilized runners. We embarked on an assumption that the top 10% pods population was an outlier, they existed for specific reasons. They didn't represent the minimum resource of runners needed to perform their tasks.
+We began our investigation with the notion of finding under utilized runners. We embarked on an assumption that the top 10% pods population was an outlier, they existed for specific reasons. They didn't represent the minimum resource of runners needed to perform their tasks.
 
 In order to have a deeper sense of what was going on, we started our evaluation by looking at resource usage distribution. We needed to know how cpu and memory usages shared in several ranges.
 
@@ -33,7 +33,7 @@ We tried to classify our runner pods cpu profiles into 5 groups and calculate th
 
 ![distribution-table](./distribution-table.png)
 
-When we saw this table, we kind of shocked because the cpu consumption distribution wasn't like what we had thought of before. It turned out that the amount of pods in the 10% resource population was huge. Insisting to use this methodology would bring numbers of pods dreadfully suffer from cpu insufficiencies. This proposition didn't work in our condition.
+When we saw this table, we were kind of shocked because the cpu consumption distribution wasn't like what we had thought of before. It turned out that the amount of pods in the 10% resource population was huge. Insisting to use this methodology would bring numbers of pods dreadfully suffer from cpu insufficiencies. This proposition didn't work in our condition.
 
 ## Respecting Outliers
 
