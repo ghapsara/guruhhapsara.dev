@@ -122,7 +122,7 @@ To validate our assumption, we ran a deployment job and looked at the cpu profil
 
 ![pod-resource-chart](./pod-resource-chart.png)
 
-This was like the holy shit moment we had. This was exactly what we were looking for. `0.25` core cpu spike job is the type of jobs that should be handled by low specs runners.
+This was exactly what we were looking for. `0.25` core cpu spike job is the type of jobs that should be handled by low specs runners.
 
 And the benefit of this was that we didn't have to address specifically which repositories needed to use which runner tiers because this type of jobs were defined in our global gitlab ci template. All deployments inherited this template. Introducing changes to this template would automatically disseminate the result to all microservices deployments.
 

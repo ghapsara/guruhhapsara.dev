@@ -1,7 +1,7 @@
 [
   {
     "name": "Certified Kubernetes Administrator",
-    "description": "In the last 3 months I went crazy with kubernetes. I was super curious with how kubernetes works. I started doing the kubernetes hard way in my local computer. I went hard with bootstraping certificates, learning how kubernetes components interact each other, tearing down components and learning how to fix them, learning some basic crazy linux hard stuffs like containers, iptables, and network namespaces, learning kubernetes fundamentals like scheduler, cni, persistent volume, etc. It was very fun and frustrating. I'll be continuing doing these stuffs because there are still a tremendous amount of cool shits inside kubernetes environment that I want to know.",
+    "description": "In the last 3 months I went crazy with kubernetes. I was super curious with how kubernetes works. I started doing the kubernetes hard way in my local computer. I went hard with bootstraping certificates, learning how kubernetes components interact each other, tearing down components and learning how to fix them, learning some basic crazy linux hard stuffs like containers, iptables, and network namespaces, learning kubernetes fundamentals like scheduler, cni, persistent volume, etc. It was very fun and frustrating. I'll be continuing doing these stuffs because there are still a tremendous amount of cool things inside kubernetes environment that I want to know.",
     "isPortrait": false,
     "links": [
       {

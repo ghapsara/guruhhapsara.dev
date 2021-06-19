@@ -19,7 +19,7 @@ So, first of all, let me give you a little context of what we did.
 
 You might ask, why do you say we? The reason for that is because I didn't do this alone, it was not a self narcissistic work.
 
-So, I'm working for a deployment tooling team. Our job is mainly helping engineers in our company to get their applications or services or whatever the fuck they want shipped to production.
+So, I'm working for a deployment tooling team. Our job is mainly helping engineers in our company to get their applications or services to production.
 
 My team is handling a bot that is responsible for deploying a huge monolithic code base that has been living for more than 11 years. There are almost like 500 engineers across different teams contributing to the code base. Nevertheless, we're (not my team) currently working on migrating this large code base to microservices.
 
@@ -502,7 +502,7 @@ Rewriting is a truly dissenting topic. It's resource consuming, you're likely to
 
 I think rewriting applications, services, or scripts is more about improving development experience and maintainability. If rewriting or refactoring could speed up tasks execution time or gain efficient resource usages, that'd be a bonus. I know, there are cases out there that aim refactoring or rewriting for these concerns but in our case, maintenance was the UFC championship weight class we put our bet on.
 
-I'm not bullshiting you but this is true. At the time I wrote this, our bot ran into an issue. We used to take hours for scouring a tremendous amount of logs in order to know what's happening within the app and finding out the issue and then we reproduced the case. But yesterday we only needed less than 10 minutes from discovering the root cause of the issue to writing the details of what it needs to do in our backlog.
+I'm not lying to you and this is true. At the time I wrote this, our bot ran into an issue. We used to take hours for scouring a tremendous amount of logs in order to know what's happening within the app and finding out the issue and then we reproduced the case. But yesterday we only needed less than 10 minutes from discovering the root cause of the issue to writing the details of what it needs to do in our backlog.
 
 We're ready for the upcoming bugs and errors. It seems like we're setting up a crash for our app, but I think we would never be able to eradicate errors. I would finish my writing here. I don't want this pod get injected with another sidecar container. I mean we've talked about a lot of things. I hope you find them insightful and joyful.
 
