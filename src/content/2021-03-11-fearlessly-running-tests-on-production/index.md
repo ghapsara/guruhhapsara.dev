@@ -18,7 +18,7 @@ coverUrl: "https://unsplash.com/photos/b9cU8k3VZNM"
 coverAuthor: "the_don_photography"
 ---
 
-Kubernetes is like a fighter jet operating system but for microservices. I'm not a pilot and I've never in my life flown a jet. Think about it, there are many things needed to operate when it comes to fly a fuckin jet. You need to have a radio to coordinate with other pilots, you'll have a control panel that gives the ability to control your speed, movements and directions, launch missiles, monitor attitudes, air pressures, and jet health condition, and trigger a safe protocol to detach yourself from the cockpit, and many things more, i don't know what they are.
+Kubernetes is like a fighter jet operating system but for microservices. I'm not a pilot and I've never in my life flown a jet. Think about it, there are many things needed to operate when it comes to fly a jet. You need to have a radio to coordinate with other pilots, you'll have a control panel that gives the ability to control your speed, movements and directions, launch missiles, monitor attitudes, air pressures, and jet health condition, and trigger a safe protocol to detach yourself from the cockpit, and many things more, i don't know what they are.
 
 Running services on kubernetes is the same. There are hundreds of components needed to be managed that are inside kubernetes environment. Let's say you have 543 microservices with 2750 pods with 1 service container and 3 side car containers for each pods and 3 cronjobs along side with 5 configmaps, 4 secrets, all these numbers are random, but this is likely what you'll see when you're managing medium to big scale workloads. And we're even not talking about managing clusters, nodes, networks, load balancers, storages, and all other things.
 
