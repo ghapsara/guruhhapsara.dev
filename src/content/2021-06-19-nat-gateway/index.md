@@ -58,7 +58,7 @@ How about VPC peering? VPC peering, is like going live with your friends on tikt
 
 So what do you do?
 
-## Build A Highway
+## Build a Highway
 
 Here is a contrived example of urban planing that might help us to decipher a little bit of complexity of infrastructure network design. If we're running out areas to have streets which connect one place and another, this means we should start considering a more sophisticated solution without tearing down existing buildings.
 
