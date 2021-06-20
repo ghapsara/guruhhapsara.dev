@@ -42,8 +42,7 @@ template {
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
-  /* color: #ffb86c; */
-  color: #c06c84;
+  color: unset;
   text-decoration: none;
   box-shadow: 0 1px 0 0 currentColor;
 }
