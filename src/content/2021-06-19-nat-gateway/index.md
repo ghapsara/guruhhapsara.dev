@@ -50,7 +50,7 @@ When we're talking about VPC, we're talking an enormous wide space which holds a
 
 In our case, this means that even if we have a dedicated kubernetes cluster running gitlab runner instances in a VPC, we're sharing public ip addresses with private virtual machines, databases, DNS severs, salacious ethereum miners (kidding), and other kubernetes clusters as well.
 
-This infringes our networking policy. We don't want anything other than our gitlab runner establishes connections to our gitlab instance. This networking policy we had in our gitlab architecture which brought with valuable security restrictions turned out incurring a network hurdle to our gitlab runner too.
+This infringes our networking policy. We don't want anything other than our gitlab runner establishes connections to our gitlab instance. The networking policy which brings valuable security restrictions imposes a networking hurdle to our gitlab runner too.
 
 Why don't you have a dedicated cloud router? Networking is a complex beast that you should deal from the beginning. Delicate subnet allocations should be settled down very carefully if you want to have multiple routers. And having a dedicated cloud router for gitlab runner was never on our menu.
 
@@ -58,7 +58,7 @@ How about VPC peering? VPC peering, is like going live with your friends on tikt
 
 So what do you do?
 
-## Build A Highway
+## Moving Tactically
 
 Here is a contrived example of urban planing that might help us to decipher a little bit of complexity of infrastructure network design. If we're running out areas to have streets which connect one place and another, this means we should start considering a more sophisticated solution without tearing down existing buildings.
 
