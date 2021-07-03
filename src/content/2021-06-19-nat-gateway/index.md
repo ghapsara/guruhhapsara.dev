@@ -32,7 +32,7 @@ This brought us an attention that our gitlab runner infrastructure didn't scale 
 
 ## Unraveling Circumstances
 
-You might say, your runners are containers, they could be easily deployed to kubernetes. Not so soon, the maniac is not the workload, but it is the infrastructure foundation.
+You might say, those runners are docker conttainers, they could be easily deployed to kubernetes. That's true, but the maniac is not the workload, but it is the underlying infrastructure foundation. The devil is in the details.
 
 We purposefully locate our gitlab instance in a dedicated environment away from any other workloads such as microservices, databases, and even gitlab runner itself. We prevent any workloads from being able to establish connectivity through private and public networks.
 
