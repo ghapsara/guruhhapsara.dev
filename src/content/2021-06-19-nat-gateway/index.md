@@ -7,6 +7,7 @@ path: /nat-gateway
 tags:
   - kubernetes
   - network
+  - GCP
 description: This is not a physics article. The author just finds it fun to incorporate irrelevant subjects in the writing. The author also admits that he might be messing up with some words and metaphors in this post.
 ---
 
