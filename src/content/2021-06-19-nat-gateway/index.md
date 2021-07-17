@@ -7,6 +7,7 @@ path: /nat-gateway
 tags:
   - kubernetes
   - network
+  - GCP
 description: This is not a physics article. The author just finds it fun to incorporate irrelevant subjects in the writing. The author also admits that he might be messing up with some words and metaphors in this post.
 ---
 
@@ -32,7 +33,7 @@ This brought us an attention that our gitlab runner infrastructure didn't scale 
 
 ## Unraveling Circumstances
 
-You might say, your runners are containers, they could be easily deployed to kubernetes. Not so soon, the maniac is not the workload, but it is the infrastructure foundation.
+You might say, those runners are docker conttainers, they could be easily deployed to kubernetes. That's true, but the maniac is not the workload, but it is the underlying infrastructure foundation. The devil is in the details.
 
 We purposefully locate our gitlab instance in a dedicated environment away from any other workloads such as microservices, databases, and even gitlab runner itself. We prevent any workloads from being able to establish connectivity through private and public networks.
 
@@ -44,9 +45,9 @@ Pods don't have public ip addresses. When pods are attempting to access public i
 
 So how does internet recognize your public ip address if you're not exposing your computer? The internet will recognize your isp's router representing your private computer. You're joining a network when you're connected to the internet, and the last gate before your packets leave your network and get transmitted to the internet is your isp router.
 
-Same with pods, your pods only have private ip addresses and they're only known within your private network. When your pods make a request to google.com, your pods packets will be going through your private network router. In GCP, this is handled by a cloud router located in your VPC.
+Same with pods, pods only have private ip addresses and they're only known within a private network. When pods make a request to google.com, pods packets will be transmitted through a private network router. In GCP, this is handled by VPC cloud router.
 
-When we're talking about VPC, we're talking an enormous wide space which holds a weird amount of infrastructure services. This means any egress public internet connection that doesn't have public ip addresses will be NAT-ed with advertised public ip addresses of your VPC cloud router.
+When we're talking about VPC, we're hovering at an enormous wide space which holds a weird amount of infrastructure services. This means any egress public internet connection that doesn't have public ip addresses will be NAT-ed with advertised public ip addresses of your VPC cloud router.
 
 In our case, this means that even if we have a dedicated kubernetes cluster running gitlab runner instances in a VPC, we're sharing public ip addresses with private virtual machines, databases, DNS severs, salacious ethereum miners (kidding), and other kubernetes clusters as well.
 
@@ -74,7 +75,7 @@ What's the highway?
 
 The goal is having a public address which specifically represents gitlab runner pods on kubernetes clusters. A way to achieve that is to have a kind of agent which proxy egress internet requests and mask them with a public ip address. We can delegate a virtual machine acted as the agent.
 
-Before we create a vm, we need to reserve a public ip. We also need a private ip address because our route needs to know where the the vm is in the VPC network. Here's how to reserve a private and public ip address using gcp compute address terraform module.
+Before we create a vm, we need to reserve a public ip. We also need a private ip address because our route needs to know where the vm is in the VPC network. Here's how to reserve a private and public ip address using gcp compute address terraform module.
 
 ```bash
 resource "google_compute_address" "external" {
