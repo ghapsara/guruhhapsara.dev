@@ -8,6 +8,7 @@ import { getPixelRatio } from "../../utils/canvas"
 import Background from "./background"
 import Scene1 from "./scene-1"
 import Scene2 from "./scene-2"
+import Scene3 from "./scene-3"
 
 function Container({ top, contentHeight }) {
   const sceneRef = useRef()
@@ -22,6 +23,7 @@ function Container({ top, contentHeight }) {
   const components = [
     { component: Scene1, name: "scene-1" },
     { component: Scene2, name: "scene-2" },
+    { component: Scene3, name: "scene-3" },
   ]
 
   const scenes = components.map((d, i) => {
@@ -50,7 +52,6 @@ function Container({ top, contentHeight }) {
           })}
         </a.group>
       </scene>
-
       {isReady && <Background sceneRefs={sceneRef} />}
     </>
   )

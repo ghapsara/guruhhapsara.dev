@@ -5,19 +5,46 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import { useBackgroundDispatch } from "../context/background"
 import { device } from "../utils/device"
+import { colors } from "../utils/colors"
+
+import { shuffle } from "canvas-sketch-util/random"
+import * as chroma from "chroma-js"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Container from "../components/container"
+import ContainerComp from "../components/container"
 import Hero from "../components/hero"
-import ContentWrapper from "../components/content"
+import ContentComp from "../components/content"
+import { Tag as TagComp, Item } from "../components/home/item"
+import Link from "../components/link"
+
+const Container = styled(ContainerComp)`
+  max-width: 60rem;
+`
+
+const Intro = styled(ContentComp)`
+  margin-bottom: 1.5rem;
+`
+
+const TitleWrapper = styled.div`
+  margin: 1.9rem 0;
+`
+
+const Tag = styled(TagComp)`
+  display: inline-block;
+  font-size: 0.9em;
+  margin-bottom: 1.5rem;
+  padding: 0.3em 0.9em;
+  background: black;
+  color: white;
+`
 
 const Title = styled.h1`
   @media ${device.mobileS} {
-    font-size: 100px;
+    font-size: 87px;
   }
   @media ${device.tablet} {
-    font-size: 140px;
+    font-size: 170px;
   }
   margin: 0;
   -webkit-text-fill-color: transparent;
@@ -51,64 +78,107 @@ const Sticky = styled.div`
   top: 0;
 `
 
-const TitleWrapper = styled.div`
-  margin: 3rem 0;
-`
-
-const Content = ({ setHeight }) => {
+const Content = () => {
   const backgroundDispatch = useBackgroundDispatch()
 
-  const ref = useRef()
-
-  const data = useStaticQuery(graphql`
+  const {
+    allMarkdownRemark: posts,
+    allProjectsJson: projects,
+    markdownRemark: intro,
+  } = useStaticQuery(graphql`
     query {
+      allMarkdownRemark(filter: { frontmatter: { published: { eq: true } } }) {
+        edges {
+          node {
+            frontmatter {
+              kind
+              url: path
+              description
+              date
+              dateString: date(formatString: "MMMM DD, YYYY")
+              title
+            }
+          }
+        }
+      }
+      allProjectsJson {
+        edges {
+          node {
+            kind
+            description
+            date
+            dateString: date(formatString: "MMMM DD, YYYY")
+            links {
+              url
+            }
+            title: name
+          }
+        }
+      }
+
       markdownRemark(frontmatter: { kind: { eq: "intro" } }) {
         html
       }
     }
   `)
 
-  const content = data.markdownRemark.html
+  const content = intro.html
+
+  const palletes = shuffle(colors).map(d => chroma(d).alpha(0.8))
+  const lenPalletes = palletes.length
+
+  const data = [
+    ...posts.edges.map(({ node: { frontmatter: d } }) => ({ ...d })),
+    ...projects.edges.map(({ node }) => ({ ...node, url: node.links[0].url })),
+  ]
+    .map((d, i) => ({ ...d, color: palletes[i % lenPalletes] }))
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
 
   useEffect(() => {
     backgroundDispatch({ type: "change", color: "transparent" })
 
-    setHeight(ref.current.scrollHeight - window.innerHeight)
-
     return () => {
       backgroundDispatch({ type: "reset" })
     }
-  }, [backgroundDispatch, setHeight])
+  }, [backgroundDispatch])
 
   return (
-    <Container ref={ref}>
+    <Container>
       <TitleWrapper>
+        Hello, I'm
         <Title>
-          <Span>He</Span>
-          ll
-          <Span>o</Span>
+          <Span>G</Span>u<Span>ruh</Span>
         </Title>
-        <Title>I'm</Title>
         <Title>
-          <Span>Guruh</Span>.
+          <Span>Hap</Span>s<Span>ar</Span>a
         </Title>
       </TitleWrapper>
-      <ContentWrapper>
+      <Intro>
         <div
           className="blog-post-content line-numbers"
           dangerouslySetInnerHTML={{ __html: content }}
         />
-      </ContentWrapper>
+      </Intro>
+      <Tag>feeds</Tag>
+      {data.map(d => (
+        <Link key={d.url} href={d.url}>
+          <Item {...d}></Item>
+        </Link>
+      ))}
     </Container>
   )
 }
 
 const IndexPage = () => {
-  const [contentHeight, setContentHeight] = useState(0)
+  const [contentHeight, setHeight] = useState(0)
   const [{ top }, setSpring] = useSpring(() => ({
     top: 0,
     config: config.molasses,
   }))
+
+  useEffect(() => {
+    setHeight(window.innerHeight)
+  }, [setHeight])
 
   return (
     <>
@@ -125,7 +195,7 @@ const IndexPage = () => {
       >
         <Sticky />
         <Layout>
-          <Content setHeight={setContentHeight} />
+          <Content />
         </Layout>
       </Scroll>
     </>

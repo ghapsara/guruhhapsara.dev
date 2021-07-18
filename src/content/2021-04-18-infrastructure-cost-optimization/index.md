@@ -1,5 +1,5 @@
 ---
-kind: post
+kind: note
 published: true
 title: Deceptive Approaches Which Led to 20% Infrastructure Cost Reduction
 date: 2021-04-24T21:49:01.00Z

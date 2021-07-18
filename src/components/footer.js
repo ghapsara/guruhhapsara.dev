@@ -4,7 +4,6 @@ import styled from "styled-components"
 import Container from "./container"
 
 const Text = styled.p`
-  margin: 0;
   font-size: 15px;
   font-weight: bold;
 `
