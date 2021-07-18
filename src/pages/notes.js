@@ -1,22 +1,17 @@
 import React from "react"
 import { graphql } from "gatsby"
-import styled from "styled-components"
 
 import Layout from "../components/layout"
 import Container from "../components/container"
 import SEO from "../components/seo"
 import Header from "../components/note/item"
-
-const Link = styled.a`
-  text-decoration: none;
-  color: black;
-`
+import Link from "../components/link"
 
 export const pageQuery = graphql`
   query {
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { kind: { eq: "post" }, published: { eq: true } } }
+      filter: { frontmatter: { published: { eq: true } } }
     ) {
       edges {
         node {

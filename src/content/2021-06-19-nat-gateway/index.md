@@ -1,5 +1,5 @@
 ---
-kind: post
+kind: note
 published: true
 title: NAT Gateway, Fabricating a Networking Entanglement
 date: 2021-06-19T22:24:00.00Z

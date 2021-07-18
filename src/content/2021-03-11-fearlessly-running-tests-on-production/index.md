@@ -1,5 +1,5 @@
 ---
-kind: post
+kind: note
 published: true
 title: Fearlessly Running Tests on Production
 date: 2021-03-11T21:33:58.00Z

@@ -1,8 +1,10 @@
 [
   {
-    "name": "Certified Kubernetes Administrator",
+    "kind": "certificate",
+    "date": "2021-06-06T00:00:00.00Z",
+    "name": "CNCF | Certified Kubernetes Administrator",
     "description": "In the last 3 months I went crazy with kubernetes. I was super curious with how kubernetes works. I started doing the kubernetes hard way in my local computer. I went hard with bootstraping certificates, learning how kubernetes components interact each other, tearing down components and learning how to fix them, learning some basic crazy linux hard stuffs like containers, iptables, and network namespaces, learning kubernetes fundamentals like scheduler, cni, persistent volume, etc. It was very fun and frustrating. I'll be continuing doing these stuffs because there are still a tremendous amount of cool things inside kubernetes environment that I want to know.",
-    "isPortrait": false,
+    "isPortrait": true,
     "links": [
       {
         "url": "https://ti-user-certificates.s3.amazonaws.com/e0df7fbf-a057-42af-8a1f-590912be5460/f5a19bae-68d5-46ed-a1dc-f164c8db7ab4-guruh-hapsara-certified-kubernetes-administrator-cka-certificate.pdf",
@@ -11,29 +13,8 @@
     ]
   },
   {
-    "name": "guruhhapsara.dev",
-    "description": "It’s been a quiet long time that I want to have my own site. My initial thought was I wanted to build a portfolio site, but then I also wanted to have a place where I could share and sharpen my skills through writing. Then Gatsby came at the right time. I didn’t pay much attentions to next.js, although it’s a really cool framework. This site could’ve been written in nextjs. I decided to write build this site using Gatsby. Writing this site in Gatsby was really fun, I got a chance to learn some of the basics of graphql. I also tried put some of animation works to make this site looks joyful.",
-    "isPortrait": true,
-    "links": [
-      {
-        "url": "https://github.com/ghapsara/ghapsara.github.io",
-        "text": "code"
-      }
-    ]
-  },
-  {
-    "name": "Balls Circular",
-    "description": "I would consider this as a very challenging coding exercise. I got to a new job working with Vue and I was a little left out from react updates, and there were new react features that I missed like hooks and suspense. React suspense was at the early the development and I thought maybe I could leave it for a moment and come back to it later, but react hook was really intriguing. I really wanted to learn it. Then I found a beautiful animation work in dribbble. It was a very complex animation, I got to deal with complex animation states and transitions.",
-    "media": "balls-circular.gif",
-    "isPortrait": true,
-    "links": [
-      {
-        "url": "https://codesandbox.io/s/383qvvryyq",
-        "text": "codesandbox"
-      }
-    ]
-  },
-  {
+    "kind": "project",
+    "date": "2020-04-19T00:00:00.00Z",
     "name": "Bahasa Gallery",
     "description": "This project was initiated by my jealously of the Spotify wrapped website. That site is fantastic, It’s a perfect combination of data and arts. Then I started to pitch some ideas on top of that concept. I found that my country Indonesia has an enormous amount of native languages. That got my mind thinking on how about making an exploratory site which presents these languages in a map and shows where are they originally from and spoken. The idea was how to present these maps and languages as if they were on a museum, and I also wanted to give people an experience of walking in a museum and letting them to find interesting places and languages in Indonesia to wonder about. I made Bahasa Gallery. Bahasa means language in Indonesia, I find the word Gallery was the most catchiest word for representing a museum or an exhibit at that moment. It took me almost 2 years working on this project. I changed the design quite a lot, I got to deal with the technical implementation of the design concepts I had. There were lots of hurdles. I went really hard on placing objects in the threejs coordinate system, effects, basic shaders, animations, and coordinating states between transitions. It was super challenging!",
     "media": "bahasa-gallery.gif",
@@ -50,6 +31,8 @@
     ]
   },
   {
+    "kind": "project",
+    "date": "2017-12-22T00:00:00.00Z",
     "name": "Analyzing Jokowi's Word Usage",
     "description": "I worked on this project in 2017. This project was hugely inspired by visual essays made by pudding.cool who was polygraph at that time if I remember correctly. And I saw there was an essay about hip hop vocabularies and I was fascinated by it, and I wanted to make something like it. then I started to take a look at the trending list in my country and our president was the most popular figure at that moment. The I looked at his twitter account and scrolled down his timeline, tried to find something interesting and I thought to myself what are the things he likes to talk about in his tweets. I immediately fired up my Jupiter notebook and scrapped his tweets in my local computer. I wish I could have a machine learning method to extract topics from his tweets but I wanted to do it in a very simple way. Then I arrived to an idea of finding topics by looking at his words usage. It was a really fun project, I got to look at many data visualization and pull some inspirations from them.",
     "media": "analyzing.gif",
@@ -66,6 +49,22 @@
     ]
   },
   {
+    "kind": "code",
+    "date": "2019-02-10T00:00:00.00Z",
+    "name": "Balls Circular",
+    "description": "I would consider this as a very challenging coding exercise. I got to a new job working with Vue and I was a little left out from react updates, and there were new react features that I missed like hooks and suspense. React suspense was at the early the development and I thought maybe I could leave it for a moment and come back to it later, but react hook was really intriguing. I really wanted to learn it. Then I found a beautiful animation work in dribbble. It was a very complex animation, I got to deal with complex animation states and transitions.",
+    "media": "balls-circular.gif",
+    "isPortrait": true,
+    "links": [
+      {
+        "url": "https://codesandbox.io/s/383qvvryyq",
+        "text": "codesandbox"
+      }
+    ]
+  },
+  {
+    "kind": "code",
+    "date": "2018-06-15T00:00:00.00Z",
     "name": "Eid Mubarak Card",
     "description": "I worked on this project on a week during the end of ramadhan in 2018. I was on a holiday and I didn’t know what to do. Then I saw a beautiful photograph in unsplash and it was a firework photo. Then I thought to myself what about making those fireworks live animated in web browsers. I worked on this project very quick. There were many d3 helpful functions and I only needed to do was to wire them together in react.",
     "media": "eim.gif",
@@ -82,9 +81,11 @@
     ]
   },
   {
+    "kind": "talk",
+    "date": "2018-09-28T00:00:00.00Z",
     "name": "Speaking at JakartaJS 2018",
     "description": "This was my first talk, I’m glad that I did it. I got fascinated by a javascript library called RxJs. RxJs is an amazing library and it’s still quite popular till these days. I decided to share publicly some complex use cases like Ajax cancellation and handling animations that could be done in a very easy way in RxJs. RxJs doesn’t tightly depend on a specific library or framework. And I made demos for angular, vue, and react to show how RxJs works and what are the benefits that can be pulled from having this library.",
-    "isPortrait": true,
+    "isPortrait": false,
     "links": [
       {
         "url": "https://github.com/ghapsara/jakarta-js-talk-2018",
@@ -93,6 +94,8 @@
     ]
   },
   {
+    "kind": "project",
+    "date": "2019-02-20T00:00:00.00Z",
     "name": "Indonesia Atlas",
     "description": "I decided to make a collection of topojson maps of my country Indonesia. There was no good open source map of Indonesia, there were only shapefiles available. Shapefiles are just too big for web browsers, I don’t want users to pull lots of megabytes of files just to see the map of Indonesia. Then I worked on making the topojson files of Indonesia and put them on a GitHub repository. I was lucky that I found tools like ndjson-cli and mapshaper, I could make those topojson files very thin without sacrificing the details of the map",
     "isPortrait": false,
