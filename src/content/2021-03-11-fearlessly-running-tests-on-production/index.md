@@ -1,5 +1,5 @@
 ---
-kind: note
+kind: blog
 published: true
 title: Fearlessly Running Tests on Production
 date: 2021-03-11T21:33:58.00Z
@@ -11,8 +11,6 @@ tags:
   - gitlab-runner
 description: >-
   I know this might sound like a barbarian insinuation to divine artisanal engineering best practices that have been laid out over the last 4 decades. But if there was a case you need to do that, I thought it would be interesting if I could share my experience in running tests on a kubernetes production cluster without disrupting any production workloads.
-# background: "#9aa3c2"
-# color: "white"
 cover: "./don-jackson-wyatt-b9cU8k3VZNM-unsplash.jpg"
 coverUrl: "https://unsplash.com/photos/b9cU8k3VZNM"
 coverAuthor: "the_don_photography"
