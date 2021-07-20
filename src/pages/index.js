@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useRef } from "react"
-import styled from "styled-components"
+import React, { useState, useEffect } from "react"
 import { useSpring, config } from "react-spring/three"
 import { useStaticQuery, graphql } from "gatsby"
 
 import { useBackgroundDispatch } from "../context/background"
-import { device } from "../utils/device"
 import { colors } from "../utils/colors"
 
 import { shuffle } from "canvas-sketch-util/random"
@@ -12,71 +10,20 @@ import * as chroma from "chroma-js"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import ContainerComp from "../components/container"
 import Hero from "../components/hero"
-import ContentComp from "../components/content"
-import { Tag as TagComp, Item } from "../components/home/item"
+import { Item } from "../components/home/item"
 import Link from "../components/link"
-
-const Container = styled(ContainerComp)`
-  max-width: 60rem;
-`
-
-const Intro = styled(ContentComp)`
-  margin-bottom: 1.5rem;
-`
-
-const TitleWrapper = styled.div`
-  margin: 1.9rem 0;
-`
-
-const Tag = styled(TagComp)`
-  display: inline-block;
-  font-size: 0.9em;
-  margin-bottom: 1.5rem;
-  padding: 0.3em 0.9em;
-  background: black;
-  color: white;
-`
-
-const Title = styled.h1`
-  @media ${device.mobileS} {
-    font-size: 87px;
-  }
-  @media ${device.tablet} {
-    font-size: 170px;
-  }
-  margin: 0;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
-`
-
-const Span = styled.span`
-  -webkit-text-fill-color: black;
-`
-
-const Background = styled.div`
-  height: 100vh;
-  width: 100vw;
-  display: grid;
-  place-items: center;
-`
-
-const Scroll = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: none;
-`
-
-const Sticky = styled.div`
-  position: sticky;
-  top: 0;
-`
+import {
+  Container,
+  Intro,
+  TitleWrapper,
+  Tag,
+  Title,
+  Span,
+  Background,
+  Scroll,
+  Sticky,
+} from "../components/home"
 
 const Content = () => {
   const backgroundDispatch = useBackgroundDispatch()
@@ -147,10 +94,11 @@ const Content = () => {
       <TitleWrapper>
         Hello, I'm
         <Title>
-          <Span>G</Span>u<Span>ruh</Span>
-        </Title>
-        <Title>
-          <Span>Hap</Span>s<Span>ar</Span>a
+          <Span>
+            Guruh
+            <br />
+            Hapsara
+          </Span>
         </Title>
       </TitleWrapper>
       <Intro>
