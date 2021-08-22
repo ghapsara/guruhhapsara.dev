@@ -12,7 +12,7 @@ description: This time I'm going to talk about ansible and terraform. I might be
 background: "#d6ff9e24"
 ---
 
-Before we start, I'd like to give a shout out to [TGIK](https://www.youtube.com/playlist?list=PL7bmigfV0EqQzxcNpmcdTJ9eFRPBe-iZa), it's a youtube stream talking about kubernetes and the whole universe within it. I want to that the word grokking in the title in this writing is pulled out from a series in TGIK. It's a mind blowing series, It helps me to learn many cool things and refine my understanding about kubernetes.
+Before we start, I'd like to give a shout out to [TGIK](https://www.youtube.com/playlist?list=PL7bmigfV0EqQzxcNpmcdTJ9eFRPBe-iZa), it's a youtube stream talking about kubernetes and the whole universe within it. I want to pull up the word grokking that constructs the title of this writing is inspired by a series in TGIK. It's a mind blowing series, It helps me to learn many cool things and refine my understanding about a lot of things.
 
 Ok, Let's begin from the exospheric kind of layer which tells us the ansible and terraform embodiment.
 
