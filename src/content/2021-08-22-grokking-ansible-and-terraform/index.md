@@ -24,11 +24,11 @@ In my opinion, solving fibbonaci sequence imperatively is less painful than doin
 
 So what constitute the narrative? how do we know which language should partake in the conversation? Which tool is suitable to particular problems? To answer these questions we should know how ansible and terraform operate at the technical level.
 
-Ansible has been around in the automation world for a long time. Ansible utilizes ssh protocol to perform a series of tasks which run scripts to target hosts locally or remotely. A series of tasks is a collection of scripts which performs mutations to target hosts such as configurations, provisioning, and many things. The ability to pass and run scripts certainly unlocks a wide range of possibilities.
+Ansible has been around in the automation world for a long time. Ansible utilizes ssh protocol to execute a series of tasks to target hosts locally or remotely. A series of tasks is a collection of scripts which performs mutations such as configurations, provisioning, and many things. The ability to pass and run scripts certainly unlocks a wide range of possibilities.
 
 Meanwhile, terraform makes use of states to assemble infrastructure building blocks. Here is the benefit of employing states, once there's a media that stores chronological events, we can move backwards and simulate a future. The cool thing we can do in terraform is we can ostensibly time travel and look at the impact of proposed changes.
 
-Let's try jump into a concrete example, let's say we want to assemble a linux virtual machine associated with a networking policy in azure. First off, we have to setup the networking parts like virtual network, subnet, network security group, and application security group. Then we can start working on virtual machine parts. First we need to create a network interface (nic) of the virtual network and attach the application security group to the nic. Once the nic and asg are bound, we can create the vm using the nic.
+Let's jump into a concrete example, let's say we want to assemble a linux virtual machine associated with a networking policy in azure. First off, we have to setup the networking parts like virtual network, subnet, network security group, and application security group. Then we can start working on virtual machine parts. First we need to create a network interface (nic) of the virtual network and attach the application security group to the nic. Once the nic and asg are bound, we can create the vm using the nic.
 
 Both ansible and terraform will require you to define all of these resources. The most noticeable difference is shown when we want remove resources. In terraform, we don't need to make a terraform module to remove resources, but in ansible we'll have to create a task to delete resources.
 
@@ -42,13 +42,13 @@ This is not an attempt to sunshine terraform despite the fact that the state par
 
 Terraform wires up infrastructure resource definitions and intelligently figures out how to build them. We outsource the complexity of programatic provisioning to terraform. We're free from the obligation of telling what to do and we're alluding to telling what should our infrastructure look like instead. This is big.
 
-To make it a fair, I want to point out a little bit of my noisy opposition to terraform provisioner. Terraform does provide a way to run scripts against machines as well. We can run shell / bash scripts in target hosts with terraform. However, writing complicated scripts like database installs, configuring zookeper, etc which often necessitate running complex long scripts is daunting.
+To make it a fair, I want to point out a little bit of my noisy opposition to terraform provisioner. Terraform does provide a way to run scripts against machines as well. We can run shell / bash scripts in target hosts with terraform. However, writing long complicated automations in pure scripts such as database installs, configuring zookeper, etc is daunting.
 
 Ansible playbooks abstracts scripts in yaml and provides plenty of utilities around templating which dilutes the stiffness of bash scripts. A side of that, there are many open source reusable ansible roles available that we can employ.
 
 Remote tasks execution is cool. Imagine there's a need to install a database to 20 virtual machines, I don't need to forthrightly scp and ssh to these machines one by one to run my script, ansible will do it for me.
 
-Nevertheless, this practice is actually deceiving at some points. Remote exec reaches a tipping point when it comes a need to scale out machines. When we add another virtual machine, we have to run our provisioning script again.
+Nevertheless, this practice is actually deceiving at some points. Remote exec reaches a tipping point when it has to deal with a need to scale out machines. When we add another virtual machine, we have to run our provisioning script again. The investment of provisioning is diminshed here.
 
 Virtual machines custom images come to rescue. This is one of prerequisites to make virtual machines to be scaleable. Instead of running automation against running machines, we can build a custom image packed with dependencies and make virtual machines loaded with dependencies since their first boots.
 
@@ -56,20 +56,18 @@ This is quite the same principle we see in containers which dependencies are bui
 
 That makes me realize how fascinating containers are. At first, my thought on containers was only about isolations, but the ecosystem around containers like image builds in this particular case consequently promotes the idea of immutable infrastructure which aims for achieving consistencies across living resources.
 
-Another problem with remote provisioning which is worth to mention is that we are offloading scripts to target hosts and listening to the state of script execution through a network. This in turn yields to network reliance. Ansible provides a way of executing tasks asynchronously. This is hack. The nature of asynchronous is letting process to run on separate thread. Asynchronous tasks should be for scripts that do not constitute the shade of pipeline states nor in control of subsequent tasks.
+Another problem with remote provisioning which is worth to mention is that we are offloading scripts to target hosts and listening to the state of script execution through a network. This in turn yields to a network reliance. Ansible provides a way of executing tasks asynchronously. This sounds treacherous in some ways. The nature of asynchronous is letting process to run on separate thread. Asynchronous tasks should be for scripts that do not constitute the shade of pipeline states nor in control of subsequent tasks.
 
-There's a trick to minimize network reliance which is to run playbooks from target hosts. Though this is one a bit painful because we need to setup playbook dependencies first before we could run our playbook on our target machines such as pulling ansible roles from private repositories and setting up required tools for obtaining playbook credentials like hashi vault. The cost of this trick outweighs the network reliance issue we're talking about.
+There's a trick to minimize network reliance which is to run playbooks from target hosts. Though this one is a bit painful because we need to setup playbook dependencies first before we could run our playbook on our target machines such as pulling ansible roles from private repositories and setting up required tools for obtaining playbook credentials like hashi vault and the ansible program itself. The cost of this trick outweighs the network reliance issue we're talking about.
 
 This trick which runs automation scripts against itself is also problematic. What if the written automation incorporates restarts, what's gonna happen? It would break, you might solve it in some weird ways.
 
-Terraform also has this problem as well, if we run a terraform destroy task on a machine that's planned to be destroyed. I like to call this circumstance as self mutation. Self editing might unfold circular snags that could produce a nightmare.
+Terraform also has this problem as well which is applying a terraform destroy task on a machine that's planned to be destroyed. I like to call this circumstance as self mutation. Self editing might unfold circular snags that could produce a nightmare.
 
 Even kubernetes uses another control loop to heal pods. The logic of reconciling pods doesn't happen in the pod, but replicaset controller is in charge in keeping pods available in a given number. That's part of the reason why we don't see replicas configuration in the pod object.
 
-So which one i should i pick? my answer is both. My rule of thumb to choose which one is the right option and when is the time to use the right one is to have terraform to solve all problems at infrastructure layer such as deploying a kubernetes cluster, virtual machines, network subnets, network policies etc and use ansible for applications and treat it like a docker build and stop right there. Ansible is there to make dependencies installs and configurations easier but don't let it do something on a running machine if it's possible, and if it's not, do it, we gotta be yolo sometimes.
-
 We can be very creative with a gazillion number of tools that are available today. There are abundance cool stuffs that can be assembled and unified at our disposal. This is also the time when we need to be aware of the cost of complex stuffs.
 
-Excruciating one particular tool and favoring one from the other won't get us anything. We might want to look at use cases and surrounding conditions instead.
-
 Sometimes I'm afraid that automations, code, documentations or stuffs I write is something that can be understood by myself. This indicates a foot step into silos. This is the right time to bring multiple heads to solicit ideas and wrestle with the problem.
+
+Excruciating one particular tool and favoring one from the other won't get us anything. We might want to look at use cases and surrounding conditions instead.
