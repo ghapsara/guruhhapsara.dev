@@ -213,6 +213,7 @@ body {
   -ms-font-feature-settings: "kern", "liga", "clig", "calt";
   -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";
+  line-height: 1.6em;
 }
 img {
   max-width: 100%;
@@ -240,7 +241,7 @@ h1 {
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 2.25rem;
-  line-height: 1.1;
+  line-height: 1.2em;
 }
 h2 {
   margin-left: 0;
@@ -257,7 +258,7 @@ h2 {
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1.62671rem;
-  line-height: 1.1;
+  line-height: 1.2em;
 }
 h3 {
   margin-left: 0;
@@ -274,7 +275,7 @@ h3 {
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1.38316rem;
-  line-height: 1.1;
+  line-height: 1.2em;
 }
 h4 {
   margin-left: 0;
@@ -291,7 +292,7 @@ h4 {
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 1rem;
-  line-height: 1.1;
+  line-height: 1.2em;
 }
 h5 {
   margin-left: 0;
@@ -308,7 +309,7 @@ h5 {
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 0.85028rem;
-  line-height: 1.1;
+  line-height: 1.2em;
 }
 h6 {
   margin-left: 0;
@@ -325,7 +326,7 @@ h6 {
   font-weight: bold;
   text-rendering: optimizeLegibility;
   font-size: 0.78405rem;
-  line-height: 1.1;
+  line-height: 1.2em;
 }
 hgroup {
   margin-left: 0;

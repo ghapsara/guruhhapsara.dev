@@ -1,5 +1,5 @@
 ---
-kind: post
+kind: note
 published: true
 title: Python Cheat Sheet
 date: 2021-01-03T22:00:00.00Z

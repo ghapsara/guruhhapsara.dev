@@ -1,5 +1,5 @@
 ---
-kind: post
+kind: blog
 published: true
 title: Placing Bets On Maintaining Application Longevity
 date: 2021-02-07T00:00:00.00Z

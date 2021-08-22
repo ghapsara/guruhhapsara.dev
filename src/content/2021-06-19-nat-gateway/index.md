@@ -1,5 +1,5 @@
 ---
-kind: post
+kind: blog
 published: true
 title: NAT Gateway, Fabricating a Networking Entanglement
 date: 2021-06-19T22:24:00.00Z
@@ -9,6 +9,7 @@ tags:
   - network
   - GCP
 description: This is not a physics article. The author just finds it fun to incorporate irrelevant subjects in the writing. The author also admits that he might be messing up with some words and metaphors in this post.
+background: "#fff0e26e"
 ---
 
 A year ago, we had an egregious infrastructure incident which shut down our entire business for almost 10 hours. There might be 567 microservices hosted on a kubernetes cluster were collapsed in the realm of a [naked singularity](https://en.wikipedia.org/wiki/Naked_singularity). Our production kubernetes cluster got destroyed during an upgrade.

@@ -1,114 +1,132 @@
-import React, { useState, useEffect, useRef } from "react"
-import styled from "styled-components"
+import React, { useState, useEffect } from "react"
 import { useSpring, config } from "react-spring/three"
 import { useStaticQuery, graphql } from "gatsby"
 
 import { useBackgroundDispatch } from "../context/background"
-import { device } from "../utils/device"
+import { colors } from "../utils/colors"
+
+import { shuffle } from "canvas-sketch-util/random"
+import * as chroma from "chroma-js"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Container from "../components/container"
 import Hero from "../components/hero"
-import ContentWrapper from "../components/content"
+import { Item } from "../components/home/item"
+import Link from "../components/link"
+import {
+  Container,
+  Intro,
+  TitleWrapper,
+  Tag,
+  Title,
+  Span,
+  Background,
+  Scroll,
+  Sticky,
+} from "../components/home"
 
-const Title = styled.h1`
-  @media ${device.mobileS} {
-    font-size: 100px;
-  }
-  @media ${device.tablet} {
-    font-size: 140px;
-  }
-  margin: 0;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
-`
-
-const Span = styled.span`
-  -webkit-text-fill-color: black;
-`
-
-const Background = styled.div`
-  height: 100vh;
-  width: 100vw;
-  display: grid;
-  place-items: center;
-`
-
-const Scroll = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: none;
-`
-
-const Sticky = styled.div`
-  position: sticky;
-  top: 0;
-`
-
-const TitleWrapper = styled.div`
-  margin: 3rem 0;
-`
-
-const Content = ({ setHeight }) => {
+const Content = () => {
   const backgroundDispatch = useBackgroundDispatch()
 
-  const ref = useRef()
-
-  const data = useStaticQuery(graphql`
+  const {
+    allMarkdownRemark: posts,
+    allProjectsJson: projects,
+    markdownRemark: intro,
+  } = useStaticQuery(graphql`
     query {
+      allMarkdownRemark(filter: { frontmatter: { published: { eq: true } } }) {
+        edges {
+          node {
+            frontmatter {
+              kind
+              url: path
+              description
+              date
+              dateString: date(formatString: "MMMM DD, YYYY")
+              title
+            }
+          }
+        }
+      }
+      allProjectsJson {
+        edges {
+          node {
+            kind
+            description
+            date
+            dateString: date(formatString: "MMMM DD, YYYY")
+            links {
+              url
+            }
+            title: name
+          }
+        }
+      }
+
       markdownRemark(frontmatter: { kind: { eq: "intro" } }) {
         html
       }
     }
   `)
 
-  const content = data.markdownRemark.html
+  const content = intro.html
+
+  const palletes = shuffle(colors).map(d => chroma(d).alpha(0.8))
+  const lenPalletes = palletes.length
+
+  const data = [
+    ...posts.edges.map(({ node: { frontmatter: d } }) => ({ ...d })),
+    ...projects.edges.map(({ node }) => ({ ...node, url: node.links[0].url })),
+  ]
+    .map((d, i) => ({ ...d, color: palletes[i % lenPalletes] }))
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
 
   useEffect(() => {
     backgroundDispatch({ type: "change", color: "transparent" })
 
-    setHeight(ref.current.scrollHeight - window.innerHeight)
-
     return () => {
       backgroundDispatch({ type: "reset" })
     }
-  }, [backgroundDispatch, setHeight])
+  }, [backgroundDispatch])
 
   return (
-    <Container ref={ref}>
+    <Container>
       <TitleWrapper>
+        Hello, I'm
         <Title>
-          <Span>He</Span>
-          ll
-          <Span>o</Span>
-        </Title>
-        <Title>I'm</Title>
-        <Title>
-          <Span>Guruh</Span>.
+          <Span>
+            Guruh
+            <br />
+            Hapsara
+          </Span>
         </Title>
       </TitleWrapper>
-      <ContentWrapper>
+      <Intro>
         <div
           className="blog-post-content line-numbers"
           dangerouslySetInnerHTML={{ __html: content }}
         />
-      </ContentWrapper>
+      </Intro>
+      <Tag>feeds</Tag>
+      {data.map(d => (
+        <Link key={d.url} href={d.url}>
+          <Item {...d}></Item>
+        </Link>
+      ))}
     </Container>
   )
 }
 
 const IndexPage = () => {
-  const [contentHeight, setContentHeight] = useState(0)
+  const [contentHeight, setHeight] = useState(0)
   const [{ top }, setSpring] = useSpring(() => ({
     top: 0,
     config: config.molasses,
   }))
+
+  useEffect(() => {
+    setHeight(window.innerHeight)
+  }, [setHeight])
 
   return (
     <>
@@ -125,7 +143,7 @@ const IndexPage = () => {
       >
         <Sticky />
         <Layout>
-          <Content setHeight={setContentHeight} />
+          <Content />
         </Layout>
       </Scroll>
     </>
