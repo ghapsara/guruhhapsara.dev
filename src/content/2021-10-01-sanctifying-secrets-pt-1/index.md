@@ -3,7 +3,7 @@ kind: blog
 published: true
 title: "Sanctifying Secrets (Part 1) - Preserving Legitimacy"
 date: 2021-10-01T01:13:47.00Z
-path: /sanctifying-secrets-i
+path: /sanctifying-secrets-pt-1
 tags:
   - vault
   - kubernetes
