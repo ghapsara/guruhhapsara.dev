@@ -143,7 +143,7 @@ resource "vault_policy" "policy" {
 }
 ```
 
-The policy configured above will become a place where the vault azure backend generates dynamic service principals. Generated service principals are be bound to particular azure roles and subscriptions. Now we need to configure a vault secret backend which does the role capability stitching duty.
+The policy configured above will become a place where the vault azure backend generates dynamic service principals. Generated service principals are bound to particular azure roles and subscriptions. Now we need to configure a vault secret backend which does the role capability stitching duty.
 
 ```bash
 resource "vault_azure_secret_backend_role" "a_secret_role" {
@@ -186,7 +186,7 @@ vault read --format=json a_secret_role
 }
 ```
 
-These `client_id` and `client_secret` are be use for authenticating azure auth sessions with azure cli, terraform, or other platforms.
+These `client_id` and `client_secret` are used for authenticating azure auth sessions with azure cli, terraform, or other platforms.
 
 ```bash
 az login --service-principal --username $client_id --password $client_secret --tenant $azure_tenant_id
