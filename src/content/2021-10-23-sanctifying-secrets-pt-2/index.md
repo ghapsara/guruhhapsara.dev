@@ -28,7 +28,7 @@ Luckily, we're living in this era when numbers innovative tools have been invent
 
 Vault has a commendable feature called secret engine which lets us to outsource the complexity of integrating secret management with existing systems such as database, PKIs, KMS, etc. This cool technology is well document [here](https://www.vaultproject.io/docs/secrets.).
 
-In this post, we will explore an vault secret engine for azure which interlaces vault and azure dynamic service principals. What we're doing is essentially letting vault to create, retain, and destroy dynamic service principals which extends azure identity service upon which roles or identities are authorized in particular machines.
+In this post, we will explore vault secret engine for azure which interlaces vault and azure dynamic service principals. What we're doing is essentially letting vault to create, retain, and destroy dynamic service principals which extends azure identity service upon which roles or identities are authorized in particular machines.
 
 The reason why I'm not saying it azure virtual machines is because we can also have this integration in azure kubernetes service which is super dope.
 
