@@ -128,7 +128,7 @@ resource "vault_azure_auth_backend_role" "role" {
 }
 ```
 
-From the configuration above, we're telling vault that if there's a login session as `an_auth_role` by a JWT which authority is a user assigned id which in this case is `the_machine_user_assigned_id` / the MSI id should be permitted to perform any capabilities configured in token policies which is `a_vault_policy`.
+From the configuration above, we're telling vault that if there's a login session as `an_auth_role` by a JWT which authority is a user assigned id which in this case is `the_machine_user_assigned_id` / the `MSI` id should be permitted to perform any capabilities configured in token policies which is `a_vault_policy`.
 
 Next is setting up the vault policy.
 
@@ -243,7 +243,7 @@ The hard problem addressed by this tool at hand is secret life cycle. Securing s
 
 We tend to think that base64 encoding is sufficient despite it's never an encryption. We are comfortable holding secrets in our local machines. Having one secret that holds mighty capabilities is considered as double quotes negotiable. Oftentimes, priorities beat the hell out of putting scrutinies to all these things.
 
-I had a coworker in my previous employment, he's really top notch, one of the bravest and highly competent people I've ever worked with. One thing he said that strikes me until today is you'll never revisit your IAM roles, you better set them up with minimum capabilities.
+I had a coworker in my previous employment, he's really top notch, one of the bravest and highly competent person I've ever worked with. One thing he said that strikes me until today is you'll never revisit your IAM roles, you better set them up with minimum capabilities.
 
 That makes me forthrightly think, this is what commonly happens to service accounts as well, ironically. We create them once, we use to do tons of things, then we leave.
 
