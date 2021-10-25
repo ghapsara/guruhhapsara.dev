@@ -9,7 +9,6 @@ tags:
   - azure
   - secrets
 description: This is the last piece of work I did for my previous employment and I'm glad of my involvement in this project which was sweetening my last working days there.
-background: "#ff9998a3"
 ---
 
 The project was about complying one of security assessments mandated by our security team. I couldn't imagine what would I do if I were working on this field 9 years ago. Let's begin with a rudimentary analogy.
