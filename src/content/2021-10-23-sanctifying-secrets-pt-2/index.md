@@ -63,7 +63,7 @@ curl -H "Metadata:true" "http://169.254.169.254/metadata/identity/oauth2/token?a
 
 The `object_id` value there is optional, but if the host vm is having multiple identities, it'll be mandatory. The value of the `object_id` is the user assigned identity attached to the vm. This id is commonly referred as MSI (managed service identity) id.
 
-The nice thing about this is that azure provides a very neat logging feature which traces and records all activities performed on behalf of MSI. This brings audit and debugging experiences to a higher bar even though vault also has already have a great audit log as well.
+The nice thing about this is that azure provides a very neat logging feature which traces and records all activities performed on behalf of MSI. This brings audit and debugging experiences to a higher bar even though vault also has already had a great audit log as well.
 
 If everything is set the MSI up correctly, we should receive a JWT access token.
 
