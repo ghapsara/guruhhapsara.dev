@@ -319,4 +319,4 @@ In any case, if you’re interested in probing a further inquiry about substance
 - [fluentd-s3-plugin](https://docs.fluentd.org/output/s3)
 - [fluent-s3 with assume role](https://github.com/fluent/fluent-plugin-s3/blob/master/docs/credentials.md#assume_role_credentials-section)
 
-Lastly, I put the full working code, [here](https://github.com/ghapsara/guruhhapsara.dev/tree/master/src/content/2021-12-24-ec2-s3-logging-with-fluentd/code). Thanks for reading. I really appreciate that.
+Lastly, I put the full working code [here](https://github.com/ghapsara/guruhhapsara.dev/tree/master/src/content/2021-12-24-ec2-s3-logging-with-fluentd/code). Thanks for reading. I really appreciate that.
