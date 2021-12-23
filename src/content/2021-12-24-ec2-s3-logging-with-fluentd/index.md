@@ -315,8 +315,8 @@ Authenticating EC2 in account-a to access an S3 bucket in account-b
 
 In any case, if you’re interested in probing a further inquiry about substances we attribute in our construct, take a stab at visiting these great instructive articles below.
 
-- [https://aws.amazon.com/premiumsupport/knowledge-center/iam-assume-role-cli/](https://aws.amazon.com/premiumsupport/knowledge-center/iam-assume-role-cli/)
-- [https://docs.fluentd.org/output/s3](https://docs.fluentd.org/output/s3)
-- [https://github.com/fluent/fluent-plugin-s3/blob/master/docs/credentials.md#assume_role_credentials-section](https://github.com/fluent/fluent-plugin-s3/blob/master/docs/credentials.md#assume_role_credentials-section)
+- [aws assume role](https://aws.amazon.com/premiumsupport/knowledge-center/iam-assume-role-cli/)
+- [fluentd-s3-plugin](https://docs.fluentd.org/output/s3)
+- [fluent-s3 with assume role](https://github.com/fluent/fluent-plugin-s3/blob/master/docs/credentials.md#assume_role_credentials-section)
 
 Lastly, I put the full working code, here. Thanks for getting a long until the end of this writing. I really appreciate that.
