@@ -10,7 +10,7 @@ tags:
   - S3
   - fluentd
   - assume-role
-description: I’m going to talk about my impression in getting to know about a small mesmerizing terrain in AWS identity management plateau. My job was to get AWS roles to work in multiple AWS accounts. I was lucky enough to work for a case to forward an Elastic Beanstalk application’s logs to an S3 bucket located in a different AWS account.
+description: I’m going to talk about my impression about one of mesmerizing terrain in AWS identity management plateau. I was lucky to work on a job of setting up an integration for forwarding an Elastic Beanstalk application’s logs to an S3 bucket located in a different AWS account.
 ---
 
 Let’s begin with a segue. I was involved in a migration project of replacing datadog monitoring with new relic. This should be simple as we would only need to bring new relic apm to the app and remove the datadog agent. In the real practice, the word migration in my mind always implies uncharted body of works. In the beginning of the project, I was a bit worried, I knew something was coming to unfold.
