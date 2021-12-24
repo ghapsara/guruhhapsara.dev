@@ -23,7 +23,7 @@ Initially we looked at a couple managed solutions. We did a brief assessment to 
 
 ## Fluentd
 
-I would never be tired to tell you how fascinating the open source world is. Surprisingly, we tapped into a freaking awesome solution that really suited to our need. 
+I would never be tired to tell you how fascinating the open source world is. Surprisingly, we tapped into a freaking awesome solution that really suited to our need.
 
 Fluentd has a plugin which lets us to export logs to S3 buckets named `fluent-s3-plugin`. Another requirement we had in S3 log pipeline is to export the logs in a windowed duration. There’s a fluentd configuration that allow us to partition logs based called `buffer`, we will dive into how to use it soon.
 
@@ -278,7 +278,7 @@ aws s3 ls s3://eb-logs-bucket/dev/
 
 We should be seeing an empty list because we haven’t uploaded any objects yet. We need to go back to our logging configuration as fluentd is the agent that will push objects to our bucket.
 
-In light of the fact that our authentication method is changed to assume role, our `fluentd-s3-plugin` implicit auth configuration won’t work anymore. 
+In light of the fact that our authentication method is changed to assume role, our `fluentd-s3-plugin` implicit auth configuration won’t work anymore.
 
 Fortunately, the assume role auth model is supported by the `fluentd-s3-plugin`. The required parameters needed for the auth configuration are the same with our previous aws sts assume-role command. The fluentd configuration update will look like this.
 
