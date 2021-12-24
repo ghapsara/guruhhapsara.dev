@@ -10,20 +10,20 @@ tags:
   - S3
   - fluentd
   - assume-role
-description: I’m going to talk about my impression about one of mesmerizing terrain in AWS identity management plateau. I was lucky to work on a job of setting up an integration for forwarding an Elastic Beanstalk application’s logs to an S3 bucket located in a different AWS account.
+description: I’m going to talk about my impression of one of mesmerizing terrains in AWS identity management plateau. I was lucky to work on a job bootstraping an integration for forwarding an Elastic Beanstalk application’s logs to an S3 bucket located in a different AWS account.
 ---
 
-Let’s begin with a segue. I was involved in a migration project of replacing datadog monitoring with new relic. This should be simple as we would only need to bring new relic apm to the app and remove the datadog agent. In the real practice, the word migration in my mind always implies uncharted body of works. In the beginning of the project, I was a bit worried, I knew something was coming to unfold.
+I was involved in a migration project of replacing datadog monitoring with new relic. This should be simple as we would only need to bring new relic apm to the app and remove the datadog agent. In the beginning of the project, I was a bit worried, I knew something was coming to unfold. The word migration in my mind always implies uncharted body of works.
 
-Later on, we found that there was an application utilizing one of datadog features which was something I had never heard before, datadog pipeline. In datadog, we have an ability to do a kind of ETL thing to logs. The pipeline was used as a way to export the application logs captured by datadog agent to an S3 bucket.
+Later on, we found out that there was an application utilizing one of datadog features which was something I had never heard before, datadog pipeline. In datadog, we have an ability to do a kind of ETL thing to logs. The pipeline was used as a way to export the application logs captured by datadog agent to an S3 bucket.
 
-My stomach went growling immediately when this was discovered. We had to find a replacement for this before we could terminate the datadog apm.
+My stomach went growling immediately when this was discovered. As a result, we had to find a replacement for this before we could terminate the datadog apm.
 
 Initially we looked at a couple managed solutions. We did a brief assessment to consider having either cloudwatch or new relic itself to batch the application logs to S3. Nonetheless, we were not really into these both platforms. We wanted a simple solution that would just do the job.
 
 ## Fluentd
 
-I would never be tired to tell you how fascinating the open source world is. Surprisingly, we found a freaking awesome solution that really suited to our need and it was coming from fluentd.
+I would never be tired to tell you how fascinating the open source world is. Surprisingly, we tapped into a freaking awesome solution that really suited to our need. 
 
 Fluentd has a plugin which lets us to export logs to S3 buckets named `fluent-s3-plugin`. Another requirement we had in S3 log pipeline is to export the logs in a windowed duration. There’s a fluentd configuration that allow us to partition logs based called `buffer`, we will dive into how to use it soon.
 
@@ -44,7 +44,7 @@ We see that there are a few things specified there. First is the `@type`, we set
 
 You might wonder, logs are often compulsively bursted in a massive number of lines. A question comes to mind, how does fluentd manage to stream logs continuously without missing any lines.
 
-That's how the `pos_file` configuration comes into play. This configuration is used by fluentd to keep track fluentd last read index. If the fluentd agent got rebooted at any given moment, fluentd would use the file specified in the `post_file` property to figure out which lines that it needs to read.
+That's how the `pos_file` configuration comes into play. This configuration is used by fluentd to keep track fluentd last read index. If fluentd agent got rebooted at any given moment, fluentd would use the file specified in the `post_file` property to figure out which lines that it needs to read.
 
 The two pieces of config left are `tag` and `path`. The `path` property defines how we tell which files fluentd should read. It works with multiple paths too. We can have commas like how we specify items in an array or we can use `*` like how we do it in the config above. The `tag` configuration is important as this is used by fluentd for its internal routing. We will refer this tag in another fluentd configuration part.
 
@@ -75,21 +75,21 @@ Recalling one of our requirements, we need to make logs sent to the s3 bucket ch
 </match>
 ```
 
-By adding the `buffer` configuration above to the match configuration, we're telling fluentd to partition the captured logs in an hourly window. We can also specify the size of the chunk. There'll be an index appended to the chunk files which maintains the size of the processed data. This is very useful as we don't to make fluentd to push big size data in one shot.
+By adding the `buffer` configuration above to the match configuration, we're telling fluentd to partition the captured logs in an hourly window. We can also specify the size of the chunk. There'll be an increasing number appended to the chunk files which indicates the index of the chunked data. This is very useful as we don't to make fluentd to push big size data in one shot.
 
-If the configuration works, we would see list of files in the folder configured in the `path` property. fluentd will continuously watch this folder and upload gzipped files to the s3 bucket.
+If the configuration is correct, we would see list of files under the configured folder defined in the `path` property. fluentd will continuously watch this folder and upload gzipped files to the s3 bucket.
 
 Doesn't it strike you as odd as we're not putting any credentials in our configuration. Now we're getting into the serious part.
 
 ## AWS role and policy
 
-In our case, this integration is used by an elastic beanstalk application. The elastic beanstalk app is deployed as EC2 instances. In EC2, we can specify a role that lets instances to hold permissions to interact with AWS entities.
+In our case, our setup is deployed to an elastic beanstalk application. The elastic beanstalk app lives on top of EC2 instances. In EC2, we would specify a role that lets instances to interact with AWS entities.
 
 That means we don’t need to throw AWS secrets to EC2 instances to call AWS APIs which in our case is S3. How does AWS validate the authenticity of AWS API service interaction requests? It’s the identity comes into play.
 
 I’m not going to brag out about identity machine again. I have testified my deep fascination in how identity machine really changes the whole game of authentication in [my sanctifying secrets series here](https://www.guruhhapsara.dev/sanctifying-secrets-pt-2).
 
-How do we get this to work? First we need to settle down that every AWS services interaction is strictly regulated with IAM roles and policies. We will provision these 2 components with terraform. There are 3 main important blocks needed to make the IAM roles to work. Let’s dive into it.
+How do we get this to work? First we need to settle down that every AWS services interaction is strictly regulated with IAM roles and policies. In this article, we're going to make use of AWS terraform module to manage our AWS IAM roles. There are 3 main important parts needed to configure to make roles to work. Let’s dive into it.
 
 ```bash
 resource "aws_iam_role" "eb_role" {
@@ -133,7 +133,7 @@ With respect to our case, the minimum capabilities we need to get the fluentd s3
 }
 ```
 
-The last important piece is setting up a trust policy. This is what allows what entities that can be authorized to use the role. The entity that we should trust to use the role is EC2 as the elastic beanstalk application is deployed as EC2 instances.
+The last important configuration piece needed is trust policy. This is what allows which entities that can be authorized to use the role. The entity that we should trust to use the role is EC2 as the elastic beanstalk application is deployed as EC2 instances.
 
 ```json
 {
@@ -150,7 +150,7 @@ The last important piece is setting up a trust policy. This is what allows what 
 }
 ```
 
-Now the role set up in place. Though this is not done yet, we need to create a component called instance profile to configure the elastic beanstalk EC2 instances with the role.
+Now we have the role set up in place. However, this is not done yet, we need to create a component called instance profile to configure the elastic beanstalk EC2 instances with the role.
 
 ```bash
 resource "aws_iam_instance_profile" "eb_instance_profile" {
@@ -174,7 +174,7 @@ resource "aws_elastic_beanstalk_environment" "eb_env" {
 
 ## AWS multi accounts auth setup
 
-If we think about having a simple super slick role definition, it would only make sense to mingle the S3 policy inside the elastic beanstalk instance profile role. However, in our case this is not possible. Our goal is to get logs to an S3 bucket which is not in the same account that hosts the EB instances.
+If we think about having a simple super slick role definition, it would only make sense to mingle the S3 policy inside the elastic beanstalk instance profile role. However, in our case this is not possible. One of our requirements is to get logs to an S3 bucket which is not in the same account that hosts the EB instances.
 
 This entails us to divide the EB and S3 policies in 2 different roles in 2 separate accounts. Let’s say that our EB instances are located in `acccount-a` and the S3 bucket is in `account-b`.
 
@@ -194,7 +194,7 @@ resource "aws_iam_role" "eb_role" {
 }
 ```
 
-The trust relationship policy in our `eb-role` which we defined earlier doesn’t need a modification because we still need to allow EC2 to assume our role to perform its function. The only update we need to have is making the trust policy to allow the `eb-role` to assume the S3 role in `account-b`. The trust policy is defined in the `eb-assume-role-policy.json` file like below.
+The trust relationship policy in our `eb-role` which we defined earlier doesn’t need a modification because we still need to allow EC2 to assume our role to perform its function. The only update we need to have is the role policy to allow the `eb-role` to assume the S3 role in `account-b`. The trust policy is defined in the `eb-assume-role-policy.json` file like below.
 
 ```json
 {
@@ -209,7 +209,9 @@ The trust relationship policy in our `eb-role` which we defined earlier doesn’
 }
 ```
 
-Moving to `account-b` role setup, we need to bring the S3 policies defined in `account-a` earlier which lets the fluentd S3 to work to `account-b`. The S3 policies definition are still the same, we only need to refer it in our `inline_policy`.
+Notice that the S3 policy is not defined in the `eb-role` setup. This is expected because the S3 access permission in `account-a` is no longer relevant as the bucket is located in `account-b`, the policy will be delegated to S3 role in `account-b` instead.
+
+Moving to `account-b` role setup, we need to bring the S3 policies defined in `account-a` earlier which lets the fluentd S3 to work to `account-b`. The S3 policies definition is still the same, we only need to refer it in our `inline_policy`.
 
 ```json
 resource "aws_iam_role" "s3_role" {
@@ -274,11 +276,11 @@ AWS_SESSION_TOKEN="" \
 aws s3 ls s3://eb-logs-bucket/dev/
 ```
 
-We should be seeing an empty list because we haven’t uploaded any objects yet. We need to go back to our logging configuration as the fluentd is the agent that will push objects to our bucket.
+We should be seeing an empty list because we haven’t uploaded any objects yet. We need to go back to our logging configuration as fluentd is the agent that will push objects to our bucket.
 
-In light of the fact that our authentication method is completely different now, our `fluentd-s3-plugin` implicit auth configuration won’t work anymore. The goes to say that we need to update our fluentd configuration.
+In light of the fact that our authentication method is changed to assume role, our `fluentd-s3-plugin` implicit auth configuration won’t work anymore. 
 
-Fortunately, the assume role auth model is supported by the `fluentd-s3-plugin`. The required parameters needed for the auth are the same with our previous aws sts assume-role command. The fluentd configuration update will look like this.
+Fortunately, the assume role auth model is supported by the `fluentd-s3-plugin`. The required parameters needed for the auth configuration are the same with our previous aws sts assume-role command. The fluentd configuration update will look like this.
 
 ```xml
 <match s3.**>
@@ -301,16 +303,16 @@ If we run s3 ls command again, we should see a list of gzipped logs in our bucke
 
 ## Recap
 
-There are numbers of raw materials we compose in our setup which might divert focus . If we zoom out, the major blueprint will speak simply like this.
+There number of raw materials we compose in our setup is a lot, frankly. If we zoom out, the major blueprint will speak simply like this.
 
 ```
-Authenticating EC2 in account-a to access an S3 bucket in account-b
--> Defining EC2 role and policy in account-a
--> Defining S3 role and policy in account-b
+Streaming EC2 logs in account-a to access an S3 bucket in account-b with fluentd
+-> Defining EC2 role in account-a
 -> Allowing EC2 role to perfom assume-role action in account-a
+-> Defining S3 role in account-b
 -> Trusting EC2 role to assume role S3 role in account-b
--> Getting S3 bucket access authenticated using EC2 role which assumes S3 role
--> Adjusting fluentd configuration to use assume role auth mechanism.
+-> Getting S3 bucket access authenticated using EC2 role which assumes role S3 role in EC2 instances
+-> Adjusting fluentd configuration to use assume role auth model.
 ```
 
 In any case, if you’re interested in probing a further inquiry about substances we attribute in our construct, take a stab at visiting these great instructive articles below.
