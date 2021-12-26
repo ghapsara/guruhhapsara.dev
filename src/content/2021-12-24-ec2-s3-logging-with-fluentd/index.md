@@ -25,7 +25,7 @@ Initially we looked at a couple managed solutions. We did a brief assessment to 
 
 I would never be tired to tell you how fascinating the open source world is. Surprisingly, we tapped into a freaking awesome solution that really suited to our need.
 
-Fluentd has a plugin which lets us to export logs to S3 buckets named `fluent-s3-plugin`. Another requirement we had in S3 log pipeline is to export the logs in a windowed duration. There’s a fluentd configuration that allow us to partition logs based called `buffer`, we will dive into how to use it soon.
+Fluentd has a plugin which lets us to export logs to S3 buckets named `fluent-s3-plugin`. Another requirement we had in S3 log pipeline is to export the logs in a windowed duration. There’s a fluentd configuration that allows us to have partitioned logs called `buffer`, we will dive into how to use it soon.
 
 Fluentd unequivocally became our choice of replacing the application log pipeline.
 
@@ -303,7 +303,7 @@ If we run s3 ls command again, we should see a list of gzipped logs in our bucke
 
 ## Recap
 
-There number of raw materials we compose in our setup is a lot, frankly. If we zoom out, the major blueprint will speak simply like this.
+The number of raw materials we compose in our setup is a lot, frankly. If we zoom out our binocular lens, the groundwork will look simply like this.
 
 ```
 Streaming EC2 logs in account-a to access an S3 bucket in account-b with fluentd
@@ -321,4 +321,4 @@ In any case, if you’re interested in probing a further inquiry about substance
 - [fluentd-s3-plugin](https://docs.fluentd.org/output/s3)
 - [fluent-s3 with assume role](https://github.com/fluent/fluent-plugin-s3/blob/master/docs/credentials.md#assume_role_credentials-section)
 
-Lastly, I put the full working code [here](https://github.com/ghapsara/guruhhapsara.dev/tree/master/src/content/2021-12-24-ec2-s3-logging-with-fluentd/code). Thanks for reading. I really appreciate that.
+Lastly, I put the full working code [here](https://github.com/ghapsara/guruhhapsara.dev/tree/master/src/content/2021-12-24-ec2-s3-logging-with-fluentd/code). Thanks for reading.
