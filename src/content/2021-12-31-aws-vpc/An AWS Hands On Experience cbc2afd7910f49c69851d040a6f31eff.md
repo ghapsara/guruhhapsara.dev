@@ -264,7 +264,7 @@ resource "aws_route_table_association" "private" {
 }
 ```
 
-Now, if the private machine able to receive a response from a [google.com](http://google.com) curl request.
+Now our private machine should be able to receive a response from a [google.com](http://google.com) curl request.
 
 ## Cool References
 
