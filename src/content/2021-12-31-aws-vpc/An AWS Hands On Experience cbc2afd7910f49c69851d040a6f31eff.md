@@ -1,7 +1,7 @@
 ---
 kind: blog
 published: true
-title: "An AWS Hands-on Experience"
+title: "An AWS VPC Hands-on Experience"
 date: 2021-12-31T23:27:58.00Z
 path: /aws-vpc
 tags:
