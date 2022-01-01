@@ -78,7 +78,7 @@ The goal is having a public address which specifically represents gitlab runner 
 
 Before we create a vm, we need to reserve a public ip. We also need a private ip address because our route needs to know where the vm is in the VPC network. Here's how to reserve a private and public ip address using gcp compute address terraform module.
 
-```bash
+```hcl
 resource "google_compute_address" "external" {
   name         = "nat-gateway-internal-address"
   address_type = "EXTERNAL"
@@ -102,7 +102,7 @@ gcloud compute addresses list
 
 Create a vm with the reserved addresses.
 
-```bash
+```hcl
 resource "google_compute_instance" "vm-nat-gateway" {
   name = "vm-nat-gateway"
 	network_interface.0.network_ip = "nat-gateway-internal-address"
@@ -116,7 +116,7 @@ Setting `can_ip_forward` to `true` is essential. This will let the vm to accept 
 
 Configure a network tag for gitlab runner cluster nodes to mark which nodes we want to route to the vm NAT gateway.
 
-```bash
+```hcl
 resource "google_container_cluster" "gke-gitlab-runner" {
   ...
   node_config {
@@ -128,7 +128,7 @@ resource "google_container_cluster" "gke-gitlab-runner" {
 
 And route the nodes which host gitlab runner pods. This is necessary because the vm is not going to be able to magically capture pods egress traffics and forward them to the public internet by itself. You need to statically route those pods to get to this vm.
 
-```bash
+```hcl
 resource "google_compute_route" "routes-gke-gitlab-runner-to-nat-gateway" {
   name        = "routes-gke-gitlab-runner-to-nat-gateway"
   dest_range  = "the-gitlab-instance-public-ip-address-range"

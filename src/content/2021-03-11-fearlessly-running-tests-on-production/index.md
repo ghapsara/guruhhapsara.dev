@@ -9,6 +9,7 @@ tags:
   - autoscale
   - node-pools
   - gitlab-runner
+  - GKE
 description: >-
   I know this might sound like a barbarian insinuation to divine artisanal engineering best practices that have been laid out over the last 4 decades. But if there was a case you need to do that, I thought it would be interesting if I could share my experience in running tests on a kubernetes production cluster without disrupting any production workloads.
 cover: "./don-jackson-wyatt-b9cU8k3VZNM-unsplash.jpg"

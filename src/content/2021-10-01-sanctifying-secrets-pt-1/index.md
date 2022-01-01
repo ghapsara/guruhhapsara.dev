@@ -34,7 +34,7 @@ One thing that makes KES stand out against other tools is that KES doesn't injec
 
 Let's have a look at how to setup an integration between kubernetes and vault.
 
-```bash
+```hcl
 resource "vault_auth_backend" "kubernetes" {
   type = "kubernetes"
 	...
@@ -54,7 +54,7 @@ The way KES authenticates its calls to copy secrets from vault to kubernetes is 
 
 The story doesn't end up there. Vault needs to validate the authority of requests by mapping service account tokens sent by KES pods to a vault role which in this case is the `kubernetes-external-secret` role and the associated policy which is `reader`.
 
-```bash
+```hcl
 resource "vault_kubernetes_auth_backend_role" "k8s_external_secrets" {
   backend                          = vault_auth_backend.kubernetes.path
   role_name                        = "kubernetes-external-secrets"
