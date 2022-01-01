@@ -125,7 +125,7 @@ resource "aws_subnet" "private" {
 }
 ```
 
-We don’t even need to define a route at this point. The VPC main local route we talked about earlier applies to this subnet as well. 
+We don’t even need to define a route at this point. The VPC main local route we talked about earlier applies to this subnet as well.
 
 Our subnets are ready to go. However, there’s still another VPC component that we need to set up.
 
