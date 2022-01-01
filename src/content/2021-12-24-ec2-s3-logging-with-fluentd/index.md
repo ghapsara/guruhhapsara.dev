@@ -91,15 +91,15 @@ I’m not going to brag out about identity machine again. I have testified my de
 
 How do we get this to work? First we need to settle down that every AWS services interaction is strictly regulated with IAM roles and policies. In this article, we're going to make use of AWS terraform module to manage our AWS IAM roles. There are 3 main important parts needed to configure to make roles to work. Let’s dive into it.
 
-```bash
+```hcl
 resource "aws_iam_role" "eb_role" {
-  name        = "eb-role"
+  name                = "eb-role"
 
-  assume_role_policy    = file("ec2-trust-policy.json")
+  assume_role_policy  = file("ec2-trust-policy.json")
 
   inline_policy {
-    name = "s3-log-policy"
-    policy = file("s3-log-policy.json")
+    name    = "s3-log-policy"
+    policy  = file("s3-log-policy.json")
   }
 }
 ```
@@ -152,7 +152,7 @@ The last important configuration piece needed is trust policy. This is what allo
 
 Now we have the role set up in place. However, this is not done yet, we need to create a component called instance profile to configure the elastic beanstalk EC2 instances with the role.
 
-```bash
+```hcl
 resource "aws_iam_instance_profile" "eb_instance_profile" {
   name = "eb-instance-profile"
   role = aws_iam_role.eb_role.name
@@ -161,7 +161,7 @@ resource "aws_iam_instance_profile" "eb_instance_profile" {
 
 Then we need to update our elastic beanstalk environment setting to use the instance profile.
 
-```json
+```hcl
 resource "aws_elastic_beanstalk_environment" "eb_env" {
 	...
 	setting {
@@ -182,14 +182,14 @@ We need to remove the S3 policy defined in our previous `eb_role` iam role block
 
 The `eb-role` setup in `account-a` will have these role and trust relationship policy like below.
 
-```json
+```hcl
 resource "aws_iam_role" "eb_role" {
-  name        = "eb-role"
-	assume_role_policy    = file("ec2-trust-policy.json")
+  name                = "eb-role"
+	assume_role_policy  = file("ec2-trust-policy.json")
 
   inline_policy {
-    name = "eb-assume-role-policy"
-    policy = file("eb-assume-role-policy.json")
+    name    = "eb-assume-role-policy"
+    policy  = file("eb-assume-role-policy.json")
   }
 }
 ```
@@ -213,14 +213,14 @@ Notice that the S3 policy is not defined in the `eb-role` setup. This is expecte
 
 Moving to `account-b` role setup, we need to bring the S3 policies defined in `account-a` earlier which lets the fluentd S3 to work to `account-b`. The S3 policies definition is still the same, we only need to refer it in our `inline_policy`.
 
-```json
+```hcl
 resource "aws_iam_role" "s3_role" {
 	name							  = "s3-role"
 	assume_role_policy  = file("s3-trust-policy.json")
 
   inline_policy {
-    name = "s3-log-policy"
-    policy = file("s3-log-policy.json")
+    name    = "s3-log-policy"
+    policy  = file("s3-log-policy.json")
   }
 }
 ```

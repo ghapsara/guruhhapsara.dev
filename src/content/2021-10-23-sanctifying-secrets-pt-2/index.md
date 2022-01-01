@@ -39,7 +39,7 @@ Let's jump straight to create a user-assigned managed identity which allows us t
 
 Prior to that, virtual machines should have a managed identity attached to them first, otherwise azure metadata service server will never respond back with JWTs. If we create the virtual machines using terraform, we need to do something like this.
 
-```bash
+```hcl
 resource "azurerm_user_assigned_identity" "identity" {
 	...
 }
@@ -114,7 +114,7 @@ If we look at the vault login command previously, we see that there's a `role` p
 
 Here's how we create a vault `auth role` which glues a vault policies and an azure service principal id though this can be configured for multiple policies and multiple service principal ids.
 
-```bash
+```hcl
 resource "vault_azure_auth_backend_role" "role" {
   backend                     = "azure"
   role                        = "an_auth_role"
@@ -131,7 +131,7 @@ From the configuration above, we're telling vault that if there's a login sessio
 
 Next is setting up the vault policy.
 
-```bash
+```hcl
 resource "vault_policy" "policy" {
   name = "a_vault_policy"
   policy = <<EOF
@@ -144,7 +144,7 @@ resource "vault_policy" "policy" {
 
 The policy configured above will become a place where the vault azure backend generates dynamic service principals. Generated service principals are bound to particular azure roles and subscriptions. Now we need to configure a vault secret backend which does the role capability stitching duty.
 
-```bash
+```hcl
 resource "vault_azure_secret_backend_role" "a_secret_role" {
   backend = "azure"
   role    = "a_secret_role"
@@ -199,7 +199,7 @@ Lastly, this is super important. We've seen how vault elegantly generates dynami
 
 This last configuration piece will allow vault sessions to perform revocations. We're only required to add an update capability to `sys/leases/revoke/azure/creds/a_secret_role/*` to the vault policy we created earlier.
 
-```bash
+```hcl
 resource "vault_policy" "policy" {
   name = "a_vault_policy"
   policy = <<EOF
