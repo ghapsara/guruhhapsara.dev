@@ -10,7 +10,7 @@ const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL
 module.exports = {
   siteMetadata: {
     title: `Guruh Hapsara`,
-    description: `Guruh Hapsara's personal site`,
+    description: `Guruh's personal site`,
     author: `Guruh Hapsara`,
     siteUrl,
   },
@@ -64,6 +64,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
