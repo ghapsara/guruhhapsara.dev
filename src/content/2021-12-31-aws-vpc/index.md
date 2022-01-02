@@ -1,14 +1,14 @@
 ---
 kind: blog
 published: true
-title: "An AWS⚡️VPC Hands-on Experience"
+title: "An AWS⚡️VPC Hands-On Experience"
 date: 2021-12-31T23:27:58.00Z
 path: /aws-vpc
 tags:
   - AWS
   - VPC
   - terraform
-description: I want to share my learning about AWS VPC. In this writing, I’m covering a common use case of wiring up VPC vital components to build a working infrastructure foundation.
+description: I want to share my learning about AWS VPC. In this writing, I’m covering a common use case of wiring up VPC vital components to build a working cloud infrastructure network.
 ---
 
 We're aiming to have a VPC that hosts instances that can interact one another within a private network and have a public internet access.
