@@ -16,10 +16,7 @@ import Link from "../components/link"
 import {
   Container,
   Intro,
-  TitleWrapper,
   Tag,
-  Title,
-  Span,
   Background,
   Scroll,
   Sticky,
@@ -91,16 +88,6 @@ const Content = () => {
 
   return (
     <Container>
-      <TitleWrapper>
-        Hello, I'm
-        <Title>
-          <Span>
-            Guruh
-            <br />
-            Hapsara
-          </Span>
-        </Title>
-      </TitleWrapper>
       <Intro>
         <div
           className="blog-post-content line-numbers"
@@ -130,7 +117,7 @@ const IndexPage = () => {
 
   return (
     <>
-      <SEO title="Guruh Hapsara" />
+      <SEO title="Guruh Hapsara" description="" />
       <Background>
         <Hero top={top} contentHeight={contentHeight} />
       </Background>
