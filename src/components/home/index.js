@@ -1,8 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 
-import { device } from "../../utils/device"
-
 import ContainerComp from "../container"
 import ContentComp from "../content"
 import { Tag as TagComp } from "./item"
@@ -12,11 +10,7 @@ export const Container = styled(ContainerComp)`
 `
 
 export const Intro = styled(ContentComp)`
-  margin-bottom: 1.5rem;
-`
-
-export const TitleWrapper = styled.div`
-  margin: 1.9rem 0;
+  margin: 1.5rem 0;
 `
 
 export const Tag = styled(TagComp)`
@@ -26,24 +20,6 @@ export const Tag = styled(TagComp)`
   padding: 0.3em 0.9em;
   background: black;
   color: white;
-`
-
-export const Title = styled.h1`
-  @media ${device.mobileS} {
-    font-size: 87px;
-  }
-  @media ${device.tablet} {
-    font-size: 190px;
-  }
-  margin: 0;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
-`
-
-export const Span = styled.span`
-  font-family: Titillium Web, sans-serif;
-  -webkit-text-fill-color: black;
 `
 
 export const Background = styled.div`
@@ -71,10 +47,7 @@ export const Sticky = styled.div`
 export default {
   Container,
   Intro,
-  TitleWrapper,
   Tag,
-  Title,
-  Span,
   Background,
   Scroll,
   Sticky,
