@@ -252,17 +252,17 @@ aws sts assume-role --role-arn "arn:aws:iam::account-b:role/s3-log-role" --role-
 
 It will return a json response like this.
 
-```bash
+```json
 {
   "AssumedRoleUser": {
-      "AssumedRoleId": "",
-      "Arn": "arn:aws:iam::account-b:role/s3-log-role"
+    "AssumedRoleId": "",
+    "Arn": "arn:aws:iam::account-b:role/s3-log-role"
   },
   "Credentials": {
-      "SecretAccessKey": "",
-      "SessionToken": "",
-      "Expiration": "2021-12-23T05:21:31Z",
-      "AccessKeyId": ""
+    "SecretAccessKey": "",
+    "SessionToken": "",
+    "Expiration": "2021-12-23T05:21:31Z",
+    "AccessKeyId": ""
   }
 }
 ```

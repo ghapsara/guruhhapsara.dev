@@ -37,12 +37,14 @@ export const pageQuery = graphql`
   }
 `
 
-function NotesPage({ data }) {
+function Writing({ data }) {
   const posts = data.allMarkdownRemark.edges
+  const description =
+    "Featuring my writings about cloud infrastructure, software engineering, open source projects, and many more."
 
   return (
     <Layout>
-      <SEO title="Notes" />
+      <SEO title="Writings" description={description} />
       <Container>
         {posts.map(({ node: { frontmatter: d } }, i) => {
           return (
@@ -63,4 +65,4 @@ function NotesPage({ data }) {
   )
 }
 
-export default NotesPage
+export default Writing

@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { useSpring, config } from "react-spring/three"
 import { useStaticQuery, graphql } from "gatsby"
-
-import { useBackgroundDispatch } from "../context/background"
-import { colors } from "../utils/colors"
-
 import { shuffle } from "canvas-sketch-util/random"
 import * as chroma from "chroma-js"
-
+import { colors } from "../utils/colors"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Hero from "../components/hero"
@@ -21,10 +17,9 @@ import {
   Scroll,
   Sticky,
 } from "../components/home"
+import BackgroundColor from "../components/background"
 
 const Content = () => {
-  const backgroundDispatch = useBackgroundDispatch()
-
   const {
     allMarkdownRemark: posts,
     allProjectsJson: projects,
@@ -78,14 +73,6 @@ const Content = () => {
     .map((d, i) => ({ ...d, color: palletes[i % lenPalletes] }))
     .sort((a, b) => new Date(b.date) - new Date(a.date))
 
-  useEffect(() => {
-    backgroundDispatch({ type: "change", color: "transparent" })
-
-    return () => {
-      backgroundDispatch({ type: "reset" })
-    }
-  }, [backgroundDispatch])
-
   return (
     <Container>
       <Intro>
@@ -117,7 +104,7 @@ const IndexPage = () => {
 
   return (
     <>
-      <SEO title="Guruh Hapsara" description="" />
+      <SEO title="Guruh Hapsara" />
       <Background>
         <Hero top={top} contentHeight={contentHeight} />
       </Background>
@@ -130,6 +117,7 @@ const IndexPage = () => {
       >
         <Sticky />
         <Layout>
+          <BackgroundColor color="transparent" />
           <Content />
         </Layout>
       </Scroll>

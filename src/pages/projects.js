@@ -116,10 +116,11 @@ function ProjectsPage() {
   `)
 
   const projects = data.allProjectsJson.edges.map(({ node }) => ({ ...node }))
+  const description = "Find out my projects, certificates, talks, etc."
 
   return (
     <Layout>
-      <SEO title="Projects" />
+      <SEO title="Projects" description={description} />
       <Wrapper>
         <Container>
           {projects.map(d => {

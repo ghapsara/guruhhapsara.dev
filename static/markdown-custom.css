@@ -11,6 +11,7 @@
 
   /* --code-background: #1F2332; */
   margin-bottom: 1.45rem;
+  display: grid;
 }
 
 .gatsby-highlight-code-line {
@@ -66,6 +67,8 @@ pre[class*='language-'] {
 
 /* Inline code */
 /* :not(pre) > code[class*='language-'] {
+  word-break: break-all;
+  white-space: break-spaces;
 } */
 
 .token.comment,

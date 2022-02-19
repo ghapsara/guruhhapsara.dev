@@ -1,29 +1,12 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { graphql } from "gatsby"
-
-import { useBackgroundDispatch } from "../context/background"
-
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Container from "../components/container"
 import Header from "../components/post/header"
 import Content from "../components/content"
 import Share from "../components/share"
-
-const Background = ({ color }) => {
-  const backgroundDispatch = useBackgroundDispatch()
-
-  useEffect(() => {
-    if (!!color) {
-      backgroundDispatch({ type: "change", color: color })
-    }
-    return () => {
-      backgroundDispatch({ type: "reset" })
-    }
-  }, [color, backgroundDispatch])
-
-  return <></>
-}
+import Background from "../components/background"
 
 export default function Template({ data }) {
   const {
