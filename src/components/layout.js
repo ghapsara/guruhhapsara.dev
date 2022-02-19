@@ -11,6 +11,8 @@ import Footer from "./footer"
 
 const Container = styled.div`
   background: ${props => props.background};
+  display: grid;
+  grid-template-rows: 70px minmax(calc(100vh - 190px), 1fr) 120px;
 `
 
 const Content = ({ children }) => {
