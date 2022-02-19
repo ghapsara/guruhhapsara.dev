@@ -11,7 +11,6 @@ const Container = styled.header`
   background: rgba(245, 245, 247, 0.6);
   z-index: 99999;
   font-size: 16px;
-  height: 70px;
 `
 
 const Link = styled(GatsbyLink)`
@@ -39,7 +38,7 @@ function Header() {
   return (
     <Container>
       <Title to="/">Guruh</Title>
-      <Nav to="/notes">notes</Nav>
+      <Nav to="/writings">writings</Nav>
       <Nav to="/projects">projects</Nav>
     </Container>
   )
