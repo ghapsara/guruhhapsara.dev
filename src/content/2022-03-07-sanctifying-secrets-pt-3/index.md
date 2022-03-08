@@ -16,17 +16,17 @@ background: "#fddcd717"
 
 There’s one legit question worth to be in the conversation prior to the work. Why do we need this?
 
-I often see implementations of cloud provider resource automations that are typically built on gitlab, jenkins, and many other pipeline platforms configured with secrets / credentials / tokens embedded in CI/CD variables for cloud provider authentications. Oftentimes, these credentials persists adamant from rotations.
+It's common seeing implementations of cloud provider resource automations that are typically built on gitlab, jenkins, and many other pipeline platforms configured with secrets / credentials / tokens embedded in CI/CD variables for their authentications. Oftentimes, these credentials persists adamant from rotations.
 
 As we all know that cloud providers API endpoints are publicly available, we can make contact with these APIs from outside of cloud infrastructures, we can do it from our local computer. In the worst case scenario, credentials leaks would grant anyone to modify the respective cloud infrastructures. This is a deadly serious problem.
 
-In response of combating this disastrous circumstance, cloud providers provide solutions to adopt identity machine authentication. This is a pathway for us to abdicate from getting ourselves involved in the secret management game. It’s incalculably virtuous.
+In response to this disastrous circumstance, cloud providers provide solutions to adopt identity machine authentication. This is a pathway for us to abdicate from getting ourselves involved in the secret management game. It’s incalculably virtuous.
 
 Talking about kubernetes ecosystem, cloud providers increasingly gear their kubernetes platforms with identity machine as well. Google brings their solution with [GKE workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity), Azure comes with [AKS pod identity](https://docs.microsoft.com/en-us/azure/aks/use-azure-ad-pod-identity), and many more. AWS invests their kubernetes service with EKS pod identity.
 
-Not to forget that we are able to authenticate EC2 instances to interact with AWS API which I covered on my [assuming role on EC2](https://guruhhapsara.dev/ec2-s3-logging-with-fluentd) post. In EKS, we’re also given the ability to attach IAM profiles to EKS node groups namely node instance profile. This allows EKS nodes to eligibly make contact to AWS entities without credentials.
+Not to forget that we are able to authenticate EC2 instances to interact with AWS API which I covered on my [assuming role on EC2](https://guruhhapsara.dev/ec2-s3-logging-with-fluentd) post. In EKS, we’re also given the ability to attach IAM profiles to EKS node groups namely node instance profile. This allows EKS nodes to eligibly make contact to AWS entities without static credentials.
 
-This is dope. We need no AWS credentials. Our main concern is settled. So, why do we need pod identity? why node instance profile isn’t enough?
+This is dope. We're not maintaining AWS credentials. Our main concern is settled. So, why do we need pod identity? why node instance profile isn’t enough?
 
 ## Introspecting Environment
 
