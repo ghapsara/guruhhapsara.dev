@@ -20,7 +20,7 @@ It's common seeing implementations of cloud provider resource automations that a
 
 As we all know that cloud providers API endpoints are publicly available, we can make contact with these APIs from outside of cloud infrastructures, we can do it from our local computer. In the worst case scenario, credentials leaks would grant anyone to modify the respective cloud infrastructures. This is a deadly serious problem.
 
-In response to this disastrous circumstance, cloud providers provide solutions to adopt identity machine authentication. This is a pathway for us to abdicate from getting ourselves involved in the secret management game. It’s incalculably virtuous.
+In a pursuit of circumventing this disastrous succession, it is exceedingly conforming to propound identity machine authentication in the infrastructure foundation. Furthermore, this is also a pathway for us to abdicate from getting ourselves fallen into a secret management disarray. It’s incalculably virtuous.
 
 Talking about kubernetes ecosystem, cloud providers increasingly gear their kubernetes platforms with identity machine as well. Google brings their solution with [GKE workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity), Azure comes with [AKS pod identity](https://docs.microsoft.com/en-us/azure/aks/use-azure-ad-pod-identity), and many more. AWS invests their kubernetes service with EKS pod identity.
 
@@ -74,7 +74,7 @@ Like other smart AWS services, EKS comes with an elegant solution. EKS pod ident
 
 The pod identity webhook comes natively in the default EKS installation. We don’t need to worry about how to configure the webhook or how to deploy the pod identity controller.
 
-Furthermore, as mentioned in the EKS pod identity documentation, EKS pod identity is not exclusive to EKS clusters, we can deploy the pod identity webhook to self managed kubernetes cluster solutions like KOPS in AWS.
+Aside from that, as mentioned in the EKS pod identity documentation, EKS pod identity is not exclusive to EKS clusters. We can deploy the pod identity webhook to self managed kubernetes cluster solutions like KOPS in AWS.
 
 ## IAM Role and Service Account
 
@@ -126,7 +126,7 @@ data "aws_iam_policy_document" "trust" {
 
 Interestingly, if you’re paying attention to the condition configuration in the policy document above, we specify a kubernetes service account uri. This is actually the conduit of the fine grained policy distribution. We target our policy to work on discrete pods which employ a service account that we trust in our policy document.
 
-There’s still one work left we need to have which is to make the pod identity being able to find the service account that we want to have the IAM role.
+There’s still one work left we need to have which is to make the pod identity be able to find the service account that we want to have the IAM role.
 
 ```yaml
 apiVersion: v1
