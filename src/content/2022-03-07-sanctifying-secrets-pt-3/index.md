@@ -11,7 +11,7 @@ tags:
   - EKS-pod-identity
 description: This time I’m going to talk about one killer AWS Elastic Kubernetes Service latest feature, IRSA which stands for IAM role and service account. This is aiming for leveling up sensitive credentials usages on EKS clusters. We’re gonna dig into how to plug in the IAM rigs to EKS.
 # background: "#FDDCD7"
-background: "#fddcd717"
+background: "#fddcd727"
 ---
 
 There’s one legit question worth to be in the conversation prior to the work. Why do we need this?
