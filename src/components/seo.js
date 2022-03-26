@@ -45,7 +45,7 @@ function SEO({ description, lang, meta, title, keywords }) {
           content: `website`,
         },
         {
-          property: `keywords`,
+          name: `keywords`,
           content: keywords,
         },
         {
