@@ -30,11 +30,7 @@ export default function Template({ data }) {
 
   return (
     <>
-      <SEO 
-        title={title} 
-        description={description} 
-        keywords={keywords} 
-      />
+      <SEO title={title} description={description} keywords={keywords} />
       <Layout>
         <Background color={background} />
         <Header
