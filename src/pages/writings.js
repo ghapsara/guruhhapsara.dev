@@ -18,7 +18,6 @@ export const pageQuery = graphql`
           frontmatter {
             date: date(formatString: "MMMM DD, YYYY")
             title
-            tags
             path
             description
             coverAuthor
@@ -46,7 +45,7 @@ function Writing({ data }) {
     <Layout>
       <SEO title="Writings" description={description} />
       <Container>
-        {posts.map(({ node: { frontmatter: d } }, i) => {
+        {posts.map(({ node: { frontmatter: d } }) => {
           return (
             <Link key={d.path} href={d.path}>
               <Header

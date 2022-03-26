@@ -17,6 +17,7 @@ export default function Template({ data }) {
       color,
       description,
       path,
+      tags,
       cover,
       coverAuthor,
       coverUrl,
@@ -25,10 +26,11 @@ export default function Template({ data }) {
   } = data.markdownRemark
 
   const postUrl = `https://guruhhapsara.dev${path}`
+  const keywords = tags.join(", ")
 
   return (
     <>
-      <SEO title={title} description={description} />
+      <SEO title={title} description={description} keywords={keywords} />
       <Layout>
         <Background color={background} />
         <Header
