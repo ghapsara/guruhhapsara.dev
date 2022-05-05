@@ -10,7 +10,7 @@ tags:
   - persistent-volume
   - EBS
   - AWS
-description: If there’s any resistance of kubernetes adoption, that’d would be a reluctance of using the kuberntes persistent volume. I’m myself concerned with this as well. When it comes to dealing with having storages in kubernetes, I find it saner to just delegate the problem to higher abstractions like operators and charts. This absence of hands-on experience leaves me a question of how to use persistent volume.
+description: If there’s any resistance of kubernetes adoption, that'd be a reluctance of using the kuberntes persistent volume. I’m myself concerned with this as well. When it comes to dealing with having storages in kubernetes, I find it saner to just delegate the problem to higher abstractions like operators and charts. This absence of hands-on experience leaves me a question of how to use persistent volume.
 cover: "./david-werbrouck-RfXv1snaYEI-unsplash.jpg"
 coverUrl: "https://unsplash.com/photos/RfXv1snaYEI"
 coverAuthor: "bigkids"
