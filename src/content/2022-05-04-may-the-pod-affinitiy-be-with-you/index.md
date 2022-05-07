@@ -1,6 +1,6 @@
 ---
 kind: blog
-published: false
+published: true
 title: "May The Pod Affinity Be With You"
 date: 2022-05-04T19:03:15.00Z
 path: /may-the-pod-affinity-be-with-you
@@ -10,7 +10,7 @@ tags:
   - persistent-volume
   - EBS
   - AWS
-description: If there’s any resistance in adopting kubernetes, that'd be a reluctance of using persistent volume. I’m myself concerned with this as well. When it comes to dealing with storages in kubernetes, I find it saner to just delegate the problem to high abstractions like operators and charts. This absence of hands-on experience leaves me a question of how to use persistent volume.
+description: If there’s any resistance in adopting kubernetes, that'd be a reluctance of using persistent volume. I’m myself concerned with this as well. When it comes to deal with storages in kubernetes, I find it saner to just delegate the problem to high abstractions like operators and charts. This absence of hands-on experience leaves me a question of how to use persistent volume.
 cover: "./david-werbrouck-RfXv1snaYEI-unsplash.jpg"
 coverUrl: "https://unsplash.com/photos/RfXv1snaYEI"
 coverAuthor: "bigkids"
