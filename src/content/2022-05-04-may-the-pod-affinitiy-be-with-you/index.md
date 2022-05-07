@@ -1,6 +1,6 @@
 ---
 kind: blog
-published: true
+published: false
 title: "May The Pod Affinity Be With You"
 date: 2022-05-04T19:03:15.00Z
 path: /may-the-pod-affinity-be-with-you
@@ -10,13 +10,13 @@ tags:
   - persistent-volume
   - EBS
   - AWS
-description: If there’s any resistance of kubernetes adoption, that'd be a reluctance of using the kuberntes persistent volume. I’m myself concerned with this as well. When it comes to dealing with storages in kubernetes, I find it saner to just delegate the problem to high abstractions like operators and charts. This absence of hands-on experience leaves me a question of how to use persistent volume.
+description: If there’s any resistance in adopting kubernetes, that'd be a reluctance of using persistent volume. I’m myself concerned with this as well. When it comes to dealing with storages in kubernetes, I find it saner to just delegate the problem to high abstractions like operators and charts. This absence of hands-on experience leaves me a question of how to use persistent volume.
 cover: "./david-werbrouck-RfXv1snaYEI-unsplash.jpg"
 coverUrl: "https://unsplash.com/photos/RfXv1snaYEI"
 coverAuthor: "bigkids"
 ---
 
-This time I’m going to talk about a workaround of combating persistent volume common issues. In this post, I’m examining persistent volume provisioning configured with the default EKS GP2 storage class with Elastic Block Storage as volume instances. Other storage classes are highly probable to have different behaviors, the written solution may not be applicable.
+This time I’m going to talk about a workaround of combating a palpable persistent volume issue. In this post, I’m examining persistent volume provisioning configured with the GP2 storage class in EKS with Elastic Block Storage as volume instances. Other storage classes are highly probable to have different behaviors, the written solution may not be applicable.
 
 I’ll kick start our space exploration by confessing my false acquaintance of persistent volumes.
 
@@ -88,13 +88,13 @@ How can this superficial idiomatic solution make a freaking sense?
 
 Pod persistent volume claim is defined along the way in pod specification. Persistent volume node affinity specs are generated according to where pods are scheduled at their first deployment. This is what makes kubernetes persistently schedule pods to the first time given nodes.
 
-Habitually, this will never change, unless we delete the generated persistent volume claim objects and reschedule pods.
+Habitually, this will never change. Unless, we delete the generated persistent volume claim objects and reschedule pods.
 
-Following the condition of that pods will always be scheduled to nodes complying persistent volume node requirement, if we tell our pods which nodes they belong to get scheduled from the beginning, pods scheduling will consistently attempt to adhere the pod affinity rule which subsequently avoids node volume affinity issue.
+Following the condition of that pods will always be scheduled to nodes complying persistent volume node requirement, if we specify a pod affinity rule, we enforce kubernetes to schedule pods to determined nodes from the beginning. Pod schedulling will adhere the rule under any conditions which subsequently avoids node volume affinity issue
 
 To raise this to even a higher bar, we would want to aim for avoiding a single point of failure. The idea is instead of having multiple pods in a single node, we can spread out pods in multiple nodes in different availability zones. With this aim, we will also need to leverage pod affinity to distribute pods.
 
-However we can’t achieve this to just merely utilize pod affinity. We will let the chance of unschedulable pods again open since cluster autoscaler consider pod affinity as a concerning case that can be ignored. Here’s a quote from the cluster autoscaler documentation.
+However we can’t achieve this by just merely utilizing pod affinity. We will let the chance of unschedulable pods again open since cluster autoscaler consider pod affinity as a corner case that it will ignore. Here’s a quote from the cluster autoscaler documentation.
 
 > CA doesn't add nodes to the cluster if it wouldn't make a pod schedulable. ... it doesn't scale up the cluster may be that ... too specific requests (like node selector), and wouldn't fit on any of the available node types. ~ _[cluster autoscaler faq](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#i-have-a-couple-of-pending-pods-but-there-was-no-scale-up)_
 
@@ -135,6 +135,6 @@ spec:
 
 Tearing down nodes and rescheduling pods won’t stop kubernetes to find them a place.
 
-You know that this pod affinity rule will hit another issue. Kubernetes will prevent us to schedule pods with more than 3 replicas since we only have 3 different availability zones. Our next home work is to find out the right spec tuning by extending [kubernetes soft scheduling](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#an-example-of-a-pod-that-uses-pod-affinity) to work along the persistent volume node affinity.
+You know that this pod affinity rule will hit another issue. Kubernetes will prevent us to schedule pods with more than 3 replicas since we only have 3 different availability zones. Our next home work is to find out the right spec tuning by extending [kubernetes soft scheduling](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#an-example-of-a-pod-that-uses-pod-affinity) to make it elastically accept this condition.
 
-That’ll become another star we'll need to probe.
+That’ll become another strenuous star we'll need to cautiously probe.
