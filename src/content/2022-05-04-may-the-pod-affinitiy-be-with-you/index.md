@@ -1,6 +1,6 @@
 ---
 kind: blog
-published: true
+published: false
 title: "May The Pod Affinity Be With You"
 date: 2022-05-04T19:03:15.00Z
 path: /may-the-pod-affinity-be-with-you
