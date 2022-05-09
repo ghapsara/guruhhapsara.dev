@@ -10,7 +10,7 @@ tags:
   - persistent-volume
   - EBS
   - AWS
-description: If there’s any resistance in adopting kubernetes, that'd be a reluctance of using persistent volume. I’m myself concerned with this as well. When it comes to deal with storages in kubernetes, I find it saner to just delegate the problem to high abstractions like operators and charts. This absence of hands-on experience leaves me a question of how to use persistent volume.
+description: If there’s any resistance to adopt kubernetes, that'd be a reluctance to use persistent volume. I’m myself concerned with this as well. When it comes to deal with storages in kubernetes, I find it saner to just delegate the problem to high abstractions like operators and charts. This absence of hands-on experience leaves me a question of how to use persistent volume.
 cover: "./david-werbrouck-RfXv1snaYEI-unsplash.jpg"
 coverUrl: "https://unsplash.com/photos/RfXv1snaYEI"
 coverAuthor: "bigkids"
@@ -135,4 +135,4 @@ Tearing down nodes and rescheduling pods won’t stop kubernetes to find them a 
 
 You know that this pod affinity rule will hit another issue. Kubernetes will prevent us to schedule pods with more than 3 replicas since we only have 3 different availability zones. Our next home work is to find out the right spec tuning by extending [kubernetes soft scheduling](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#an-example-of-a-pod-that-uses-pod-affinity) to make it elastically accept this condition.
 
-That’ll become another strenuous star we’ll need to cautiously probe.
+That’ll become another night sky we need to wonder.
