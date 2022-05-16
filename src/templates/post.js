@@ -28,8 +28,15 @@ export default function Template({ data }) {
   const { siteUrl } = data.site.siteMetadata
 
   const postUrl = `${siteUrl}${path}`
-  const image = !!cover ? `${siteUrl}${cover.childImageSharp.fluid.src}` : ""
   const keywords = tags.join(", ")
+  const image = !!cover ? `${siteUrl}${cover.childImageSharp.fluid.src}` : ""
+
+  let meta = [
+    {
+      property: `og:image`,
+      content: image,
+    },
+  ]
 
   return (
     <>
@@ -37,7 +44,7 @@ export default function Template({ data }) {
         title={title}
         description={description}
         keywords={keywords}
-        image={image}
+        meta={meta}
       />
       <Layout>
         <Background color={background} />
