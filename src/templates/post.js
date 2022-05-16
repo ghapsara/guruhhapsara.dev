@@ -29,14 +29,17 @@ export default function Template({ data }) {
 
   const postUrl = `${siteUrl}${path}`
   const keywords = tags.join(", ")
-  const image = !!cover ? `${siteUrl}${cover.childImageSharp.fluid.src}` : ""
+  let meta = []
 
-  const meta = [
-    {
-      property: `og:image`,
-      content: image,
-    },
-  ]
+  if (cover) {
+    meta = [
+      ...meta,
+      {
+        property: `og:image`,
+        content: `${siteUrl}${cover.childImageSharp.fluid.src}`,
+      },
+    ]
+  }
 
   return (
     <>
