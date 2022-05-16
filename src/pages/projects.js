@@ -116,7 +116,7 @@ function ProjectsPage() {
   `)
 
   const projects = data.allProjectsJson.edges.map(({ node }) => ({ ...node }))
-  const description = "Find out my projects, certificates, talks, etc."
+  const description = "Find out about my projects, certificates, talks, etc."
 
   return (
     <Layout>
