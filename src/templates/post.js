@@ -25,12 +25,20 @@ export default function Template({ data }) {
     html,
   } = data.markdownRemark
 
-  const postUrl = `https://guruhhapsara.dev${path}`
+  const { siteUrl } = data.site.siteMetadata
+
+  const postUrl = `${siteUrl}${path}`
+  const image = !!cover ? `${siteUrl}${cover.childImageSharp.fluid.src}` : ""
   const keywords = tags.join(", ")
 
   return (
     <>
-      <SEO title={title} description={description} keywords={keywords} />
+      <SEO
+        title={title}
+        description={description}
+        keywords={keywords}
+        image={image}
+      />
       <Layout>
         <Background color={background} />
         <Header
@@ -73,6 +81,11 @@ export const pageQuery = graphql`
             }
           }
         }
+      }
+    }
+    site {
+      siteMetadata {
+        siteUrl
       }
     }
   }
