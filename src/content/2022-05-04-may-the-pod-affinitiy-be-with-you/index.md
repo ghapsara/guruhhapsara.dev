@@ -22,7 +22,7 @@ I’ll kick start our space exploration by confessing my false acquaintance of p
 
 I believed that the GP2 storage class cared about node volume availability zones. I thought it would always provision EBS volumes spreading across availability zones. This is completely wrong.
 
-The thing about persistent volume we need to underline right off the bat is that once persistent volumes are created through persistent volume claim template specs defined in deployments, statefulsets, or any other abstractions, they won’t be removed if delete these objects. We’ll need to deliberately delete the created persistent volume claims to remove those persistent volumes.
+The thing about persistent volume we need to underline right off the bat is that once persistent volumes are created through persistent volume claim template specs defined in deployments, statefulsets, or any other abstractions, they won’t be removed although we delete these objects. We’ll need to deliberately delete the created persistent volume claims to remove those persistent volumes.
 
 We need to pay attention to how storage class triggered at the first time. This will tell us where volumes are deployed in which availability zones.
 
