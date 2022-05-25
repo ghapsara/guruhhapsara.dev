@@ -22,11 +22,11 @@ I’ll kick start our space exploration by confessing my false acquaintance of p
 
 I believed that the GP2 storage class cared about node volume availability zones. I thought it would always provision EBS volumes spreading across availability zones. This is completely wrong.
 
-The thing we need to underline about persistent volume right off the bat is that once persistent volumes are created through persistent volume claim template specs defined in deployments, statefulsets, or any other abstractions, they won’t be removed if delete these objects. We’ll need to deliberately delete the created persistent volume claims to remove those persistent volumes.
+The thing about persistent volume we need to underline right off the bat is that once persistent volumes are created through persistent volume claim template specs defined in deployments, statefulsets, or any other abstractions, they won’t be removed if delete these objects. We’ll need to deliberately delete the created persistent volume claims to remove those persistent volumes.
 
 We need to pay attention to how storage class triggered at the first time. This will tell us where volumes are deployed in which availability zones.
 
-The reason we need to care about this because it defines where pods will always be scheduled. The persistent volume claim attached to a pod coerces kube-scheduler to schedule the pod to a node that satisfies the persistent volume node affinity requirement.
+The reason we need to care about this is because it defines where pods will always be scheduled. The persistent volume claim attached to a pod coerces kube-scheduler to schedule the pod to a node that satisfies the persistent volume node affinity requirement.
 
 When we create a persistent volume claim, the storage class will create a persistent volume with a node affinity. It’ll then provision an Elastic Block Storage instance, and then a pod that claims the persistent volume will be able to mount the EBS storage.
 
@@ -94,7 +94,7 @@ To raise this to even a higher bar, we would want to aim for avoiding a single p
 
 However we can’t achieve this by just merely utilizing pod affinity. We will let the chance of unschedulable pods again open since cluster autoscaler consider pod affinity as a corner case that it will ignore. Here’s a quote from the cluster autoscaler documentation.
 
-> CA doesn’t add nodes to the cluster if it wouldn’t make a pod schedulable. … it doesn’t scale up the cluster may be that … too specific requests (like node selector), and wouldn’t fit on any of the available node types. ~ cluster autoscaler faq
+> CA doesn’t add nodes to the cluster if it wouldn’t make a pod schedulable. … it doesn’t scale up the cluster may be that … too specific requests (like node selector), and wouldn’t fit on any of the available node types. <br/> ~ [Cluster Autoscaler FAQ](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#i-have-a-couple-of-pending-pods-but-there-was-no-scale-up)
 
 To deal with this prevailing climate, we can prepare instead, we setup nodes, we tell the autoscaling group to have EC2 machines in all zones. We prevent the autoscaler to further scale down by specifying the minimum node count in the amount of all available zones.
 
