@@ -35,7 +35,7 @@ This is tumultuous. It's very difficult to know what each of parts of the code a
 
 Knowing this problem, we decided to invest some of our resources in preventing this pernicious radioactive leaking to a wider space.
 
-# Our process
+## Our process
 
 - Identify symptoms
 - List viable solutions
@@ -53,11 +53,11 @@ We were screwed up with those conditions and yet we only had 3 months to work on
 
 This was like a quote we had on our t-shirt when we were working.
 
-# The work
+## The work
 
 Of course, It's not that simple. We went back and forth in designing and messing up the code structure. We did take a look at a few couple of design patterns. We mapped each one of them into our use case, but none of them satisfied with the conditions and expectations we had. We didn't invent a new design pattern. We came up with a go basic package approach. We started putting works to the part of code which we considered to be the "hurdle".
 
-## Handlers
+### Handlers
 
 Handlers in our case are functions meant to map incoming bot messages to perform a specific task. I want you to take a look at this code snippet. Don't try to think any kind of optimizations yet. Just give it a look and and understand how it works.
 
@@ -144,7 +144,7 @@ func User(b *botData) error {
 
 We knew this was problematic. Having another switch case or if-else statements for new commands is insane and yet our handler functions were still handling few business logics. With this concern in mind, we started adopting one of the coolest techniques in go, it's called ⤵️
 
-## Middleware
+### Middleware
 
 Ok, so what is middleware?
 
@@ -318,7 +318,7 @@ err := handlerFunc()
 
 One of the benefits of having the approach above is we can reuse data obtained by previous middleware. This reduces the amount of http call to get data from a server. Though, this approach looks a bit fragile because the `OnlyAllowMaintainer` middleware acutely depends on the `ValidateMR` middleware. We have to be very cautious with our test.
 
-## Test
+### Test
 
 Ok, let's talk about test. I know tests are hard and tedious. But testing is really the best way to get our thought closer to a reliable judgement. You know when we're writing code, we are basically articulating our assumptions to address a specific problem with a solution. And sometimes our solution only embraces a few number of cases. When we play a devil advocate to it or when it's questioned with a such jarring test case scenario, our predisposed sort of chesty assumption often breaks which goes to say that our code is now vulnerable and prone to bugs.
 
@@ -409,7 +409,7 @@ Our integration tests heavily utilize mockery at the top level. Mockery gives us
 
 Mockery mocks interfaces' inputs and outputs without manipulating the implementation. This is rejuvenating my motivation in writing more tests. Mockery dramatically improves our testing experience.
 
-## Logging
+### Logging
 
 This is like one of the underpinning features of providing application reliability. Log is one the most powerful tool when it comes to trace application root issues. I often find logs spoil me an actor who creates chaos. Log is like a friend who likes to tell you what's gonna happen in a movie.
 
@@ -496,7 +496,7 @@ runtime.goexit
 
 This is like a birthday cake thrown to a face at a debugging party. We now know exactly which parts of the code get involved in the crime scene.
 
-# Epilogue
+## Epilogue
 
 Rewriting is a truly dissenting topic. It's resource consuming, you're likely to delay new feature developments, and the business values offered by this approach are obscure sometimes.
 
