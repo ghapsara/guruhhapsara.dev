@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 import Container from "../components/container"
 import Header from "../components/post/header"
 import Content from "../components/content"
-import Share from "../components/share"
+import Line from "../components/line"
 import Background from "../components/background"
 
 export default function Template({ data }) {
@@ -16,7 +16,6 @@ export default function Template({ data }) {
       background,
       color,
       description,
-      path,
       tags,
       cover,
       coverAuthor,
@@ -27,7 +26,6 @@ export default function Template({ data }) {
 
   const { siteUrl } = data.site.siteMetadata
 
-  const postUrl = `${siteUrl}${path}`
   const keywords = tags.join(", ")
   let meta = []
 
@@ -63,7 +61,7 @@ export default function Template({ data }) {
           <Content color={color}>
             <div dangerouslySetInnerHTML={{ __html: html }} />
           </Content>
-          <Share postUrl={postUrl} />
+          <Line />
         </Container>
       </Layout>
     </>
