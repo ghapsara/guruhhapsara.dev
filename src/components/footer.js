@@ -20,7 +20,6 @@ function Footer() {
       <Content>
         <div>© {new Date().getFullYear()} Guruh Hapsara</div>
         <Link href="https://github.com/ghapsara">Github</Link>
-        <Link href="https://twitter.com/guruhhapsara">Twitter</Link>
       </Content>
     </footer>
   )

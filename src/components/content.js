@@ -18,6 +18,7 @@ const Content = styled.div`
       font-weight: 500;
     }
   }
+  margin-bottom: 3em;
 `
 
 export default Content
