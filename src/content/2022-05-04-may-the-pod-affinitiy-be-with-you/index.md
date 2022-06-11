@@ -51,7 +51,7 @@ spec:
   persistentVolumeReclaimPolicy: Delete
   storageClassName: gp2
   volumeMode: Filesystem
-   accessModes:
+  accessModes:
     - ReadWriteOnce
   capacity:
     storage: 10Gi
@@ -135,4 +135,4 @@ Tearing down nodes and rescheduling pods won’t stop kubernetes to find them a 
 
 You know that this pod affinity rule will hit another issue. Kubernetes will prevent us to schedule pods with more than 3 replicas since we only have 3 different availability zones. Our next home work is to find out the right spec tuning by extending [kubernetes soft scheduling](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#an-example-of-a-pod-that-uses-pod-affinity) to make it elastically accept this condition.
 
-That’ll become another night sky we need to wonder.
+That’ll become another celestial spot that demands a further observation.
