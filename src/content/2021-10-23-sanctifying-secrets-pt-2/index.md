@@ -246,6 +246,6 @@ I had a coworker in my previous employment, he's really top notch, one of the br
 
 That makes me forthrightly think, this is what commonly happens to service accounts as well, ironically. We create them once, we use to do tons of things, then we leave.
 
-In addition, this vault azure secret engine itself could still become an attack vector. If somebody took over the msi machine, secrets could be stolen. However, everything'd be recorded and we'd know their suspicious movements, we could take accurate actions. If we agree with no 100% SLO, it should be fair that we say there's no 100% secure systems.
+In addition, this vault azure secret engine itself could still become an attack vector. If somebody took over the msi machine, they would be able to provision and delete resources. However, everything'd be recorded and we'd know their suspicious movements, we could take accurate actions. If we agree with no 100% SLO, it should be fair that we say there's no 100% secure systems.
 
 With this vault azure secret engine, we can build a governance for utilizing secrets. No body is encouraged to provision resources from their local machines which prescribe automations and pipelines as compulsory in turn. Team collaborations become main daily directives which are demonstrated in code and documentations. Repeatable tasks are eminently handed to machines. Isn't it shocking that one fundamental adoption chains series of advantageous practices in consequence.
