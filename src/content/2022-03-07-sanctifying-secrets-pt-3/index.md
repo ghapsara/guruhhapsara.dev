@@ -133,7 +133,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: "the-irsa-service-account-name"
-	namespace: "the-irsa-service-account-namespace"
+  namespace: "the-irsa-service-account-namespace"
   annotations:
     eks.amazonaws.com/role-arn: "arn:aws:iam::111122223333:role/irsa"
 ```
