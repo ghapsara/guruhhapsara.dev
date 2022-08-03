@@ -20,7 +20,7 @@ It's common seeing implementations of cloud provider resource automations that a
 
 As we all know that cloud providers API endpoints are publicly available, we can make contact with these APIs from outside of cloud infrastructures, we can do it from our local computer. In the worst case scenario, credentials leaks would grant anyone to modify the respective cloud infrastructures. This is a deadly serious problem.
 
-In a pursuit of circumventing this disastrous succession, it is exceedingly conforming to propound identity machine authentication in the infrastructure foundation. Furthermore, this is also a pathway for us to abdicate from getting ourselves fallen into a secret management disarray. It’s incalculably virtuous.
+In a pursuit of circumventing this disastrous cycle, it is exceedingly conforming to propound identity machine authentication in the infrastructure foundation. Furthermore, this is also a pathway for us to abdicate from getting ourselves fallen into a secret management disarray. It’s incalculably virtuous.
 
 Talking about kubernetes ecosystem, cloud providers increasingly gear their kubernetes platforms with identity machine as well. Google brings their solution with [GKE workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity), Azure comes with [AKS pod identity](https://docs.microsoft.com/en-us/azure/aks/use-azure-ad-pod-identity), and many more. AWS invests their kubernetes service with EKS pod identity.
 
