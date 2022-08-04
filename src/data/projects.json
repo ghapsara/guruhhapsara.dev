@@ -1,13 +1,13 @@
 [
   {
     "kind": "certificate",
-    "date": "2022-05-11T00:00:00.00Z",
-    "name": "Harvard Business School Online | Certificate in Leadership Principles",
-    "description": "Leadership Principles is a 6-week, 25-hour online certificate program from Harvard Business School. Leadership Principles is designed to help individuals thrive as leaders, unleash the capabilities of others, and cultivate high-performing teams. This course leverages self-assessments, 360° feedback from colleagues, and the perspectives of fellow learners to enable participants to build greater self-awareness and enhance the versatility of their leadership style and approach. The program was developed by leading Harvard Business School faculty and is delivered in an active learning environment based on the HBS signature case-based learning model.",
+    "date": "2022-08-01T00:00:00.00Z",
+    "name": "Google Cloud | Professional Cloud Network Engineer",
+    "description": "Designing and implementing network architectures in Google Cloud Platform with a variety of use case. Configuring network services such as VPC instances, Google Cloud Load balancers, Hybrid Connectivity, Cloud DNS, and GKE networks, and Monitoring.",
     "isPortrait": false,
     "links": [
       {
-        "url": "https://www.michaelsutter.com/ediploma?fn=diplomastatuscheck&key=0200000004a7245581df522758dc8a683df53307178e41fad3427ff0ec12b230fa4c3a3cdbe1b3c3a75467b2de377def44fb63107d0513d92135e19c626518b30dc0ad8d",
+        "url": "https://www.credential.net/bc9ed333-e9c2-4931-95cc-0f4b00c670d4",
         "text": "certificate"
       }
     ]
@@ -16,7 +16,7 @@
     "kind": "certificate",
     "date": "2021-06-06T00:00:00.00Z",
     "name": "Cloud Native Computing Foundation | Certified Kubernetes Administrator",
-    "description": "In the last 3 months I went crazy with kubernetes. I was super curious with how kubernetes works. I started doing the kubernetes hard way in my local computer. I went hard with bootstraping certificates, learning how kubernetes components interact each other, tearing down components and learning how to fix them, learning some basic crazy linux hard stuffs like containers, iptables, and network namespaces, learning kubernetes fundamentals like scheduler, cni, persistent volume, etc. It was very fun and frustrating. I'll be continuing doing these stuffs because there are still a tremendous amount of cool things inside kubernetes environment that I want to know.",
+    "description": "Configuring and managing production-grade Kubernetes clusters. Understanding elemental kubernetes concepts such as networking, persistent volumes, Kubernetes API objects, troubleshooting, and maintenance.",
     "isPortrait": true,
     "links": [
       {
@@ -26,15 +26,15 @@
     ]
   },
   {
-    "kind": "project",
-    "date": "2019-02-20T00:00:00.00Z",
-    "name": "Indonesia Atlas",
-    "description": "I decided to make a collection of topojson maps of my country Indonesia. There was no good open source map of Indonesia, there were only shapefiles available. Shapefiles are just too big for web browsers, I don’t want users to pull lots of megabytes of files just to see the map of Indonesia. Then I worked on making the topojson files of Indonesia and put them on a GitHub repository. I was lucky that I found tools like ndjson-cli and mapshaper, I could make those topojson files very thin without sacrificing the details of the map",
+    "kind": "certificate",
+    "date": "2022-05-11T00:00:00.00Z",
+    "name": "Harvard Business School Online | Certificate in Leadership Principles",
+    "description": "Leadership Principles is a 6-week, 25-hour online certificate program from Harvard Business School. Leadership Principles is designed to help individuals thrive as leaders, unleash the capabilities of others, and cultivate high-performing teams. This course leverages self-assessments, 360° feedback from colleagues, and the perspectives of fellow learners to enable participants to build greater self-awareness and enhance the versatility of their leadership style and approach. The program was developed by leading Harvard Business School faculty and is delivered in an active learning environment based on the HBS signature case-based learning model.",
     "isPortrait": true,
     "links": [
       {
-        "url": "https://github.com/ghapsara/indonesia-atlas",
-        "text": "repository"
+        "url": "https://www.michaelsutter.com/ediploma?fn=diplomastatuscheck&key=0200000004a7245581df522758dc8a683df53307178e41fad3427ff0ec12b230fa4c3a3cdbe1b3c3a75467b2de377def44fb63107d0513d92135e19c626518b30dc0ad8d",
+        "text": "certificate"
       }
     ]
   },
@@ -89,6 +89,19 @@
     ]
   },
   {
+    "kind": "project",
+    "date": "2019-02-20T00:00:00.00Z",
+    "name": "Indonesia Atlas",
+    "description": "I decided to make a collection of topojson maps of my country Indonesia. There was no good open source map of Indonesia, there were only shapefiles available. Shapefiles are just too big for web browsers, I don’t want users to pull lots of megabytes of files just to see the map of Indonesia. Then I worked on making the topojson files of Indonesia and put them on a GitHub repository. I was lucky that I found tools like ndjson-cli and mapshaper, I could make those topojson files very thin without sacrificing the details of the map",
+    "isPortrait": true,
+    "links": [
+      {
+        "url": "https://github.com/ghapsara/indonesia-atlas",
+        "text": "repository"
+      }
+    ]
+  },
+  {
     "kind": "code",
     "date": "2018-06-15T00:00:00.00Z",
     "name": "Eid Mubarak Card",
@@ -110,8 +123,8 @@
     "kind": "talk",
     "date": "2018-09-28T00:00:00.00Z",
     "name": "Speaking at JakartaJS 2018",
-    "description": "This was my first talk, I’m glad that I did it. I got fascinated by a javascript library called RxJs. RxJs is an amazing library and it’s still quite popular till these days. I decided to share publicly some complex use cases like Ajax cancellation and handling animations that could be done in a very easy way in RxJs. RxJs doesn’t tightly depend on a specific library or framework. And I made demos for angular, vue, and react to show how RxJs works and what are the benefits that can be pulled from having this library.",
-    "isPortrait": false,
+    "description": "I got fascinated by a javascript library called RxJs. RxJs is an amazing library and it’s still quite popular till these days. I decided to share publicly some complex use cases like Ajax cancellation and handling animations that can be done in a very easy way in RxJs. RxJs doesn’t tightly depend on a specific library or framework. And I made demos for angular, vue, and react to show how RxJs works and what are the benefits that can be pulled from having this library.",
+    "isPortrait": true,
     "links": [
       {
         "url": "https://github.com/ghapsara/jakarta-js-talk-2018",
