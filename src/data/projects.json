@@ -3,7 +3,7 @@
     "kind": "certificate",
     "date": "2022-08-01T00:00:00.00Z",
     "name": "Google Cloud | Professional Cloud Network Engineer",
-    "description": "Designing and implementing network architectures in Google Cloud Platform with a variety of use case. Configuring network services such as VPC instances, Google Cloud Load balancers, Hybrid Connectivity, Cloud DNS, and GKE networks, and Monitoring.",
+    "description": "Designing and implementing network architectures in Google Cloud with a variety of use case. Configuring network services such as VPC instances, Google Cloud Load balancers, Hybrid Connectivity, Cloud DNS, and GKE networks, and Monitoring.",
     "isPortrait": false,
     "links": [
       {
