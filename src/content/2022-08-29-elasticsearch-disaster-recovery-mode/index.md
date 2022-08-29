@@ -6,7 +6,7 @@ date: 2022-08-29T02:41:54.00Z
 path: /elasticsearch-disaster-recovery-mode
 tags:
   - elasticsearch
-description: I bring you an experience of wiping out years of elasticsearch cluster data and how a restore was possible in play with elasticsearch builtin tools. You would admire how well designed and built softwares are by what they bring to counteract faults.
+description: I bring you an experience of wiping out years of elasticsearch cluster data and how a restore was possible in play with elasticsearch builtin tools. You would admire how well designed and built softwares are by what they bring to counteract failures.
 ---
 
 This time I broke an elasticsearch cluster that was actively used for developments.
