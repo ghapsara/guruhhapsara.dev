@@ -183,4 +183,3 @@ curl http://localhost:9200/_cluster/health?pretty
 ```
 
 That’s our story. We may actually be able to perform the unsafe bootstrap straight from broken nodes which hold a replaced cluster state since the combination of elasticsearch-node unsafe-boostrap and detach-cluster actually removes their binding to their previous cluster. We may not need to bootstrap a cluster from a non corrupted state.
-
