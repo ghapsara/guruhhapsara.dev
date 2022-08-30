@@ -58,7 +58,7 @@ I get a sense of how tasteful stateful workloads are in a catastrophic way.
 
 ## A bow and arrow
 
-I delved in the instance mounted disks hunting where the cluster stored data. I ran a directory size command, I didn’t see as if they were demolished with a new cluster state. I got to one of the data directories, I found many folders created many years ago.
+I delved in the instance mounted disks hunting where the cluster stored data. I ran a directory size command, I didn’t see as if they were demolished with a new cluster state. I got to one of the data directories, I found folders created many years ago.
 
 That immediately brought an optimism to my face. There must be a way to bring them back. They were still persevered in the disks. I just needed to figure out how reconcile these old data with the new cluster state.
 
@@ -70,7 +70,7 @@ The next resort we had to save the cluster was our EC2 volume snapshots.
 
 We kicked start a test cluster with volumes created from the snapshots we took from our data nodes a few days back before. We began to bootstrap a cluster from one of data nodes.
 
-The cool thing about elasticsearch is that a node can have multiple roles so we can have a node that acts as data and master nodes all together. This allowed us to have an instant look to verify whether we could rescue our data.
+The cool thing about elasticsearch is that a node can have multiple roles so we can have a node that acts as data and master nodes all together. This allowed us to have an instant look to verify whether we could save our data.
 
 We updated the `elasticsearch.yml` configuration to repurpose the node as a master.
 
@@ -78,6 +78,8 @@ We updated the `elasticsearch.yml` configuration to repurpose the node as a mast
 node.master: true
 node.data: true
 ```
+
+To instantiate a new cluster from the data node, we only needed to run this command.
 
 ```bash
 ./bin/elasticsearch-node unsafe-bootstrap
