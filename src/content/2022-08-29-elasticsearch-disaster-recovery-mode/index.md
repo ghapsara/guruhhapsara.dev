@@ -12,11 +12,11 @@ description: I bring you an experience of wiping out years of elasticsearch clus
 
 This time I broke an elasticsearch cluster that was actively used for developments.
 
-I carelessly stepped my feet into an automation that I didn’t fully understand. The operation I needed to perform was rather to enable the elasticsearch snapshot and restore feature.
+I carelessly stepped my feet into an automation that I didn’t fully understand. The operation I needed to perform was rather simply to enable the elasticsearch snapshot and restore feature.
 
 I would’ve only run a series of commands which only was a couple curl requests, the snapshot restore would be then available in the settings persisted in the cluster right away, then my job would be done.
 
-Impulsively I was drawn by a desire to wrestle with chore works. I attempted to update the automation script in the mean of helping future colleagues to easily toggle the snapshot restore feature and I also patched some parts of the module to fix other issues.
+Impulsively I was drawn by a desire to wrestle with chore works. I attempted to update the automation script in the mean of helping future colleagues to easily toggle the snapshot restore feature along side patching some parts of the module to fix several other issues.
 
 I began to write the implementation. I created and destroyed test clusters for dozen times. I performed any test scenarios I could think of to know where and how my changes would lead to.
 
@@ -26,11 +26,11 @@ My confidence raised above the sun. I did not need to read each command in the s
 
 ## Blow it up
 
-3 o’clock in the morning, I rolled out the update. I began to restart master nodes to update their instance templates. The cluster turned into a red state, they refused to join with their data nodes.
+3 o’clock in the morning, I rolled out the update. I began to restart master nodes to update their instance templates. The cluster turned into a red state, master nodes refused to join with their data nodes.
 
 Intending to fix this issue, I ran the cluster bootstrap script. I believed that this was a legit solution to bring back master nodes discovering their data nodes. I thought it was like the kubeadm join that I would need to run to trigger a node discovery.
 
-Cautiously tailing the boostrap cluster script logs, I saw no dubious message shown and master nodes were coming to a green state.
+Cautiously tailing the boostrap cluster script logs, I saw no dubious message shown on my screen. Master nodes advanced to a green state.
 
 The cluster became healthy, so I continued to roll out updates to data nodes. They eventually came to join the master nodes. So I began to make a cup of tea preparing my self for a good sleep.
 
@@ -50,9 +50,9 @@ The cluster was in operation, it was able to create new indices but old indices 
 
 Given a short recovery time objective, finding a way to time travel to the cluster previous state was seemingly inconceivable. A feasible way to bring back the cluster data was to repopulate from datasources.
 
-The day wasn’t on me, I went to ask engineers about it, their repopulate script was broken as well.
+The day wasn’t on me, I went to ask engineers to repopulate data, their script was broken as well.
 
-Years of inventory data staggeringly snapped and wiped out within a few minutes. Developers and test engineers had to recreate items to continue their development.
+Years of data records were staggeringly snapped and wiped out within a few minutes. Developers and test engineers had to manually recreate inventories to continue their development.
 
 I get a sense of how tasteful stateful workloads are in a catastrophic way.
 
@@ -60,7 +60,7 @@ I get a sense of how tasteful stateful workloads are in a catastrophic way.
 
 I delved in the instance mounted disks hunting where the cluster stored data. I ran a directory size command, I didn’t see as if they were demolished with a new cluster state. I got to one of the data directories, I found many folders created many years ago.
 
-That immediately brought an optimism to my face. There must be a way to bring them back. I just needed to figure out how reconcile these old data with the new cluster state.
+That immediately brought an optimism to my face. There must be a way to bring them back. They were still persevered in the disks. I just needed to figure out how reconcile these old data with the new cluster state.
 
 A few days back before I broke the cluster, I remembered I took disk snapshots of the data node volumes. This was when the cluster state wasn’t supposed to be corrupted and old indices data were present.
 
@@ -70,9 +70,9 @@ The next resort we had to save the cluster was our EC2 volume snapshots.
 
 We kicked start a test cluster with volumes created from the snapshots we took from our data nodes a few days back before. We began to bootstrap a cluster from one of data nodes.
 
-The cool thing about elasticsearch is that a node can have multiple roles so we can have a node that act as data and master nodes all together. This allowed us to have an instant look to verify whether we could rescue our data.
+The cool thing about elasticsearch is that a node can have multiple roles so we can have a node that acts as data and master nodes all together. This allowed us to have an instant look to verify whether we could rescue our data.
 
-We updated the `elasticsearch.yml` configuration to extend the node as a master.
+We updated the `elasticsearch.yml` configuration to repurpose the node as a master.
 
 ```yaml
 node.master: true
@@ -83,7 +83,7 @@ node.data: true
 ./bin/elasticsearch-node unsafe-bootstrap
 ```
 
-We relaunched the elasticsearch service, a new cluster id was created forming a new cluster making the node as a single cluster although the cluster health resulted nonetheless in red, but this was a big move.
+A new cluster id was created forming a new cluster making the node as a single cluster. Although the cluster health resulted nonetheless in red, this was a big move.
 
 ```bash
 curl http://localhost:9200/_cluster/health?pretty
@@ -106,7 +106,7 @@ curl http://localhost:9200/_cluster/health?pretty
 }
 ```
 
-Just by looking at the `active_shards` field, we knew that there was more likely we were arriving closer to restore our cluster.
+Just by looking at the `active_shards` field, we knew that there was more likely we were arriving closer to restore our cluster. We went to the shard endpoint, indices came to progress online. They started to become available.
 
 ```bash
 curl http://localhost:9200/_cat/shards?v
@@ -129,20 +129,20 @@ data_2018-04              0     p      STARTED      1462   1.2mb 10.0.20.79 ip-1
 .....
 ```
 
-We moved to bring back nodes including data and master, we joined these nodes to the newly boostraped cluster node.
+We moved to rescue the other nodes including data and master. We updated in their configurations so that we could join these nodes to the newly boostraped cluster node.
 
 ```yaml
 cluster.initial_master_nodes:
   - 10.0.20.79
 ```
 
-Prior to cluster join, we needed to detach all these nodes from their previous master that were bound to the previous cluster state so that they could join to the new cluster.
+Prior to cluster join, we needed to detach all these nodes from their configured state that were bound to the previous cluster.
 
 ```bash
 ./bin/elasticsearch-node detach-cluster
 ```
 
-When the other data nodes started to join, we saw the number of unassigned shards decreasing.
+We went to reboot the elasticsearch service in each node. All nodes started to join, we saw the number of unassigned shards decreasing.
 
 ```bash
 curl http://localhost:9200/_cat/shards?v
