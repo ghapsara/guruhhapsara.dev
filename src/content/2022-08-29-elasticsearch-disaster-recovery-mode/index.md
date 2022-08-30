@@ -6,7 +6,7 @@ date: 2022-08-29T02:41:54.00Z
 path: /elasticsearch-disaster-recovery-mode
 tags:
   - elasticsearch
-description: I bring you an experience of wiping out years of elasticsearch cluster data and how a restore was possible in play with elasticsearch builtin tools. You would admire how well designed and built this software is by what they bring to counteract failures.
+description: I bring you an experience of wiping out years of elasticsearch cluster data and how a restore was possible in play with elasticsearch builtin tools. You would admire how well designed and built this software is by what it brings to counteract failures.
 ---
 
 This time I broke an elasticsearch cluster that was actively used for developments.
@@ -51,7 +51,7 @@ Given a short recovery time objective, finding a way to time travel to the clust
 
 The day wasn’t on me, I went to ask engineers about it, their repopulate script was broken as well.
 
-Years of inventory data staggeringly snapped and wiped out during a few minutes of my ops. Developers and test engineers had to recreate items to continue their development.
+Years of inventory data staggeringly snapped wiped out during a few minutes of my ops. Developers and test engineers had to recreate items to continue their development.
 
 I get a sense of how tasteful stateful workloads are in a disastrous way.
 
@@ -61,7 +61,7 @@ I delved in the instance mounted disks hunting where the cluster stored data. I 
 
 That immediately brought an optimism to my face. There must be a way to bring them back. I just needed to figure out how reconcile these old data with the new cluster state.
 
-A few days back before I broke the cluster during my tests, I remembered I took disk snapshots of the data node volumes. This was when the cluster state wasn’t supposed to be corrupted and old indices data were present.
+A few days back before I broke the cluster, I remembered I took disk snapshots of the data node volumes. This was when the cluster state wasn’t supposed to be corrupted and old indices data were present.
 
 The next resort we had to save the cluster was our EC2 volume snapshots.
 
