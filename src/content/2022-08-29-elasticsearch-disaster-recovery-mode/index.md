@@ -129,7 +129,7 @@ data_2018-04              0     p      STARTED      1462   1.2mb 10.0.20.79 ip-1
 .....
 ```
 
-We moved to rescue the other nodes including data and master. We updated in their configurations so that we could join these nodes to the newly boostraped cluster node. 
+We moved to rescue the other nodes including data and master. We updated in their configurations so that we could join these nodes to the newly boostraped cluster node.
 
 ```yaml
 cluster.initial_master_nodes:
