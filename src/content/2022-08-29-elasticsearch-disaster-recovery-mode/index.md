@@ -6,6 +6,7 @@ date: 2022-08-29T02:41:54.00Z
 path: /elasticsearch-disaster-recovery-mode
 tags:
   - elasticsearch
+  - disaster-recovery
 description: I bring you an experience of wiping out years of elasticsearch cluster data and how a restore was possible in play with elasticsearch builtin tools. You would admire how well designed and built this software is by what it brings to counteract failures.
 ---
 
@@ -51,9 +52,9 @@ Given a short recovery time objective, finding a way to time travel to the clust
 
 The day wasn’t on me, I went to ask engineers about it, their repopulate script was broken as well.
 
-Years of inventory data staggeringly snapped wiped out during a few minutes of my ops. Developers and test engineers had to recreate items to continue their development.
+Years of inventory data staggeringly snapped and wiped out within a few minutes. Developers and test engineers had to recreate items to continue their development.
 
-I get a sense of how tasteful stateful workloads are in a disastrous way.
+I get a sense of how tasteful stateful workloads are in a catastrophic way.
 
 ## A bow and arrow
 
