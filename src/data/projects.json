@@ -42,7 +42,7 @@
     "kind": "project",
     "date": "2020-04-19T00:00:00.00Z",
     "name": "Bahasa Gallery",
-    "description": "This project was initiated by my jealously of the Spotify wrapped website. That site is fantastic, It’s a perfect combination of data and arts. Then I started to pitch some ideas on top of that concept. I found that my country Indonesia has an enormous amount of native languages. That got my mind thinking on how about making an exploratory site which presents these languages in a map and shows where are they originally from and spoken. The idea was how to present these maps and languages as if they were on a museum, and I also wanted to give people an experience of walking in a museum and letting them to find interesting places and languages in Indonesia to wonder about. I made Bahasa Gallery. Bahasa means language in Indonesia, I find the word Gallery was the most catchiest word for representing a museum or an exhibit at that moment. It took me almost 2 years working on this project. I changed the design quite a lot, I got to deal with the technical implementation of the design concepts I had. There were lots of hurdles. I went really hard on placing objects in the threejs coordinate system, effects, basic shaders, animations, and coordinating states between transitions. It was super challenging!",
+    "description": "This project was initiated by my jealously of the Spotify wrapped website. That site is fantastic, It’s a perfect combination of data and arts. Then I started to pitch some ideas on top of that concept. I found that my country Indonesia has an enormous amount of native languages. That got my mind thinking an exploratory site which presents these languages in a map and shows where are they originally from and spoken. The idea was how to present these maps and languages as if they were on a museum, and I also wanted to give people an experience of walking in a museum and letting them to find interesting places and languages in Indonesia to wonder about. I made Bahasa Gallery. Bahasa means language in Indonesia, I find the word Gallery was the most catchiest word to represent a museum or an exhibit at that moment. It took me almost 2 years working on this project. I changed the design quite a lot, I got to deal with the technical implementation of the design concepts I had. There were lots of hurdles. I went really hard on placing objects in the threejs coordinate system, effects, basic shaders, animations, and coordinating states between transitions.",
     "media": "bahasa-gallery.gif",
     "isPortrait": false,
     "links": [
@@ -60,7 +60,7 @@
     "kind": "project",
     "date": "2017-12-22T00:00:00.00Z",
     "name": "Analyzing Jokowi's Word Usage",
-    "description": "I worked on this project in 2017. This project was hugely inspired by visual essays made by pudding.cool who was polygraph at that time if I remember correctly. And I saw there was an essay about hip hop vocabularies and I was fascinated by it, and I wanted to make something like it. then I started to take a look at the trending list in my country and our president was the most popular figure at that moment. The I looked at his twitter account and scrolled down his timeline, tried to find something interesting and I thought to myself what are the things he likes to talk about in his tweets. I immediately fired up my Jupiter notebook and scrapped his tweets in my local computer. I wish I could have a machine learning method to extract topics from his tweets but I wanted to do it in a very simple way. Then I arrived to an idea of finding topics by looking at his words usage. It was a really fun project, I got to look at many data visualization and pull some inspirations from them.",
+    "description": "I worked on this project in 2017. This project was hugely inspired by visual essays made by pudding.cool which was polygraph at that time if I remember correctly. I saw there was an essay about hip hop vocabularies and I was fascinated by it, and I wanted to make something like it. I began to take a look at the trending list in my country and our president was the most popular figure at that moment. I looked at his twitter account and scrolled down his timeline, tried to find something interesting and I thought to myself what are the things he likes to talk about in his tweets. I immediately fired up my Jupiter notebook and scrapped his tweets in my local computer. I arrived to an idea of finding topics by looking at his words usage. It was a really fun project.",
     "media": "analyzing.gif",
     "isPortrait": false,
     "links": [
@@ -92,7 +92,7 @@
     "kind": "project",
     "date": "2019-02-20T00:00:00.00Z",
     "name": "Indonesia Atlas",
-    "description": "I decided to make a collection of topojson maps of my country Indonesia. There was no good open source map of Indonesia, there were only shapefiles available. Shapefiles are just too big for web browsers, I don’t want users to pull lots of megabytes of files just to see the map of Indonesia. Then I worked on making the topojson files of Indonesia and put them on a GitHub repository. I was lucky that I found tools like ndjson-cli and mapshaper, I could make those topojson files very thin without sacrificing the details of the map",
+    "description": "I decided to make a collection of topojson maps of my country Indonesia. There was no good open source map of Indonesia, there were only shapefiles available. Shapefiles are just too big for web browsers, I don’t want users to pull lots of megabytes of files just to see the map of Indonesia. I worked on making the topojson files of Indonesia and putting them on a GitHub repository. I was lucky that I found tools like ndjson-cli and mapshaper, I could make super lightweight topojson files without sacrificing the details of the map.",
     "isPortrait": true,
     "links": [
       {
@@ -105,7 +105,7 @@
     "kind": "code",
     "date": "2018-06-15T00:00:00.00Z",
     "name": "Eid Mubarak Card",
-    "description": "I worked on this project on a week during the end of ramadhan in 2018. I was on a holiday and I didn’t know what to do. Then I saw a beautiful photograph in unsplash and it was a firework photo. Then I thought to myself what about making those fireworks live animated in web browsers. I worked on this project very quick. There were many d3 helpful functions and I only needed to do was to wire them together in react.",
+    "description": "I worked on this project on a week during the end of ramadhan in 2018. I was on a holiday and I didn’t know what to do. I saw a beautiful photograph in unsplash and it was a firework photo. It became a source of inspiration of this project. I could work on this project very quick because of the abundance of d3 helpful functions, the thing I needed to do was to wire them up together in React.",
     "media": "eim.gif",
     "isPortrait": true,
     "links": [
@@ -123,7 +123,7 @@
     "kind": "talk",
     "date": "2018-09-28T00:00:00.00Z",
     "name": "Speaking at JakartaJS 2018",
-    "description": "I got fascinated by a javascript library called RxJs. RxJs is an amazing library and it’s still quite popular till these days. I decided to share publicly some complex use cases like Ajax cancellation and handling animations that can be done in a very easy way in RxJs. RxJs doesn’t tightly depend on a specific library or framework. And I made demos for angular, vue, and react to show how RxJs works and what are the benefits that can be pulled from having this library.",
+    "description": "I got fascinated by a javascript library called RxJs. RxJs is an amazing library and it’s still quite popular till these days. I decided to share publicly some complex use cases like Ajax cancellation and handling animations that can be done in a very easy way in RxJs. RxJs doesn’t tightly depend on a specific library or framework. And I made demos for Angular, Vue, and React to show how convenient it is to integrate RxJs to existing Javascript frameworks.",
     "isPortrait": true,
     "links": [
       {
