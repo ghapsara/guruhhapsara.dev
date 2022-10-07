@@ -7,7 +7,7 @@ path: /elasticsearch-disaster-recovery-mode
 tags:
   - elasticsearch
   - disaster-recovery
-description: I bring you an experience of wiping out years of elasticsearch cluster data and how a restore was possible in play with elasticsearch builtin tools. You would admire how well designed and built this software is by what it brings to counteract failures.
+description: I bring you an experience of wiping out years of elasticsearch cluster data and how a restore was possible in play with elasticsearch builtin tools. You would admire how delicate and robust elasticsearch is by just hovering at a glimpse of what it brings to counteract failures.
 ---
 
 This time I broke an elasticsearch cluster that was actively used for developments.
@@ -60,7 +60,7 @@ I get a sense of how tasteful stateful workloads are in a catastrophic way.
 
 I delved in the instance mounted disks hunting where the cluster stored data. I ran a directory size command, I didn’t see as if they were demolished with a new cluster state. I got to one of the data directories, I found folders created many years ago.
 
-That immediately brought an optimism to my face. There must be a way to bring them back. They were still persevered in the disks. I just needed to figure out how reconcile these old data with the new cluster state.
+That immediately brought an optimism to my face. There must be a way to bring them back. They were still persevered in the disks. I just needed to figure out how to reconcile these old data with the new cluster state.
 
 A few days back before I broke the cluster, I remembered I took disk snapshots of the data node volumes. This was when the cluster state wasn’t supposed to be corrupted and old indices data were present.
 
