@@ -14,6 +14,9 @@ color: white
 cover: "./cover.png"
 coverAuthor: ""
 coverUrl: ""
+coverSourceLink: ""
+coverSourcePlatform: ""
+coverOpacity: 0
 ---
 
 This is my first Gatsby post written in Markdown!

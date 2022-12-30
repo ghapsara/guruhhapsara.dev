@@ -20,6 +20,9 @@ export default function Template({ data }) {
       cover,
       coverAuthor,
       coverUrl,
+      coverSourceLink,
+      coverSourcePlatform,
+      coverOpacity
     },
     html,
   } = data.markdownRemark
@@ -56,6 +59,9 @@ export default function Template({ data }) {
           cover={cover}
           coverAuthor={coverAuthor}
           coverUrl={coverUrl}
+          coverSourceLink={coverSourceLink}
+          coverSourcePlatform={coverSourcePlatform}
+          coverOpacity={coverOpacity}
         />
         <Container>
           <Content color={color}>
@@ -82,6 +88,9 @@ export const pageQuery = graphql`
         color
         coverAuthor
         coverUrl
+        coverSourceLink
+        coverSourcePlatform
+        coverOpacity
         cover {
           childImageSharp {
             fluid(maxWidth: 1200) {
