@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 import Image from "gatsby-image"
 
@@ -22,7 +23,7 @@ const Background = styled.div`
   width: 100%;
   height: 100%;
   background: black;
-  opacity: 0.6;
+  opacity: ${props => props.coverOpacity};
 `
 
 const Title = styled.h1`
@@ -46,7 +47,22 @@ const Credit = styled.div`
   }
 `
 
-function Hero({ title, description, date, cover, coverAuthor, coverUrl }) {
+const defaultCoverSourceLink =
+  "https://unsplash.com/?utm_source=guruhhapsara.dev&utm_medium=referral&utm_content=creditCopyText"
+const defaultCoverSourcePlatform = "Unsplash"
+const defaultCoverOpacity = 0.6
+
+function Hero({
+  title,
+  description,
+  date,
+  cover,
+  coverAuthor,
+  coverUrl,
+  coverSourceLink,
+  coverSourcePlatform,
+  coverOpacity,
+}) {
   const [coverHeight, setCoverHeight] = useState(500)
   useEffect(() => {
     setCoverHeight(window.innerHeight - 70)
@@ -60,7 +76,7 @@ function Hero({ title, description, date, cover, coverAuthor, coverUrl }) {
           height: coverHeight,
         }}
       />
-      <Background />
+      <Background coverOpacity={coverOpacity || defaultCoverOpacity} />
       <Wrapper>
         <Date>{date}</Date>
         <Title>{title}</Title>
@@ -68,14 +84,26 @@ function Hero({ title, description, date, cover, coverAuthor, coverUrl }) {
         <Credit>
           <small>
             Photo by <a href={coverUrl}>{coverAuthor}</a> on{" "}
-            <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
-              Unsplash
+            <a href={coverSourceLink || defaultCoverSourceLink}>
+              {coverSourcePlatform || defaultCoverSourcePlatform}
             </a>
           </small>
         </Credit>
       </Wrapper>
     </Container>
   )
+}
+
+Hero.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  cover: PropTypes.object.isRequired,
+  coverAuthor: PropTypes.string.isRequired,
+  coverUrl: PropTypes.string.isRequired,
+  coverSourceLink: PropTypes.string,
+  coverSourcePlatform: PropTypes.string,
+  coverOpacity: PropTypes.number,
 }
 
 export default Hero
