@@ -2,7 +2,7 @@
 kind: blog
 published: true
 title: "GCP Standalone NEG Load Balancer"
-date: 2022-12-30T21:49:22.00Z
+date: 2022-12-31T01:03:57.00Z
 path: /standalone-neg
 tags:
   - GCP
