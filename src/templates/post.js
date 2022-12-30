@@ -22,7 +22,7 @@ export default function Template({ data }) {
       coverUrl,
       coverSourceLink,
       coverSourcePlatform,
-      coverOpacity
+      coverOpacity,
     },
     html,
   } = data.markdownRemark

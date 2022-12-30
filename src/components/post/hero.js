@@ -47,11 +47,22 @@ const Credit = styled.div`
   }
 `
 
-const defaultCoverSourceLink= "https://unsplash.com/?utm_source=guruhhapsara.dev&utm_medium=referral&utm_content=creditCopyText"
-const defaultCoverSourcePlatform= "Unsplash"
-const defaultCoverOpacity= 0.6
+const defaultCoverSourceLink =
+  "https://unsplash.com/?utm_source=guruhhapsara.dev&utm_medium=referral&utm_content=creditCopyText"
+const defaultCoverSourcePlatform = "Unsplash"
+const defaultCoverOpacity = 0.6
 
-function Hero({ title, description, date, cover, coverAuthor, coverUrl, coverSourceLink, coverSourcePlatform, coverOpacity }) {
+function Hero({
+  title,
+  description,
+  date,
+  cover,
+  coverAuthor,
+  coverUrl,
+  coverSourceLink,
+  coverSourcePlatform,
+  coverOpacity,
+}) {
   const [coverHeight, setCoverHeight] = useState(500)
   useEffect(() => {
     setCoverHeight(window.innerHeight - 70)
@@ -84,15 +95,15 @@ function Hero({ title, description, date, cover, coverAuthor, coverUrl, coverSou
 }
 
 Hero.propTypes = {
-  title: PropTypes.string.isRequired, 
-  description: PropTypes.string.isRequired, 
-  date: PropTypes.string.isRequired, 
-  cover: PropTypes.object.isRequired, 
-  coverAuthor: PropTypes.string.isRequired, 
-  coverUrl: PropTypes.string.isRequired, 
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  cover: PropTypes.object.isRequired,
+  coverAuthor: PropTypes.string.isRequired,
+  coverUrl: PropTypes.string.isRequired,
   coverSourceLink: PropTypes.string,
   coverSourcePlatform: PropTypes.string,
-  coverOpacity: PropTypes.number
+  coverOpacity: PropTypes.number,
 }
 
 export default Hero
