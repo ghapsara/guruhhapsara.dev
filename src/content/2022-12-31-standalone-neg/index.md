@@ -44,8 +44,6 @@ That means the helm upgrade command will remove the current ingress NGINX load b
 
 The impact of load balancer recreate is incredibly deleterious but it’s rarely being discussed in a conversation which brings me a wonder. Do we have consented to trade offs of this such cascading failure or is this just invisible to us, we just don’t see it coming.
 
-This thing gets worst, if we don’t have a DNS for our ingress. We’ll be punished with a mountain of works by updating all clients to call the new ingress IP address.
-
 Many ways we can deal with this NGINX chart situation. We can do some tricks such as patching the chart by adjusting the service name to one that is currently used, organizing an NGINX controller migration deploying another installation then we update services ingress to use the new one, and so forth.
 
 Talking about those workarounds are not in my mind, not interested to sequence cards to play when shits hit the fan. Would it be sexier to think about how to let service deletions happen, and do nothing when it occurs but not paying off any ramifications. In short, how to stay cool when Kubernetes services get recreated.
@@ -70,7 +68,7 @@ Let’s place emphasis on what is NEG. NEG is not a GCLB instance, but it’s a 
 
 NEG needs to understand pod IP addresses in order to distribute traffic to correct destinations. Keep in mind, they are not service IP addresses. This type of GCLB backend has a capability of delivering traffic to pods directly without an intermediary like kube-proxy or equivalent technology.
 
-As pods are dynamic, pods are by design able to transcend in the vast sea of beatific nodes. Then who’s in charge of collecting their IP addresses? Do we need to snatch pod IP addresses and bind them to our NEG manually? That would be like catching up with the 5 last PI decimal point.
+As pods are dynamic, pods are by design able to transcend in the vast sea of beatific nodes. Then who’s in charge of collecting their IP addresses? Do we need to snatch pod IP addresses and bind them to our NEG manually? That would be like catching up with the last 5 PI decimal points.
 
 GKE will be responsible of attaching pod IP addresses to our NEG. How do we make it happen? We only need to annotate our Kubernetes service and GKE will do the job.
 
