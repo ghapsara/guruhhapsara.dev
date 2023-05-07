@@ -7,7 +7,7 @@ import Link from "./link"
 const Content = styled(Container)`
   font-size: 15px;
   display: grid;
-  grid-template-columns: max-content max-content max-content;
+  grid-template-columns: max-content max-content max-content max-content max-content;
   grid-gap: 10px;
   justify-content: end;
   align-items: center;
@@ -19,7 +19,8 @@ function Footer() {
     <footer>
       <Content>
         <div>© {new Date().getFullYear()} Guruh Hapsara</div>
-        <Link href="https://github.com/ghapsara">Github</Link>
+        <div>/</div>
+        <Link href="mailto:mail@guruhhapsara.dev">contact</Link>
       </Content>
     </footer>
   )
