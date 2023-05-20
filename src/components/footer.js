@@ -20,7 +20,7 @@ function Footer() {
       <Content>
         <div>© {new Date().getFullYear()} Guruh Hapsara</div>
         <div>/</div>
-        <Link href="mailto:mail@guruhhapsara.dev">contact</Link>
+        <Link href="mailto:mail@guruhhapsara.dev">connect</Link>
       </Content>
     </footer>
   )
