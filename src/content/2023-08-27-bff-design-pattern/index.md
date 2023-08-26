@@ -28,7 +28,7 @@ As the old saying less code less problem, the question is how can we code less w
 
 ## Allegory
 
-We all like dancing right? Let’s pick up a dance that has been celebrated for centuries exhibiting a rich culture and humility from the Republic of Dagestan Russia, named Lezginka. I encourage you to look it up on Youtube. Lezginka is performed by a man and a woman, where the woman would move swiftly in round and the man would circle around the woman without touching each other.
+We all like dancing right? Let’s pick up a dance that has been celebrated for centuries exhibiting a rich culture and humility from the Republic of Dagestan Russia, named Lezginka. I encourage you to look it up on Youtube. Lezginka is performed by a man and a woman, where the woman would move swiftly from corner to corner and the man would circle around the woman, they both would dance without touching each other.
 
 The man is often looking annoying to the woman, and I still think until now that the man should never be there. The man looks like a huge mistake where he would move his arms and feet in a weird way, he seems like a sliver to the dance complimented by the woman.
 
@@ -91,6 +91,7 @@ Releasing code changes to backends has never been easier than nowadays. We have 
 Not only that, on the backend side, say a rollback is not enough, since we usually have other high risk activities like data patches, schema changes, and they often require manual hand interventions, a direct engagement to those processes on the server is feasible, we still have an opportunity to do it.
 
 On the front side, mobile applications do not have that level of freedom. Once changes are rolled out to application stores, they become available to end users. Pulling back changes in applications installed in user end devices is not manageable. Though a practice like feature toggle is viable, is it elegant to feature toggle every change.
+
 The essence of rollback in mobile applications is a whole different game, once changes are deployed, they are irreversible.
 Calling back on the advantage of rollback we have in backend, moving source code to backend means we will have the benefits of server infrastructure which emulates the hard problem of mobile application release.
 
@@ -138,7 +139,7 @@ Instead of having the core as a server, let’s bring it closer to the backends.
 
 This would seem to cut off network trips from the data access chain, but it would work best on a stateless process, what it does is only to proxy requests to downstream and there are perhaps some immutable functions for computations. If these are all on check, having a shared library may be a desirable choice.
 
-It comes with a cost too. In a condition where there are multiple backends and maintained by different teams, we would be less likely to see a same equal version of package deployed to interface with the core functionalities in individual backends.
+It comes with a cost too. In a condition where there are backends maintained by different teams, we would be less likely to see a same equal version of package deployed to interface with the core functionalities in individual backends.
 
 This varying build circumstance in some extent becomes a burden in which the maintenance of multiple versions must be held accountable.
 
