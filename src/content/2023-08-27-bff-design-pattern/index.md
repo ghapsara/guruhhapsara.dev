@@ -32,7 +32,7 @@ We all like dancing right? Let’s pick up a dance that has been celebrated for 
 
 The man is often looking annoying to the woman, and I still think until now that the man should never be there. The man looks like a huge mistake where he would move his arms and feet in a weird way, he seems like a sliver to the dance complimented by the woman.
 
-What the man does in Lezginka is not a mistake, if it’s a mistake, how can the rule last for hundreds of years, and it remains pure. The man and the woman dance together, seducing one another eternally, speaking depth to our psyche. A form of art that animates unbounded time and space like that is not nothing, right.
+What the man does in Lezginka is not a mistake, if it’s a mistake, how can the rule last for hundreds of years, and it remains pure. The man and the woman get along to dance in harmony, speaking depth to our psyche. A form of art that animates unbounded time and space like that is not nothing, right.
 
 What can we see from this great form of art. The push and pull dynamics are there, the concept should manifest all things including software engineering.
 
@@ -46,7 +46,7 @@ Usually we make our backend accessible as HTTP server to frontend via internet. 
 
 All kinds of frontends will be given the same ways of requesting data and the same attributes of response data regardless of which data they are particularly interested in.
 
-We don’t expect distinguished ways of communication regardless of which runtime they are on. Web browsers, Android, IOS, CLIs, and all other kinds are given the same ways of throwing requests and equivalent structures of response data. No variance, no distinguishable, all endpoints are dressing up in the same uniform looking even from any angles.
+We don’t expect distinguished ways of communication given the runtime they are running on. Web browsers, Android, IOS, CLIs, and all other kinds are given the same ways of throwing requests and equivalent structures of response data. No variance, no distinguishable, all endpoints are dressing up in the same uniform looking even from any angles.
 
 Let’s zoom into the server ecosystem for a moment, what are we doing with our servers in the current state of engineering design, we organize them as microservices.
 
