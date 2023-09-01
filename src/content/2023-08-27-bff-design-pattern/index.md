@@ -20,7 +20,7 @@ coverOpacity: 0.5
 
 Recently I worked on a feature analysis which as part of it involved mobile application source code inspection, and it reminds me of how incredibly intricate human front facing user interface is.
 
-User Interface design and implementation has always been mental. What madness is not how to perfectly arrange modules, well abstract domains of concerns, nor establish predictable patterns, and so forth. Toolings and best practices are evolving, but it’s the complexity of crafting all moving interactions in frontend keeps advancing as the world demands more cool experiences.
+User Interface design and implementation have always been mental. What madness is not how to perfectly arrange modules, well abstract domains of concerns, nor establish predictable patterns, and so forth. Toolings and best practices are evolving, but it’s the complexity of crafting all moving interactions in frontend keeps advancing as the world demands more cool experiences.
 
 Everytime I have a conversation about frontend development, it is staggering to notice how people are consistently concerned about how fragile user interface engineering implementation is in regard to the vast diverse end devices it needs to support.
 
@@ -80,7 +80,7 @@ BFF places one layer before data sources, BFF delegates backend to serve data in
 
 Let’s manstraw this architecture design, delegating some region of frontend jobs to backend does not seem like an improvement right? Does it liberate us from writing business logics? Does it abdicate our responsibility to write tests? No.
 
-Isn’t it just a source migration? The complex API labyrinth traversal is still there but now in a different place which also entails a new resource maintenance, complexity is not necessarily reduced, what’s the gain value?
+Isn’t it just a source code migration? The complex API labyrinth traversal is still there but now in a different place which also entails a new resource maintenance, complexity is not necessarily reduced, what’s the gain value?
 
 ## What’s the deal
 
