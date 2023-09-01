@@ -105,7 +105,7 @@ Another instance of BFF concerns is the use of frontend in exchanging data with 
 
 The farther the lesser opportunity of being with enriched information. If this is true, then mingling APIs from a bunch of servers doesn’t seem to belong at the frontend side.
 
-Once again the benefit of having backend for this, they can coordinate under close environments, they will have more information as more data sources become reachable.
+Once again the benefit of having backend for this, servers can coordinate under close environments, they would have more information as more data sources become reachable.
 
 Moreover, we have an ability to scale our computations in and out both sufficiently and conditionally given the luxury of server infrastructure. More variables are under our feet.
 
@@ -135,9 +135,9 @@ The decision we make to determine the instrument of the core part is an interest
 
 ![BFF core library](./fig-core-library.jpg)
 
-Instead of having the core as a server, let’s bring it closer to the backends. This can be achieved by a shared library, writing core functionalities in a binary source code built it right into backend process.
+Instead of having the core as a server, we could bring it closer to the backends. This could be achieved by a shared library, writing core functionalities in a binary source code built it right into backend process.
 
-This would seem to cut off network trips from the data access chain, but it would work best on a stateless process, what it does is only to proxy requests to downstream and there are perhaps some immutable functions for computations. If these are all on check, having a shared library may be a desirable choice.
+This is meant to reduce network trips required in the data access chain, but it would work best on a stateless process, what it does is only to proxy requests to downstream and there are perhaps some immutable functions for computations. If these are all on check, having a shared library may be a desirable choice.
 
 It comes with a cost too. In a condition where there are backends maintained by different teams, we would be less likely to see a same equal version of package deployed to interface with the core functionalities in individual backends.
 
