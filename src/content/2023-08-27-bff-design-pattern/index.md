@@ -66,13 +66,13 @@ It seems to be difficult to find a solid definition of BFF. The only available W
 
 BFF stands for Backend for Frontend. What does it mean? It's never easy to understand what something is, but I think for most times it is reliable to start from motivation first hand.
 
-If I frame how servers commonly provide APIs in a kind of screen direction, backend determines how things should be done, and how data should look like, and frontend becomes a passive listener following defined rules. If we think for a second about it, who’s actually being served?
+If I frame how servers commonly provide APIs in a kind of screen direction, backend determines how things should be done, and how data should look like, and frontend becomes an active agent following determined specifications. If we think about who define the rules for a second, who’s actually being served?
 
 BFF in comparison comes with a different intuition of API design approach to accommodate data exchange between server and client.
 
-This software design pattern interests is to repress computation hefty taking place at the frontend side. In a revisit to the multi microservice orchestration calls case earlier, one of practical BFF use cases is to offload API split calls away from clients, and authoring relevant data processing in servers.
+One of this software design pattern interests is to repress computation hefty taking place at the frontend side. To revisit the multi microservice orchestration calls case earlier, one of the things that BFF advocates is to offload non-exclusive API split calls away from clients, and authoring relevant data processing to servers. 
 
-Think of BFF like kubernetes API server to kubectl. Let’s pull out one example of obtaining container metrics from kubernetes, instead of asking kubectl which is practically a client in this case to call the kubelet metric endpoint from each node which is essentially the way prometheus node exporter does, kubernetes API server appoints metric server to do API orchestration and perform computation, it will then deliver container metrics data to kubectl.
+Think of BFF like kubernetes API server to kubectl. Let’s pull out one example of obtaining container metrics from kubernetes, instead of asking kubectl which is innocently a client in this case to call the kubelet metric endpoint from each node which is conspicuously the way prometheus node exporter does, kubernetes API server appoints metric server to do API orchestration and perform computation, it will then deliver container metrics data to kubectl.
 
 BFF places one layer before data sources, BFF delegates backend to serve data interested by frontend. Let’s call these backend data sources downstream to minimize confusion.
 
